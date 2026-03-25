@@ -20,6 +20,12 @@
     ul { list-style:disc; max-width:720px; margin:0 auto 12px; padding-left:20px; }
     ol { max-width:720px; margin:0 auto 12px; }
     .center { text-align:center; }
+    .plans { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px; }
+    .plan { border:1px solid rgba(255,255,255,0.08); border-radius:18px; padding:20px; }
+    .plan h3 { margin:0 0 8px; letter-spacing:0.15rem; text-transform:uppercase; font-size:16px; }
+    .price { font-size:32px; margin:0 0 8px; }
+    .price span { font-size:16px; color:rgba(255,255,255,0.7); }
+    .plan p { margin:0; font-size:15px; }
   </style>
 </head>
 <body>
@@ -61,6 +67,27 @@
     </ul>
     <div class="center">
       <a class="cta-sec" href="mailto:contacto.starxmedic@gmail.com?subject=Acceso%20Premium%20StarX" target="_blank">Solicitar acceso premium</a>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2 class="center">Planes StarX</h2>
+    <div class="plans">
+      <div class="plan">
+        <h3>Gratis</h3>
+        <p class="price">S/0 <span>/ siempre</span></p>
+        <p>Captura única, resumen inicial y hábito Stark.</p>
+      </div>
+      <div class="plan">
+        <h3>Premium</h3>
+        <p class="price">S/19 <span>/ mes</span></p>
+        <p>ArcMind diario, historial completo y alertas clínicas en tu inbox.</p>
+      </div>
+      <div class="plan">
+        <h3>Ultra Premium</h3>
+        <p class="price">S/299 / S/499</p>
+        <p>Pilotos guiados, Field Pod virtual, soporte Jarvis y acompañamiento personalizado.</p>
+      </div>
     </div>
   </section>
 

@@ -6,127 +6,111 @@
   <title>Portal Paciente | StarX</title>
   <style>
     :root {
-      --bg:#020712;
-      --panel:#0b1120;
-      --line:rgba(255,255,255,0.06);
+      --bg:#010712;
+      --panel:#0b1121;
+      --line:rgba(255,255,255,0.08);
       --text:#f3f6ff;
       --muted:rgba(243,246,255,0.6);
-      --accent:#38bdf8;
+      --accent:#3dd5ff;
     }
     * { box-sizing:border-box; }
-    body {
-      margin:0;
-      min-height:100vh;
-      background:var(--bg);
-      color:var(--text);
-      font-family:"Space Grotesk","Segoe UI",sans-serif;
-      padding:40px 20px 80px;
-    }
-    main { max-width:720px; margin:0 auto; }
-    h1 { text-transform:uppercase; letter-spacing:0.25rem; font-size:28px; margin-bottom:24px; }
-    section {
-      border:1px solid var(--line);
-      border-radius:24px;
-      padding:32px;
-      margin-bottom:24px;
-      background:var(--panel);
-    }
-    h2 { margin:0 0 16px; font-size:20px; letter-spacing:0.15rem; }
-    label { display:block; font-size:13px; letter-spacing:0.15rem; text-transform:uppercase; color:var(--muted); margin-bottom:6px; }
-    input, textarea {
-      width:100%;
-      border:1px solid var(--line);
-      border-radius:12px;
-      padding:12px;
-      margin-bottom:16px;
-      background:#050a17;
-      color:var(--text);
-      font-size:15px;
-    }
-    button {
-      border:none;
-      border-radius:999px;
-      padding:12px 28px;
-      text-transform:uppercase;
-      letter-spacing:0.2rem;
-      font-size:13px;
-      background:var(--accent);
-      color:#01040b;
-      cursor:pointer;
-    }
-    .status { font-size:14px; color:var(--muted); margin-top:10px; }
+    body { margin:0; min-height:100vh; background:var(--bg); color:var(--text); font-family:"Space Grotesk","Segoe UI",sans-serif; padding:40px 20px 80px; }
+    main { max-width:900px; margin:0 auto; }
+    h1 { text-transform:uppercase; letter-spacing:0.25rem; font-size:26px; margin-bottom:12px; }
+    .timestamp { color:var(--muted); font-size:13px; letter-spacing:0.2rem; text-transform:uppercase; margin-bottom:24px; }
+    section { border:1px solid var(--line); border-radius:24px; padding:32px; margin-bottom:24px; background:var(--panel); }
+    h2 { margin:0 0 16px; font-size:18px; letter-spacing:0.2rem; text-transform:uppercase; }
+    label { display:block; font-size:12px; letter-spacing:0.18rem; text-transform:uppercase; color:var(--muted); margin-bottom:6px; }
+    input, textarea { width:100%; border:1px solid var(--line); border-radius:14px; padding:12px; margin-bottom:16px; background:#050a18; color:var(--text); font-size:15px; }
+    button { border:none; border-radius:999px; padding:12px 28px; background:linear-gradient(120deg,rgba(61,213,255,0.95),rgba(14,165,233,0.95)); color:#01040b; text-transform:uppercase; letter-spacing:0.2rem; font-size:12px; font-weight:600; cursor:pointer; }
+    .status { font-size:13px; color:var(--muted); margin-top:8px; }
+    .history-entry { border-top:1px solid var(--line); padding:12px 0; }
+    .actions { display:flex; gap:12px; flex-wrap:wrap; margin-top:12px; }
+    .actions a { border:1px solid var(--line); border-radius:999px; padding:10px 24px; text-decoration:none; text-transform:uppercase; letter-spacing:0.15rem; font-size:12px; color:var(--muted); }
+    .disclaimer { font-size:12px; color:var(--muted); margin-top:12px; }
   </style>
 </head>
 <body>
   <main>
     <h1>Portal paciente</h1>
+    <div class="timestamp" id="timestamp">Actualizado</div>
 
     <section>
-      <h2>Registrar síntomas</h2>
-      <form id="symptoms-form">
-        <label for="pacienteCodigo">Código paciente</label>
-        <input id="pacienteCodigo" name="pacienteCodigo" placeholder="PAC-0001" required />
-        <label for="sintomas">Síntomas</label>
-        <textarea id="sintomas" name="sintomas" rows="3" placeholder="Describe tus síntomas" required></textarea>
-        <button type="submit">Enviar</button>
-        <div class="status" id="symptoms-status"></div>
+      <h2>Registrar evento</h2>
+      <form id="symptom-form">
+        <label for="evento">Síntoma / evento</label>
+        <textarea id="evento" rows="3" placeholder="Describe lo que sientes" required></textarea>
+        <label for="intensidad">Intensidad</label>
+        <input id="intensidad" type="text" placeholder="Leve / moderado / severo" />
+        <button type="submit">Guardar entrada</button>
+        <div class="status" id="symptom-status"></div>
       </form>
+      <div class="actions">
+        <a href="#">Analizar con IA (orientativo)</a>
+        <a href="#">Vincular médico</a>
+      </div>
+      <div class="disclaimer">La IA entrega orientación automática. No reemplaza la evaluación médica profesional.</div>
     </section>
 
     <section>
-      <h2>Registrar seguimiento</h2>
-      <form id="followup-form">
-        <label for="seguimientoCodigo">Código paciente</label>
-        <input id="seguimientoCodigo" name="pacienteCodigo" placeholder="PAC-0001" required />
-        <label for="observacion">Observación</label>
-        <textarea id="observacion" name="observacion" rows="3" placeholder="Evolución, signos" required></textarea>
-        <button type="submit">Enviar</button>
-        <div class="status" id="followup-status"></div>
-      </form>
+      <h2>Historial</h2>
+      <div id="history">
+        <div class="history-entry">No hay registros aún. Tus eventos aparecerán aquí.</div>
+      </div>
     </section>
 
-    <div style="text-align:center;margin-top:16px;">
-      <a href="/entrar" style="color:rgba(243,246,255,0.55);text-decoration:none;text-transform:uppercase;letter-spacing:0.15rem;font-size:12px;">Volver a Entrar</a>
+    <div style="text-align:center; margin-top:16px;">
+      <a href="/entrar" style="color:var(--muted); text-decoration:none; text-transform:uppercase; letter-spacing:0.15rem; font-size:12px;">Volver al panel</a>
     </div>
   </main>
 
   <script>
-    const API_BASE = "https://api.starxmedic.com"; // actualizar cuando el backend esté desplegado
+    const API_BASE = "https://api.starxmedic.com"; // actualizar cuando esté activo
+    const timestampEl = document.getElementById("timestamp");
+    const historyEl = document.getElementById("history");
 
-    async function submitForm(endpoint, data, statusEl) {
-      statusEl.textContent = "Enviando…";
+    function updateTimestamp() {
+      const now = new Date();
+      timestampEl.textContent = `Actualizado ${now.toLocaleString("es-PE", { day:"2-digit", month:"short", hour:"2-digit", minute:"2-digit" })}`;
+    }
+
+    async function postEntry(payload) {
       try {
-        const res = await fetch(`${API_BASE}${endpoint}`, {
+        const res = await fetch(`${API_BASE}/patient/eventos`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(data)
+          body: JSON.stringify(payload)
         });
-        if (!res.ok) throw new Error("Error remoto");
-        statusEl.textContent = "Registrado ✔";
-      } catch (err) {
-        statusEl.textContent = "Temporal: espera a que el portal operativo esté activo.";
+        if (!res.ok) throw new Error("API inactiva");
+        return true;
+      } catch {
+        return false;
       }
     }
 
-    document.getElementById("symptoms-form").addEventListener("submit", (e) => {
+    document.getElementById("symptom-form").addEventListener("submit", async (e) => {
       e.preventDefault();
       const data = {
-        paciente_codigo: e.target.pacienteCodigo.value.trim(),
-        sintomas: e.target.sintomas.value.trim(),
+        evento: e.target.evento.value.trim(),
+        intensidad: e.target.intensidad.value.trim(),
+        timestamp: new Date().toISOString()
       };
-      submitForm("/patient/sintomas", data, document.getElementById("symptoms-status"));
-      e.target.reset();
+      const ok = await postEntry(data);
+      const status = document.getElementById("symptom-status");
+      if (ok) {
+        status.textContent = "Registrado ✔";
+        const div = document.createElement("div");
+        div.className = "history-entry";
+        div.textContent = `${new Date().toLocaleString()} ▸ ${data.evento}`;
+        historyEl.prepend(div);
+        e.target.reset();
+      } else {
+        status.textContent = "Temporal: se guardará cuando la API esté activa.";
+      }
+      updateTimestamp();
     });
 
-    document.getElementById("followup-form").addEventListener("submit", (e) => {
-      e.preventDefault();
-      const data = {
-        paciente_codigo: e.target.pacienteCodigo.value.trim(),
-        observacion: e.target.observacion.value.trim(),
-      };
-      submitForm("/patient/seguimientos", data, document.getElementById("followup-status"));
-      e.target.reset();
-    });
+    updateTimestamp();
   </script>
 </body>
 </html>

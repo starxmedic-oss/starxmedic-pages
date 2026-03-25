@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registro | StarX</title>
+  <style>
+    :root { --bg:#020710; --panel:#0b1322; --line:rgba(255,255,255,0.08); --text:#f5f7ff; --muted:rgba(245,247,255,0.6); --accent:#3dd5ff; }
+    * { box-sizing:border-box; }
+    body { margin:0; min-height:100vh; background:var(--bg); color:var(--text); font-family:"Space Grotesk","Segoe UI",sans-serif; display:flex; align-items:center; justify-content:center; padding:40px 20px; }
+    main { width:min(460px,100%); border:1px solid var(--line); border-radius:28px; padding:40px; background:var(--panel); box-shadow:0 40px 150px rgba(0,0,0,0.5); }
+    h1 { margin:0 0 12px; letter-spacing:0.3rem; text-transform:uppercase; font-size:20px; }
+    p { margin:0 0 24px; color:var(--muted); font-size:15px; }
+    label { display:block; font-size:12px; letter-spacing:0.18rem; text-transform:uppercase; color:var(--muted); margin-bottom:6px; }
+    input { width:100%; border:1px solid var(--line); border-radius:14px; padding:14px; margin-bottom:18px; background:#050a1a; color:var(--text); font-size:15px; }
+    button { width:100%; border:none; border-radius:999px; padding:14px; background:linear-gradient(120deg,rgba(61,213,255,0.95),rgba(14,165,233,0.95)); color:#01040b; text-transform:uppercase; letter-spacing:0.2rem; font-size:13px; font-weight:600; cursor:pointer; }
+    .notice { font-size:12px; letter-spacing:0.15rem; text-transform:uppercase; color:var(--muted); margin-bottom:18px; }
+    a { color:var(--muted); text-decoration:none; font-size:13px; letter-spacing:0.1rem; text-transform:uppercase; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Crea tu cuenta StarX</h1>
+    <p>Tu cuenta activa el Portal Paciente de inmediato. El acceso médico se aprueba aparte.</p>
+    <form>
+      <label for="nombre">Nombre completo</label>
+      <input id="nombre" placeholder="Tony Stark" required />
+      <label for="edad">Edad</label>
+      <input id="edad" type="number" min="1" max="120" placeholder="29" required />
+      <label for="correo">Correo</label>
+      <input id="correo" type="email" placeholder="usuario@starx.com" required />
+      <label for="clave">Contraseña</label>
+      <input id="clave" type="password" placeholder="••••••••" required />
+      <div class="notice">Acceso médico se solicita desde el panel interno</div>
+      <button type="submit">Crear usuario</button>
+    </form>
+    <div style="margin-top:18px; text-align:center;">
+      <a href="/acceso">¿Ya tienes cuenta? Entrar</a>
+    </div>
+  </main>
+</body>
+</html>
