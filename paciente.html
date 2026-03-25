@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portal Paciente | StarX</title>
+  <style>
+    :root {
+      --bg:#020712;
+      --panel:#0b1120;
+      --line:rgba(255,255,255,0.06);
+      --text:#f3f6ff;
+      --muted:rgba(243,246,255,0.6);
+      --accent:#38bdf8;
+    }
+    * { box-sizing:border-box; }
+    body {
+      margin:0;
+      min-height:100vh;
+      background:var(--bg);
+      color:var(--text);
+      font-family:"Space Grotesk","Segoe UI",sans-serif;
+      padding:40px 20px 80px;
+    }
+    main { max-width:720px; margin:0 auto; }
+    h1 { text-transform:uppercase; letter-spacing:0.25rem; font-size:28px; margin-bottom:24px; }
+    section {
+      border:1px solid var(--line);
+      border-radius:24px;
+      padding:32px;
+      margin-bottom:24px;
+      background:var(--panel);
+    }
+    h2 { margin:0 0 16px; font-size:20px; letter-spacing:0.15rem; }
+    label { display:block; font-size:13px; letter-spacing:0.15rem; text-transform:uppercase; color:var(--muted); margin-bottom:6px; }
+    input, textarea {
+      width:100%;
+      border:1px solid var(--line);
+      border-radius:12px;
+      padding:12px;
+      margin-bottom:16px;
+      background:#050a17;
+      color:var(--text);
+      font-size:15px;
+    }
+    button {
+      border:none;
+      border-radius:999px;
+      padding:12px 28px;
+      text-transform:uppercase;
+      letter-spacing:0.2rem;
+      font-size:13px;
+      background:var(--accent);
+      color:#01040b;
+      cursor:pointer;
+    }
+    .status { font-size:14px; color:var(--muted); margin-top:10px; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Portal paciente</h1>
+
+    <section>
+      <h2>Registrar síntomas</h2>
+      <form id="symptoms-form">
+        <label for="pacienteCodigo">Código paciente</label>
+        <input id="pacienteCodigo" name="pacienteCodigo" placeholder="PAC-0001" required />
+        <label for="sintomas">Síntomas</label>
+        <textarea id="sintomas" name="sintomas" rows="3" placeholder="Describe tus síntomas" required></textarea>
+        <button type="submit">Enviar</button>
+        <div class="status" id="symptoms-status"></div>
+      </form>
+    </section>
+
+    <section>
+      <h2>Registrar seguimiento</h2>
+      <form id="followup-form">
+        <label for="seguimientoCodigo">Código paciente</label>
+        <input id="seguimientoCodigo" name="pacienteCodigo" placeholder="PAC-0001" required />
+        <label for="observacion">Observación</label>
+        <textarea id="observacion" name="observacion" rows="3" placeholder="Evolución, signos" required></textarea>
+        <button type="submit">Enviar</button>
+        <div class="status" id="followup-status"></div>
+      </form>
+    </section>
+
+    <div style="text-align:center;margin-top:16px;">
+      <a href="/entrar" style="color:rgba(243,246,255,0.55);text-decoration:none;text-transform:uppercase;letter-spacing:0.15rem;font-size:12px;">Volver a Entrar</a>
+    </div>
+  </main>
+
+  <script>
+    const API_BASE = "https://api.starxmedic.com"; // actualizar cuando el backend esté desplegado
+
+    async function submitForm(endpoint, data, statusEl) {
+      statusEl.textContent = "Enviando…";
+      try {
+        const res = await fetch(`${API_BASE}${endpoint}`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data)
+        });
+        if (!res.ok) throw new Error("Error remoto");
+        statusEl.textContent = "Registrado ✔";
+      } catch (err) {
+        statusEl.textContent = "Temporal: espera a que el portal operativo esté activo.";
+      }
+    }
+
+    document.getElementById("symptoms-form").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const data = {
+        paciente_codigo: e.target.pacienteCodigo.value.trim(),
+        sintomas: e.target.sintomas.value.trim(),
+      };
+      submitForm("/patient/sintomas", data, document.getElementById("symptoms-status"));
+      e.target.reset();
+    });
+
+    document.getElementById("followup-form").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const data = {
+        paciente_codigo: e.target.pacienteCodigo.value.trim(),
+        observacion: e.target.observacion.value.trim(),
+      };
+      submitForm("/patient/seguimientos", data, document.getElementById("followup-status"));
+      e.target.reset();
+    });
+  </script>
+</body>
+</html>
