@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Cache-Control" content="no-store" />
+  <title>Wayruru Smart Travel</title>
+  <style>
+    :root { --bg:#0a0313; --text:#fef8ff; --muted:rgba(254,248,255,0.6); --accent1:#ff6f91; --accent2:#ff9671; }
+    * { box-sizing:border-box; }
+    body { margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center; background:radial-gradient(circle at top, rgba(255,111,145,0.2), transparent 60%), radial-gradient(circle at bottom, rgba(255,150,113,0.15), transparent 55%), var(--bg); font-family:"Space Grotesk","Segoe UI",sans-serif; color:var(--text); }
+    main { text-align:center; padding:90px 70px; border:1px solid rgba(255,255,255,0.08); border-radius:40px; background:rgba(10,3,19,0.8); box-shadow:0 0 220px rgba(255,111,145,0.22); position:relative; overflow:hidden; }
+    main::after { content:""; position:absolute; inset:-50%; background:radial-gradient(circle, rgba(255,255,255,0.05), transparent 60%); filter:blur(80px); animation:glow 18s ease-in-out infinite; }
+    @keyframes glow { 0%,100% { transform:scale(1); opacity:0.4; } 50% { transform:scale(1.08); opacity:0.7; } }
+    .shell { position:relative; z-index:1; }
+    .symbol { width:170px; height:170px; margin:0 auto 40px; position:relative; display:flex; align-items:center; justify-content:center; color:#120516; font-size:62px; letter-spacing:0.5rem; font-weight:600; text-transform:uppercase; animation:float 6s ease-in-out infinite, spin 30s linear infinite; transform-style:preserve-3d; }
+    .symbol::before, .symbol::after { content:""; position:absolute; inset:0; border-radius:24px; }
+    .symbol::before { background:linear-gradient(135deg, rgba(255,111,145,0.95), rgba(255,150,113,0.7)); box-shadow:0 20px 80px rgba(255,111,145,0.35); transform:translateZ(-18px); }
+    .symbol::after { inset:14px; background:rgba(5,0,12,0.85); box-shadow:inset 0 0 40px rgba(255,111,145,0.35); transform:translateZ(28px); }
+    .symbol span { position:relative; z-index:2; color:var(--text); }
+    @keyframes float { 0%,100% { transform:translateY(-6px); } 50% { transform:translateY(6px); } }
+    @keyframes spin { 0% { transform:rotateX(0deg) rotateY(0deg); } 100% { transform:rotateX(360deg) rotateY(360deg); } }
+    h1 { margin:0 0 10px; font-size:34px; letter-spacing:0.45rem; text-transform:uppercase; font-weight:300; }
+    p { margin:0 0 32px; font-size:14px; letter-spacing:0.22rem; color:var(--muted); text-transform:uppercase; }
+    .status { margin:28px auto 18px; display:flex; justify-content:center; }
+    .status .dot { width:10px; height:10px; border-radius:50%; background:#a0ffb5; box-shadow:0 0 12px rgba(160,255,181,0.8); animation:pulseDot 3.6s ease-in-out infinite; }
+    @keyframes pulseDot { 0%,100% { transform:scale(0.9); box-shadow:0 0 6px rgba(160,255,181,0.4); } 50% { transform:scale(1.2); box-shadow:0 0 16px rgba(160,255,181,1); } }
+    .tagline { margin-top:12px; font-size:12px; letter-spacing:0.25rem; text-transform:uppercase; color:rgba(254,248,255,0.45); }
+    a { text-decoration:none; display:inline-flex; padding:16px 40px; border-radius:999px; background:linear-gradient(120deg, var(--accent1), var(--accent2)); color:#150714; text-transform:uppercase; letter-spacing:0.25rem; font-weight:600; font-size:14px; margin-top:10px; }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="shell">
+      <div class="symbol"><span>W</span></div>
+      <h1>Wayruru Smart Travel</h1>
+      <p>Impulsado por tecnología StarX</p>
+      <div class="status"><span class="dot"></span></div>
+      <a href="/wayruru-login.html">Ingresar</a>
+      <div class="tagline">Advanced Travel Intelligence</div>
+    </div>
+  </main>
+</body>
+</html>

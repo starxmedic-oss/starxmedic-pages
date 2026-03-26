@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Cache-Control" content="no-store" />
+  <title>Wayruru ▸ Acceso</title>
+  <style>
+    :root { --bg:#fff8f9; --text:#1a1030; --muted:rgba(26,16,48,0.6); --accent1:#ff6f91; --accent2:#ff9671; }
+    * { box-sizing:border-box; }
+    body { margin:0; min-height:100vh; background:var(--bg); font-family:"Space Grotesk","Segoe UI",sans-serif; color:var(--text); display:flex; align-items:center; justify-content:center; padding:40px 20px; }
+    main { width:min(420px,100%); border:1px solid rgba(26,16,48,0.08); border-radius:28px; padding:40px 36px; background:#ffffff; box-shadow:0 30px 120px rgba(26,16,48,0.1); }
+    h1 { text-transform:uppercase; letter-spacing:0.35rem; font-size:22px; margin-bottom:28px; color:#2b1948; }
+    label { display:block; font-size:12px; letter-spacing:0.18rem; text-transform:uppercase; color:var(--muted); margin-bottom:6px; }
+    input { width:100%; border:1px solid rgba(26,16,48,0.15); border-radius:14px; padding:14px; margin-bottom:18px; font-size:15px; }
+    button.primary { width:100%; border:none; border-radius:999px; padding:14px; background:linear-gradient(120deg,var(--accent1),var(--accent2)); color:#220c1f; text-transform:uppercase; letter-spacing:0.2rem; font-weight:600; font-size:13px; cursor:pointer; }
+    .links { margin-top:18px; display:flex; flex-direction:column; gap:6px; }
+    .links a { color:var(--muted); text-decoration:none; font-size:13px; letter-spacing:0.1rem; text-transform:uppercase; }
+    .status { font-size:13px; color:var(--muted); min-height:18px; margin-top:12px; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Acceso Wayruru</h1>
+    <form id="wayruru-login-form">
+      <label for="user">Usuario o correo</label>
+      <input id="user" placeholder="viajero@wayruru.com" required />
+      <label for="pass">Contraseña</label>
+      <input id="pass" type="password" placeholder="••••••••" required />
+      <button class="primary" type="submit">Ingresar</button>
+      <div class="status" id="login-status"></div>
+    </form>
+    <div class="links">
+      <a href="#">Crear cuenta</a>
+      <a href="#">Recuperar contraseña</a>
+    </div>
+  </main>
+  <script>
+    const API_BASE = "https://api.starxmedic.com"; // reutilizamos backend mientras se crea Wayruru API
+    const form = document.getElementById("wayruru-login-form");
+    const statusEl = document.getElementById("login-status");
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      statusEl.textContent = "Modo preview. Integraremos auth Wayruru aquí.";
+    });
+  </script>
+</body>
+</html>
