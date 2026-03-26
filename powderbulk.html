@@ -6,20 +6,20 @@
   <meta http-equiv="Cache-Control" content="no-store" />
   <title>Powder & Bulk</title>
   <style>
-    :root { --bg:#050608; --text:#f3f5f8; --muted:rgba(243,245,248,0.6); --accent1:#4c7bff; --accent2:#7d9fff; }
+    :root { --bg:#050505; --text:#fefaf1; --muted:rgba(254,250,241,0.65); --accent1:#ffc107; --accent2:#ffb300; }
     * { box-sizing:border-box; }
-    body { margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center; background:radial-gradient(circle at top, rgba(76,123,255,0.18), transparent 60%), var(--bg); font-family:"Space Grotesk","Segoe UI",sans-serif; color:var(--text); }
-    main { text-align:center; padding:90px 70px; border:1px solid rgba(255,255,255,0.08); border-radius:40px; background:rgba(5,6,8,0.85); box-shadow:0 0 200px rgba(76,123,255,0.25); position:relative; overflow:hidden; }
+    body { margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center; background:radial-gradient(circle at top, rgba(255,193,7,0.2), transparent 60%), var(--bg); font-family:"Space Grotesk","Segoe UI",sans-serif; color:var(--text); }
+    main { text-align:center; padding:90px 70px; border:1px solid rgba(255,255,255,0.05); border-radius:40px; background:rgba(6,6,6,0.9); box-shadow:0 0 200px rgba(255,193,7,0.2); position:relative; overflow:hidden; }
     .symbol { width:170px; height:170px; margin:0 auto 40px; position:relative; display:flex; align-items:center; justify-content:center; color:#0a0d17; font-size:48px; letter-spacing:0.3rem; font-weight:600; text-transform:uppercase; animation:float 6s ease-in-out infinite, spin 32s linear infinite; transform-style:preserve-3d; }
-    .symbol::before { content:""; position:absolute; inset:0; border-radius:24px; background:linear-gradient(135deg, rgba(76,123,255,0.95), rgba(125,159,255,0.7)); box-shadow:0 18px 70px rgba(76,123,255,0.35); transform:translateZ(-18px); }
-    .symbol::after { content:""; position:absolute; inset:14px; border-radius:18px; background:rgba(6,8,14,0.92); box-shadow:inset 0 0 38px rgba(76,123,255,0.35); transform:translateZ(26px); }
+    .symbol::before { content:""; position:absolute; inset:0; border-radius:24px; background:linear-gradient(135deg, rgba(255,193,7,0.95), rgba(255,179,0,0.7)); box-shadow:0 18px 70px rgba(255,193,7,0.35); transform:translateZ(-18px); }
+    .symbol::after { content:""; position:absolute; inset:14px; border-radius:18px; background:rgba(17,17,17,0.95); box-shadow:inset 0 0 38px rgba(255,179,0,0.35); transform:translateZ(26px); }
     @keyframes float { 0%,100% { transform:translateY(-6px); } 50% { transform:translateY(6px); } }
     @keyframes spin { 0% { transform:rotateX(0deg) rotateY(0deg); } 100% { transform:rotateX(360deg) rotateY(360deg); } }
     h1 { margin:0; font-size:32px; letter-spacing:0.45rem; text-transform:uppercase; font-weight:400; }
     .subtitle { margin:16px 0 30px; font-size:15px; letter-spacing:0.28rem; color:var(--muted); text-transform:uppercase; }
     .status { margin:26px auto 20px; display:flex; justify-content:center; }
-    .status .dot { width:10px; height:10px; border-radius:50%; background:#7be9ff; box-shadow:0 0 12px rgba(123,233,255,0.85); animation:pulse 3.6s ease-in-out infinite; }
-    @keyframes pulse { 0%,100% { transform:scale(0.9); box-shadow:0 0 6px rgba(123,233,255,0.4); } 50% { transform:scale(1.15); box-shadow:0 0 16px rgba(123,233,255,1); } }
+    .status .dot { width:10px; height:10px; border-radius:50%; background:#ffd54f; box-shadow:0 0 12px rgba(255,213,79,0.85); animation:pulse 3.6s ease-in-out infinite; }
+    @keyframes pulse { 0%,100% { transform:scale(0.9); box-shadow:0 0 6px rgba(255,213,79,0.45); } 50% { transform:scale(1.15); box-shadow:0 0 16px rgba(255,213,79,1); } }
     a { text-decoration:none; display:inline-flex; padding:16px 40px; border-radius:999px; background:linear-gradient(120deg, var(--accent1), var(--accent2)); color:#060a15; text-transform:uppercase; letter-spacing:0.25rem; font-weight:600; font-size:14px; margin-top:10px; }
     .signature { margin-top:40px; font-size:11px; letter-spacing:0.35rem; text-transform:uppercase; color:rgba(243,245,248,0.35); }
   </style>
