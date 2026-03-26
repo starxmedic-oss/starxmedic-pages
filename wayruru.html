@@ -21,11 +21,12 @@
     @keyframes float { 0%,100% { transform:translateY(-6px); } 50% { transform:translateY(6px); } }
     @keyframes spin { 0% { transform:rotateX(0deg) rotateY(0deg); } 100% { transform:rotateX(360deg) rotateY(360deg); } }
     h1 { margin:0 0 10px; font-size:34px; letter-spacing:0.45rem; text-transform:uppercase; font-weight:300; }
-    p { margin:0 0 32px; font-size:14px; letter-spacing:0.22rem; color:var(--muted); text-transform:uppercase; }
+    .subtitle { margin:0 0 24px; font-size:16px; letter-spacing:0.3rem; color:rgba(254,248,255,0.75); text-transform:uppercase; font-weight:300; }
     .status { margin:28px auto 18px; display:flex; justify-content:center; }
     .status .dot { width:10px; height:10px; border-radius:50%; background:#a0ffb5; box-shadow:0 0 12px rgba(160,255,181,0.8); animation:pulseDot 3.6s ease-in-out infinite; }
     @keyframes pulseDot { 0%,100% { transform:scale(0.9); box-shadow:0 0 6px rgba(160,255,181,0.4); } 50% { transform:scale(1.2); box-shadow:0 0 16px rgba(160,255,181,1); } }
     .tagline { margin-top:12px; font-size:12px; letter-spacing:0.25rem; text-transform:uppercase; color:rgba(254,248,255,0.45); }
+    .signature { margin-top:40px; font-size:11px; letter-spacing:0.35rem; text-transform:uppercase; color:rgba(254,248,255,0.35); }
     a { text-decoration:none; display:inline-flex; padding:16px 40px; border-radius:999px; background:linear-gradient(120deg, var(--accent1), var(--accent2)); color:#150714; text-transform:uppercase; letter-spacing:0.25rem; font-weight:600; font-size:14px; margin-top:10px; }
   </style>
 </head>
@@ -34,10 +35,11 @@
     <div class="shell">
       <div class="symbol"><span>W</span></div>
       <h1>Wayruru Smart Travel</h1>
-      <p>Impulsado por tecnología StarX</p>
+      <p class="subtitle">Cada viaje, una decisión inteligente.</p>
       <div class="status"><span class="dot"></span></div>
       <a href="/wayruru-login.html">Ingresar</a>
       <div class="tagline">Advanced Travel Intelligence</div>
+      <div class="signature">Impulsado por tecnología STARX</div>
     </div>
   </main>
 </body>
