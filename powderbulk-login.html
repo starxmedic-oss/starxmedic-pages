@@ -4,16 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="Cache-Control" content="no-store" />
-  <title>OFY & Asociados ▸ Acceso</title>
+  <title>Powder & Bulk ▸ Acceso</title>
   <style>
-    :root { --bg:#f5f8f6; --panel:#ffffff; --text:#0b1d14; --muted:rgba(11,29,20,0.6); --accent1:#1a6b4d; --accent2:#4fb37b; }
+    :root { --bg:#f4f6fb; --panel:#ffffff; --text:#0b1224; --muted:rgba(11,18,36,0.6); --accent1:#4c7bff; --accent2:#7d9fff; }
     * { box-sizing:border-box; }
     body { margin:0; min-height:100vh; background:var(--bg); font-family:"Space Grotesk","Segoe UI",sans-serif; color:var(--text); display:flex; align-items:center; justify-content:center; padding:40px 20px; }
-    main { width:min(420px,100%); border:1px solid rgba(11,26,45,0.08); border-radius:28px; padding:40px 36px; background:var(--panel); box-shadow:0 30px 120px rgba(11,26,45,0.15); }
+    main { width:min(420px,100%); border:1px solid rgba(11,18,36,0.08); border-radius:28px; padding:40px 36px; background:var(--panel); box-shadow:0 30px 120px rgba(11,18,36,0.12); }
     h1 { text-transform:uppercase; letter-spacing:0.3rem; font-size:22px; margin-bottom:28px; }
     label { display:block; font-size:12px; letter-spacing:0.18rem; text-transform:uppercase; color:var(--muted); margin-bottom:6px; }
-    input { width:100%; border:1px solid rgba(11,26,45,0.15); border-radius:14px; padding:14px; margin-bottom:18px; font-size:15px; }
-    button { width:100%; border:none; border-radius:999px; padding:14px; background:linear-gradient(120deg,var(--accent1),var(--accent2)); color:#f5f7fb; text-transform:uppercase; letter-spacing:0.2rem; font-weight:600; font-size:13px; cursor:pointer; }
+    input { width:100%; border:1px solid rgba(11,18,36,0.15); border-radius:14px; padding:14px; margin-bottom:18px; font-size:15px; }
+    button { width:100%; border:none; border-radius:999px; padding:14px; background:linear-gradient(120deg,var(--accent1),var(--accent2)); color:#05080f; text-transform:uppercase; letter-spacing:0.2rem; font-weight:600; font-size:13px; cursor:pointer; }
     .links { margin-top:18px; display:flex; flex-direction:column; gap:6px; }
     .links a { color:var(--muted); text-decoration:none; font-size:13px; letter-spacing:0.1rem; text-transform:uppercase; }
     .status { font-size:13px; color:var(--muted); margin-top:12px; min-height:18px; }
@@ -21,14 +21,14 @@
 </head>
 <body>
   <main>
-    <h1>Acceso Farfan Cielo</h1>
-    <form id="ofy-login-form">
+    <h1>Acceso Powder &amp; Bulk</h1>
+    <form id="powderbulk-login-form">
       <label for="user">Usuario o correo</label>
-      <input id="user" placeholder="contabilidad@farfancielo.com" required />
+      <input id="user" placeholder="ingenieria@powderbulk.com" required />
       <label for="pass">Contraseña</label>
       <input id="pass" type="password" placeholder="••••••••" required />
       <button type="submit">Ingresar</button>
-      <div class="status" id="ofy-login-status"></div>
+      <div class="status" id="powderbulk-status"></div>
     </form>
     <div class="links">
       <a href="#">Crear cuenta</a>
@@ -36,11 +36,11 @@
     </div>
   </main>
   <script>
-    const form = document.getElementById("ofy-login-form");
-    const statusEl = document.getElementById("ofy-login-status");
+    const form = document.getElementById("powderbulk-login-form");
+    const statusEl = document.getElementById("powderbulk-status");
     form.addEventListener("submit", (e) => {
       e.preventDefault();
-      statusEl.textContent = "Modo preview. Integraremos auth OFY aquí.";
+      statusEl.textContent = "Modo preview. Integraremos auth Powder & Bulk aquí.";
     });
   </script>
 </body>
