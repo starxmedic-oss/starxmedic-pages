@@ -54,7 +54,7 @@
       <form id="symptom-form">
         <label for="evento">Síntoma / evento</label>
         <textarea id="evento" rows="3" placeholder="Describe lo que sientes" required></textarea>
-        <label for="intensidad">Intensidad</label>
+        <label for="intensidad">Notas / intensidad</label>
         <input id="intensidad" type="text" placeholder="Leve / moderado / severo" />
         <button type="submit">Guardar entrada</button>
         <div class="status" id="symptom-status"></div>
@@ -114,24 +114,37 @@
         const res = await fetch(`${API_BASE}/auth/me`, {
           headers: { "Authorization": `Bearer ${token}` }
         });
+        if (res.status === 401) {
+          localStorage.removeItem("starx_token");
+          window.location.href = "/acceso";
+          return;
+        }
         if (!res.ok) return;
         const data = await res.json();
         patientId = data.patient_id || data.id || data.email || patientId;
         setPanelContent("profile");
       } catch (error) {
-        console.warn("No se pudo obtener el perfil", error);
+        console.warn("No se pudo obtener el perifil", error);
       }
     }
 
     async function loadHistory() {
       historyEl.innerHTML = "<div class='history-entry'>Cargando historial…</div>";
       try {
-        const res = await fetch(`${API_BASE}/patient/eventos`, {
+        const res = await fetch(`${API_BASE}/patient/eventos?patient_id=${encodeURIComponent(patientId)}`, {
           headers: {
             "Authorization": `Bearer ${token}`
           }
         });
-        if (!res.ok) throw new Error("No se pudo obtener el historial");
+        if (res.status === 401) {
+          localStorage.removeItem("starx_token");
+          window.location.href = "/acceso";
+          return;
+        }
+        if (!res.ok) {
+          const err = await res.json().catch(() => ({}));
+          throw new Error(err?.message || "No se pudo obtener el historial");
+        }
         const data = await res.json();
         if (!Array.isArray(data) || data.length === 0) {
           historyEl.innerHTML = "<div class='history-entry'>No hay registros aún.</div>";
@@ -163,6 +176,11 @@
         },
         body: JSON.stringify(payload)
       });
+      if (res.status === 401) {
+        localStorage.removeItem("starx_token");
+        window.location.href = "/acceso";
+        return;
+      }
       if (!res.ok) {
         const err = await res.json().catch(() => ({}));
         throw new Error(err?.message || "No se pudo registrar el evento");
@@ -198,7 +216,7 @@
     });
 
     updateTimestamp();
-    loadHistory();
+    fetchProfile().then(loadHistory).catch(loadHistory);
   </script>
 </body>
 </html>

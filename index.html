@@ -78,8 +78,12 @@
     h1 { margin:0 0 8px; font-size:32px; letter-spacing:0.45rem; text-transform:uppercase; font-weight:300; }
     p { margin:0 0 26px; font-size:14px; letter-spacing:0.22rem; color:rgba(238,243,255,0.55); text-transform:uppercase; }
     a { text-decoration:none; display:inline-flex; padding:16px 40px; border-radius:999px; background:linear-gradient(120deg,rgba(61,213,255,0.95),rgba(14,165,233,0.95)); color:#01040b; text-transform:uppercase; letter-spacing:0.25rem; font-weight:600; font-size:14px; margin-bottom:26px; }
-    .status { margin:34px auto 34px; display:inline-flex; align-items:center; justify-content:center; width:48px; height:48px; border-radius:50%; background:rgba(22,255,126,0.08); border:1px solid rgba(22,255,126,0.2); animation:pulse 4s ease-in-out infinite; }
-    .dot { width:12px; height:12px; border-radius:50%; background:#16ff7e; box-shadow:0 0 15px rgba(22,255,126,0.8); }
+    .status { margin:30px auto 24px; display:flex; align-items:center; justify-content:center; width:36px; height:36px; }
+    .dot { width:10px; height:10px; border-radius:50%; background:#16ff7e; box-shadow:0 0 12px rgba(22,255,126,0.85); animation:pulseDot 3.6s ease-in-out infinite; }
+    @keyframes pulseDot {
+      0%,100% { transform:scale(0.9); box-shadow:0 0 6px rgba(22,255,126,0.4); }
+      50% { transform:scale(1.15); box-shadow:0 0 16px rgba(22,255,126,0.9); }
+    }
     @keyframes pulse { 0%,100% { opacity:0.75; border-color:rgba(22,255,126,0.2); } 50% { opacity:1; border-color:rgba(22,255,126,0.35); } }
     .tagline { margin-top:14px; letter-spacing:0.25rem; font-size:12px; text-transform:uppercase; color:rgba(238,243,255,0.5); }
   </style>
