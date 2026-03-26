@@ -146,12 +146,14 @@
           throw new Error(err?.message || "No se pudo obtener el historial");
         }
         const data = await res.json();
-        if (!Array.isArray(data) || data.length === 0) {
+        const items = Array.isArray(data) ? data : Array.isArray(data.items) ? data.items : [];
+        console.log("StarX History", { patientId, itemsCount: items.length, raw: data });
+        if (items.length === 0) {
           historyEl.innerHTML = "<div class='history-entry'>No hay registros aún.</div>";
           return;
         }
         historyEl.innerHTML = "";
-        data
+        items
           .sort((a,b) => new Date(b.timestamp) - new Date(a.timestamp))
           .forEach((item) => {
             const div = document.createElement("div");
