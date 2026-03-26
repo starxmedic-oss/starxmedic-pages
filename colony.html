@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Cache-Control" content="no-store" />
+  <title>Colony Control | StarX</title>
+  <style>
+    :root { --bg:#00040c; --panel:#081124; --text:#f0f4ff; --muted:rgba(240,244,255,0.6); --accent:#3dd5ff; --alert:#ff7272; }
+    * { box-sizing:border-box; }
+    body { margin:0; min-height:100vh; background:radial-gradient(circle at top, rgba(61,213,255,0.15), transparent 55%), var(--bg); font-family:"Space Grotesk","Segoe UI",sans-serif; color:var(--text); }
+    main { max-width:960px; margin:0 auto; padding:60px 20px; }
+    h1 { text-transform:uppercase; letter-spacing:0.4rem; font-size:32px; margin-bottom:10px; }
+    p { margin:0 0 32px; color:var(--muted); letter-spacing:0.15rem; text-transform:uppercase; font-size:14px; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; margin-bottom:24px; }
+    .card { border:1px solid rgba(255,255,255,0.08); border-radius:24px; padding:24px; background:var(--panel); box-shadow:0 10px 40px rgba(0,0,0,0.35); }
+    .value { font-size:40px; letter-spacing:0.1rem; margin:0; }
+    .label { text-transform:uppercase; letter-spacing:0.2rem; font-size:12px; color:var(--muted); }
+    .status-chip { display:inline-flex; align-items:center; gap:8px; padding:8px 20px; border-radius:999px; text-transform:uppercase; letter-spacing:0.2rem; font-size:12px; background:rgba(61,213,255,0.1); }
+    .status-chip.idle { color:var(--muted); }
+    .status-chip.active { color:var(--accent); }
+    .status-chip.alert { color:var(--alert); }
+    ul { list-style:none; padding:0; margin:0; }
+    li { padding:10px 0; border-bottom:1px solid rgba(255,255,255,0.06); font-size:14px; letter-spacing:0.05rem; }
+    .timestamp { margin-top:18px; color:var(--muted); font-size:12px; letter-spacing:0.15rem; text-transform:uppercase; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Colony Control</h1>
+    <p>Centro de mando Stark ▸ enjambre Jarvis activo</p>
+    <div class="grid">
+      <div class="card">
+        <p class="label">Nodos activos</p>
+        <p class="value" id="nodes-total">--</p>
+      </div>
+      <div class="card">
+        <p class="label">Señales procesadas</p>
+        <p class="value" id="signals-total">--</p>
+      </div>
+      <div class="card">
+        <p class="label">Estado general</p>
+        <div class="status-chip idle" id="colony-status">sin datos</div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <p class="label">Señales recientes</p>
+        <ul id="signals-list"><li>Sin registros</li></ul>
+      </div>
+      <div class="card">
+        <p class="label">Últimas acciones</p>
+        <ul id="logs-list"><li>Sin registros</li></ul>
+      </div>
+    </div>
+
+    <div class="timestamp" id="last-refresh">Actualizando…</div>
+  </main>
+
+  <script>
+    const API_BASE = "https://api.starxmedic.com";
+    const nodesEl = document.getElementById("nodes-total");
+    const signalsEl = document.getElementById("signals-total");
+    const statusEl = document.getElementById("colony-status");
+    const signalList = document.getElementById("signals-list");
+    const logsList = document.getElementById("logs-list");
+    const refreshEl = document.getElementById("last-refresh");
+
+    async function fetchColonyStatus() {
+      try {
+        const res = await fetch(`${API_BASE}/colony/status`);
+        const data = await res.json();
+        if (!data.ok) throw new Error("Estado no disponible");
+
+        nodesEl.textContent = data.nodes_total ?? 0;
+        signalsEl.textContent = data.signals_total ?? 0;
+
+        statusEl.textContent = data.status || "idle";
+        statusEl.className = `status-chip ${data.status || "idle"}`;
+
+        renderList(signalList, data.latest_signals, "Sin señales");
+        renderList(logsList, data.latest_logs, "Sin acciones");
+
+        refreshEl.textContent = `Actualizado ${new Date().toLocaleTimeString()}`;
+      } catch (error) {
+        statusEl.textContent = "sin datos";
+        statusEl.className = "status-chip idle";
+        refreshEl.textContent = error.message;
+      }
+    }
+
+    function renderList(target, items, emptyText) {
+      if (!Array.isArray(items) || items.length === 0) {
+        target.innerHTML = `<li>${emptyText}</li>`;
+        return;
+      }
+      target.innerHTML = items
+        .map(item => `<li>${item}</li>`)
+        .join("");
+    }
+
+    fetchColonyStatus();
+    setInterval(fetchColonyStatus, 5000);
+  </script>
+</body>
+</html>
