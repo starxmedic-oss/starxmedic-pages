@@ -20,7 +20,11 @@
     body { margin:0; min-height:100vh; background:var(--bg); color:var(--text); font-family:"Space Grotesk","Segoe UI",sans-serif; padding:40px 20px 80px; }
     main { max-width:900px; margin:0 auto; }
     h1 { text-transform:uppercase; letter-spacing:0.25rem; font-size:26px; margin-bottom:12px; }
-    .timestamp { color:var(--muted); font-size:13px; letter-spacing:0.2rem; text-transform:uppercase; margin-bottom:24px; }
+    .timestamp { color:var(--muted); font-size:13px; letter-spacing:0.2rem; text-transform:uppercase; margin-bottom:12px; }
+    .context-nav { display:flex; justify-content:center; gap:16px; margin-bottom:18px; flex-wrap:wrap; }
+    .context-nav button { border:1px solid var(--line); border-radius:999px; padding:10px 22px; background:rgba(5,10,23,0.6); color:var(--text); letter-spacing:0.16rem; text-transform:uppercase; font-size:11px; cursor:pointer; transition:box-shadow 0.3s ease, border-color 0.3s ease; }
+    .context-nav button:hover, .context-nav button.active { border-color:rgba(61,213,255,0.5); box-shadow:0 0 18px rgba(61,213,255,0.18); }
+    .context-panel { text-align:center; color:var(--muted); margin-bottom:24px; font-size:13px; letter-spacing:0.08rem; min-height:24px; }
     section { border:1px solid var(--line); border-radius:24px; padding:32px; margin-bottom:24px; background:var(--panel); }
     h2 { margin:0 0 16px; font-size:18px; letter-spacing:0.2rem; text-transform:uppercase; }
     label { display:block; font-size:12px; letter-spacing:0.18rem; text-transform:uppercase; color:var(--muted); margin-bottom:6px; }
@@ -37,6 +41,13 @@
   <main>
     <h1>Portal paciente</h1>
     <div class="timestamp" id="timestamp">Actualizado</div>
+
+    <div class="context-nav">
+      <button data-panel="profile">Quién soy</button>
+      <button data-panel="results">Mis resultados</button>
+      <button data-panel="wishes">Mis deseos</button>
+    </div>
+    <div id="context-panel" class="context-panel">Selecciona un módulo para ver tus datos.</div>
 
     <section>
       <h2>Registrar evento</h2>
@@ -73,6 +84,9 @@
     const timestampEl = document.getElementById("timestamp");
     const historyEl = document.getElementById("history");
     const symptomStatus = document.getElementById("symptom-status");
+    const panelEl = document.getElementById("context-panel");
+    const navButtons = document.querySelectorAll(".context-nav button");
+    let patientId = "Paciente-001";
 
     if (!token) {
       window.location.href = "/acceso";
@@ -81,6 +95,32 @@
     function updateTimestamp() {
       const now = new Date();
       timestampEl.textContent = `Actualizado ${now.toLocaleString("es-PE", { day:"2-digit", month:"short", hour:"2-digit", minute:"2-digit" })}`;
+    }
+
+    function setPanelContent(key) {
+      navButtons.forEach(btn => btn.classList.toggle("active", btn.dataset.panel === key));
+      const map = {
+        profile: `Paciente: ${patientId}<br/>Correo protegido` ,
+        results: "Mis resultados Stark (beta). Próximamente verás tus tendencias e insights.",
+        wishes: "Mis deseos clínicos. Anótalos y vincúlalos con tu médico pronto."
+      };
+      panelEl.innerHTML = map[key] || "Selecciona un módulo para ver tus datos.";
+    }
+
+    navButtons.forEach(btn => btn.addEventListener("click", () => setPanelContent(btn.dataset.panel)));
+
+    async function fetchProfile() {
+      try {
+        const res = await fetch(`${API_BASE}/auth/me`, {
+          headers: { "Authorization": `Bearer ${token}` }
+        });
+        if (!res.ok) return;
+        const data = await res.json();
+        patientId = data.patient_id || data.id || data.email || patientId;
+        setPanelContent("profile");
+      } catch (error) {
+        console.warn("No se pudo obtener el perfil", error);
+      }
     }
 
     async function loadHistory() {
@@ -104,7 +144,9 @@
             const div = document.createElement("div");
             div.className = "history-entry";
             const when = new Date(item.timestamp || item.created_at || Date.now()).toLocaleString();
-            div.textContent = `${when} ▸ ${item.evento || item.descripcion}`;
+            const title = item.title || item.evento || "Evento";
+            const notes = item.notes || item.descripcion || "";
+            div.textContent = notes ? `${when} ▸ ${title} — ${notes}` : `${when} ▸ ${title}`;
             historyEl.appendChild(div);
           });
       } catch (error) {
@@ -130,17 +172,22 @@
 
     document.getElementById("symptom-form").addEventListener("submit", async (e) => {
       e.preventDefault();
-      const data = {
-        evento: e.target.evento.value.trim(),
-        intensidad: e.target.intensidad.value.trim()
-      };
-      if (!data.evento) {
+      const title = e.target.evento.value.trim();
+      const notes = e.target.intensidad.value.trim();
+      if (!title) {
         symptomStatus.textContent = "Describe el evento";
         return;
       }
+      const payload = {
+        patient_id: patientId,
+        event_type: "symptom",
+        title,
+        notes,
+        timestamp: new Date().toISOString()
+      };
       symptomStatus.textContent = "Registrando…";
       try {
-        await postEntry(data);
+        await postEntry(payload);
         symptomStatus.textContent = "Registrado ✔";
         e.target.reset();
         await loadHistory();

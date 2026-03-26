@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Cache-Control" content="no-store" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
   <title>Panel StarX</title>
   <style>
     :root { --bg:#040813; --panel:#0b1323; --line:rgba(255,255,255,0.08); --text:#f2f5ff; --muted:rgba(242,245,255,0.6); --accent:#3dd5ff; }
@@ -14,6 +17,8 @@
     a.card { border:1px solid var(--line); border-radius:24px; padding:28px; text-decoration:none; color:var(--text); position:relative; background:rgba(5,10,20,0.6); }
     a.card h2 { margin:0 0 10px; letter-spacing:0.2rem; font-size:18px; text-transform:uppercase; }
     a.card p { margin:0; color:var(--muted); font-size:14px; }
+    .card .primary-link { display:inline-flex; margin-top:18px; padding:12px 26px; border-radius:999px; text-decoration:none; text-transform:uppercase; letter-spacing:0.18rem; font-size:12px; font-weight:600; background:linear-gradient(120deg,rgba(61,213,255,0.95),rgba(14,165,233,0.95)); color:#01040b; }
+    .card .ghost-link { display:inline-flex; margin-top:10px; color:var(--muted); text-decoration:none; letter-spacing:0.15rem; font-size:11px; text-transform:uppercase; }
     .premium { margin-top:28px; text-align:center; }
     .premium a { color:var(--muted); text-decoration:none; letter-spacing:0.2rem; font-size:12px; text-transform:uppercase; }
   </style>
@@ -26,18 +31,39 @@
         <h2>Portal paciente</h2>
         <p>Registrar síntomas, ver historial y vincular médico.</p>
       </a>
-      <a class="card" href="mailto:contacto.starxmedic@gmail.com?subject=Acceso%20profesional">
-        <h2>Solicitar acceso profesional</h2>
-        <p>Activa Stark Command si eres personal de salud verificado.</p>
-      </a>
-      <a class="card" href="/medico">
-        <h2>Ingresar portal profesional</h2>
-        <p>Disponible para cuentas aprobadas.</p>
-      </a>
+      <div class="card">
+        <h2>Portal profesional</h2>
+        <p>Disponible para profesionales de la salud.</p>
+        <a class="primary-link" href="/medico">Ingresar portal profesional</a>
+        <a class="ghost-link" href="mailto:contacto.starxmedic@gmail.com?subject=Acceso%20profesional">Solicitar acceso profesional</a>
+      </div>
     </section>
     <div class="premium">
       <a href="/premium">Premium ▸ Escalar StarX</a>
     </div>
   </main>
+  <script>
+    const API_BASE = "https://api.starxmedic.com";
+    const token = localStorage.getItem("starx_token");
+    async function ensureSession() {
+      if (!token) {
+        window.location.href = "/acceso";
+        return;
+      }
+      try {
+        const res = await fetch(`${API_BASE}/auth/me`, {
+          headers: { "Authorization": `Bearer ${token}` }
+        });
+        if (!res.ok) {
+          localStorage.removeItem("starx_token");
+          window.location.href = "/acceso";
+        }
+      } catch {
+        localStorage.removeItem("starx_token");
+        window.location.href = "/acceso";
+      }
+    }
+    ensureSession();
+  </script>
 </body>
 </html>

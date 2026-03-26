@@ -63,6 +63,9 @@
         }
         const data = await res.json();
         localStorage.setItem("starx_token", data.token);
+        if (data.user) {
+          localStorage.setItem("starx_profile", JSON.stringify(data.user));
+        }
         statusEl.textContent = "Acceso concedido";
         window.location.href = "/entrar";
       } catch (error) {
