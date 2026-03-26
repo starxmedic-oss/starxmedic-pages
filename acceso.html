@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Cache-Control" content="no-store" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
   <title>Acceso | StarX</title>
   <style>
     :root { --bg:#030814; --panel:#0c1222; --line:rgba(255,255,255,0.08); --text:#f2f5ff; --muted:rgba(242,245,255,0.6); --accent:#3dd5ff; }
@@ -13,6 +16,7 @@
     label { display:block; font-size:12px; letter-spacing:0.2rem; text-transform:uppercase; color:var(--muted); margin-bottom:6px; }
     input { width:100%; border:1px solid var(--line); border-radius:14px; padding:14px; margin-bottom:18px; background:#050a18; color:var(--text); font-size:15px; }
     button { width:100%; border:none; border-radius:999px; padding:14px; background:linear-gradient(120deg,rgba(61,213,255,0.95),rgba(14,165,233,0.95)); color:#01040b; text-transform:uppercase; letter-spacing:0.2rem; font-size:13px; font-weight:600; cursor:pointer; }
+    .status-text { margin-top:12px; font-size:13px; letter-spacing:0.1rem; text-transform:uppercase; color:var(--muted); min-height:18px; }
     .links { margin-top:20px; display:flex; flex-direction:column; gap:6px; }
     .links a { color:var(--muted); text-decoration:none; font-size:13px; letter-spacing:0.1rem; text-transform:uppercase; }
     .google { margin-top:24px; width:100%; border:1px solid var(--line); border-radius:999px; padding:12px; background:transparent; color:var(--muted); text-transform:uppercase; letter-spacing:0.15rem; font-size:12px; cursor:not-allowed; }
@@ -22,12 +26,13 @@
 <body>
   <main>
     <h1>Acceso StarX</h1>
-    <form>
+    <form id="login-form">
       <label for="email">Correo</label>
       <input id="email" type="email" placeholder="usuario@starx.com" required />
       <label for="password">Contraseña</label>
       <input id="password" type="password" placeholder="••••••••" required />
       <button type="submit">Iniciar sesión</button>
+      <div id="login-status" class="status-text"></div>
     </form>
     <div class="links">
       <a href="/registro">Crear usuario</a>
@@ -35,5 +40,35 @@
     </div>
     <button class="google" type="button">Acceso con Google (próximo paso)<span>Documentado: habilitar OAuth</span></button>
   </main>
+  <script>
+    const API_BASE = "https://api.starxmedic.com";
+    const loginForm = document.getElementById("login-form");
+    const statusEl = document.getElementById("login-status");
+
+    loginForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      statusEl.textContent = "Autenticando…";
+      try {
+        const res = await fetch(`${API_BASE}/auth/login`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email: loginForm.email.value.trim(),
+            password: loginForm.password.value
+          })
+        });
+        if (!res.ok) {
+          const err = await res.json().catch(() => ({}));
+          throw new Error(err?.message || "Credenciales inválidas");
+        }
+        const data = await res.json();
+        localStorage.setItem("starx_token", data.token);
+        statusEl.textContent = "Acceso concedido";
+        window.location.href = "/entrar";
+      } catch (error) {
+        statusEl.textContent = error.message || "No se pudo iniciar sesión";
+      }
+    });
+  </script>
 </body>
 </html>

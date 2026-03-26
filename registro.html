@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Cache-Control" content="no-store" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
   <title>Registro | StarX</title>
   <style>
     :root { --bg:#020710; --panel:#0b1322; --line:rgba(255,255,255,0.08); --text:#f5f7ff; --muted:rgba(245,247,255,0.6); --accent:#3dd5ff; }
@@ -14,6 +17,9 @@
     label { display:block; font-size:12px; letter-spacing:0.18rem; text-transform:uppercase; color:var(--muted); margin-bottom:6px; }
     input { width:100%; border:1px solid var(--line); border-radius:14px; padding:14px; margin-bottom:18px; background:#050a1a; color:var(--text); font-size:15px; }
     button { width:100%; border:none; border-radius:999px; padding:14px; background:linear-gradient(120deg,rgba(61,213,255,0.95),rgba(14,165,233,0.95)); color:#01040b; text-transform:uppercase; letter-spacing:0.2rem; font-size:13px; font-weight:600; cursor:pointer; }
+    .status-text { margin-top:12px; font-size:13px; letter-spacing:0.1rem; text-transform:uppercase; color:var(--muted); min-height:18px; }
+    .status-text.success { color:#16ff7e; }
+    .status-text.error { color:#ff8a8a; }
     .notice { font-size:12px; letter-spacing:0.15rem; text-transform:uppercase; color:var(--muted); margin-bottom:18px; }
     a { color:var(--muted); text-decoration:none; font-size:13px; letter-spacing:0.1rem; text-transform:uppercase; }
   </style>
@@ -22,7 +28,7 @@
   <main>
     <h1>Crea tu cuenta StarX</h1>
     <p>Tu cuenta activa el Portal Paciente de inmediato. El acceso médico se aprueba aparte.</p>
-    <form>
+    <form id="register-form">
       <label for="nombre">Nombre completo</label>
       <input id="nombre" placeholder="Tony Stark" required />
       <label for="edad">Edad</label>
@@ -33,10 +39,43 @@
       <input id="clave" type="password" placeholder="••••••••" required />
       <div class="notice">Acceso médico se solicita desde el panel interno</div>
       <button type="submit">Crear usuario</button>
+      <div id="register-status" class="status-text"></div>
     </form>
     <div style="margin-top:18px; text-align:center;">
       <a href="/acceso">¿Ya tienes cuenta? Entrar</a>
     </div>
   </main>
+  <script>
+    const API_BASE = "https://api.starxmedic.com";
+    const registerForm = document.getElementById("register-form");
+    const registerStatus = document.getElementById("register-status");
+
+    registerForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      registerStatus.className = "status-text";
+      registerStatus.textContent = "Registrando…";
+      try {
+        const res = await fetch(`${API_BASE}/auth/register`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name: registerForm.nombre.value.trim(),
+            email: registerForm.correo.value.trim(),
+            password: registerForm.clave.value
+          })
+        });
+        if (!res.ok) {
+          const err = await res.json().catch(() => ({}));
+          throw new Error(err?.message || "No se pudo crear la cuenta");
+        }
+        registerStatus.className = "status-text success";
+        registerStatus.textContent = "Cuenta creada correctamente. Ahora inicia sesión.";
+        setTimeout(() => (window.location.href = "/acceso"), 2000);
+      } catch (error) {
+        registerStatus.className = "status-text error";
+        registerStatus.textContent = error.message || "Error al registrar";
+      }
+    });
+  </script>
 </body>
 </html>
