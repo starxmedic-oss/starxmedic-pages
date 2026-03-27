@@ -50,6 +50,17 @@
     <div class="notice">Acceso completo disponible solo para perfiles verificados (médicos, estudiantes, enfermería, laboratorio, técnicos). Solicítalo desde el panel principal.</div>
     <a class="back" href="/entrar">Volver al panel</a>
   </main>
+  <script>
+    (function(){
+      try {
+        if (localStorage.getItem("starx_pro_enabled") !== "true") {
+          window.location.href = "/paciente.html#activar-pro";
+        }
+      } catch (error) {
+        window.location.href = "/paciente.html#activar-pro";
+      }
+    })();
+  </script>
   <script src="/cta.js" defer></script>
 </body>
 </html>
