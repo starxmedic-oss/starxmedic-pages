@@ -111,6 +111,24 @@
       window.location.href = "/acceso.html";
     }
 
+    const request = async (path, options = {}) => {
+      const headers = options.headers ? { ...options.headers } : {};
+      headers["Authorization"] = `Bearer ${token}`;
+      if (options.body && !headers["Content-Type"]) {
+        headers["Content-Type"] = "application/json";
+      }
+      const res = await fetch(`${API_BASE}${path}`, { ...options, headers });
+      if (res.status === 401) {
+        localStorage.removeItem("starx_token");
+        window.location.href = "/acceso.html";
+      }
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || data.ok === false) {
+        throw new Error(data.error || data.message || "Error inesperado");
+      }
+      return data;
+    };
+
     document.querySelectorAll(".module").forEach((module) => {
       module.addEventListener("click", () => {
         const target = module.dataset.href;
@@ -121,9 +139,14 @@
     const grid = document.getElementById("core-grid");
     const overlay = document.getElementById("subscription-overlay");
     const activateBtn = document.getElementById("activate-plan");
+    const subscriptionCopy = document.getElementById("subscription-copy");
+    const subscriptionNote = document.getElementById("subscription-note");
 
-    const toggleSubscriptionState = () => {
-      const active = localStorage.getItem("starx_subscription_status") === "active";
+    let currentSubscription = null;
+    let statsCache = null;
+
+    const renderSubscriptionState = () => {
+      const active = currentSubscription && currentSubscription.status === "active";
       if (!active) {
         overlay.style.display = "flex";
         grid.style.filter = "blur(4px)";
@@ -135,12 +158,59 @@
       }
     };
 
-    activateBtn.addEventListener("click", () => {
-      localStorage.setItem("starx_subscription_status", "active");
-      toggleSubscriptionState();
-    });
+    const loadSubscription = async () => {
+      try {
+        subscriptionCopy.textContent = "Verificando tu plan";
+        subscriptionNote.textContent = "";
+        const response = await request("/my-subscription");
+        currentSubscription = response.subscription;
+        if (currentSubscription && currentSubscription.status === "active") {
+          subscriptionCopy.textContent = "Plan activo";
+          subscriptionNote.textContent = currentSubscription.plan.toUpperCase();
+        } else {
+          subscriptionCopy.textContent = "Necesitas un plan vigente para continuar";
+          subscriptionNote.textContent = "";
+        }
+      } catch (error) {
+        subscriptionCopy.textContent = "No se pudo verificar la suscripción";
+        subscriptionNote.textContent = error.message;
+        currentSubscription = null;
+      }
+      renderSubscriptionState();
+    };
 
-    toggleSubscriptionState();
+    const subscribeBasic = async () => {
+      activateBtn.disabled = true;
+      activateBtn.textContent = "Activando...";
+      subscriptionNote.textContent = "";
+      try {
+        const response = await request("/subscribe", {
+          method: "POST",
+          body: JSON.stringify({ plan: "basic" })
+        });
+        currentSubscription = response.subscription;
+        subscriptionCopy.textContent = "Plan activado";
+        subscriptionNote.textContent = currentSubscription.plan.toUpperCase();
+      } catch (error) {
+        subscriptionCopy.textContent = "No se pudo activar";
+        subscriptionNote.textContent = error.message;
+      } finally {
+        activateBtn.disabled = false;
+        activateBtn.textContent = "Activar";
+        renderSubscriptionState();
+      }
+    };
+
+    activateBtn.addEventListener("click", subscribeBasic);
+
+    loadSubscription();
+
+    const fetchStats = async (force = false) => {
+      if (!force && statsCache) return statsCache;
+      const data = await request("/stats");
+      statsCache = data;
+      return data;
+    };
 
     const jarvisToggle = document.getElementById("jarvis-toggle");
     const jarvisPanel = document.getElementById("jarvis-panel");
@@ -173,11 +243,24 @@
       const cmd = command.trim().toLowerCase();
       if (!cmd) return;
       if (cmd === "estado") {
-        addMessage("bot", "Sistema activo");
+        const plan = currentSubscription ? `${currentSubscription.plan.toUpperCase()} (${currentSubscription.status})` : "sin plan";
+        addMessage("bot", `Sistema activo ▸ Plan ${plan}`);
         return;
       }
       if (cmd === "modulos") {
         addMessage("bot", "StarX, Wayruru, OFY, Powder");
+        return;
+      }
+      if (cmd === "usuarios" || cmd === "eventos" || cmd === "links" || cmd === "suscripciones") {
+        try {
+          const stats = await fetchStats();
+          if (cmd === "usuarios") addMessage("bot", `Usuarios totales: ${stats.users_total ?? 0}`);
+          if (cmd === "eventos") addMessage("bot", `Eventos clínicos: ${stats.events_total ?? 0}`);
+          if (cmd === "links") addMessage("bot", `Vínculos doctor-paciente: ${stats.links_total ?? 0}`);
+          if (cmd === "suscripciones") addMessage("bot", `Suscripciones: ${stats.subscriptions_total ?? 0}`);
+        } catch (error) {
+          addMessage("bot", "No se pudo obtener las métricas.");
+        }
         return;
       }
       if (cmd === "colony") {
