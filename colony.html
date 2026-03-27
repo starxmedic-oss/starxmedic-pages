@@ -58,50 +58,7 @@
     <div class="timestamp" id="last-refresh">Actualizando…</div>
   </main>
 
-  <script>
-    const API_BASE = "https://api.starxmedic.com";
-    const nodesEl = document.getElementById("nodes-total");
-    const signalsEl = document.getElementById("signals-total");
-    const statusEl = document.getElementById("colony-status");
-    const signalList = document.getElementById("signals-list");
-    const logsList = document.getElementById("logs-list");
-    const refreshEl = document.getElementById("last-refresh");
-
-    async function fetchColonyStatus() {
-      try {
-        const res = await fetch(`${API_BASE}/colony/status`);
-        const data = await res.json();
-        if (!data.ok) throw new Error("Estado no disponible");
-
-        nodesEl.textContent = data.nodes_total ?? 0;
-        signalsEl.textContent = data.signals_total ?? 0;
-
-        statusEl.textContent = data.status || "idle";
-        statusEl.className = `status-chip ${data.status || "idle"}`;
-
-        renderList(signalList, data.latest_signals, "Sin señales");
-        renderList(logsList, data.latest_logs, "Sin acciones");
-
-        refreshEl.textContent = `Actualizado ${new Date().toLocaleTimeString()}`;
-      } catch (error) {
-        statusEl.textContent = "sin datos";
-        statusEl.className = "status-chip idle";
-        refreshEl.textContent = error.message;
-      }
-    }
-
-    function renderList(target, items, emptyText) {
-      if (!Array.isArray(items) || items.length === 0) {
-        target.innerHTML = `<li>${emptyText}</li>`;
-        return;
-      }
-      target.innerHTML = items
-        .map(item => `<li>${item}</li>`)
-        .join("");
-    }
-
-    fetchColonyStatus();
-    setInterval(fetchColonyStatus, 5000);
   </script>
+  <script src="/cta.js" defer></script>
 </body>
 </html>

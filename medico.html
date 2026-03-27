@@ -5,42 +5,50 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portal Profesional | StarX</title>
   <style>
-    :root { --bg:#00050d; --panel:#0a1120; --line:rgba(255,255,255,0.08); --text:#f0f4ff; --muted:rgba(240,244,255,0.6); --accent:#3dd5ff; }
+    :root { --bg:#01040b; --panel:#070f1c; --line:rgba(255,255,255,0.08); --text:#f2f6ff; --muted:rgba(242,246,255,0.65); }
     * { box-sizing:border-box; }
-    body { margin:0; min-height:100vh; background:var(--bg); color:var(--text); font-family:"Space Grotesk","Segoe UI",sans-serif; display:flex; align-items:center; justify-content:center; padding:40px 20px; }
-    main { width:min(820px,100%); border:1px solid var(--line); border-radius:32px; padding:48px; background:var(--panel); box-shadow:0 60px 180px rgba(0,0,0,0.55); text-align:center; }
-    .symbol { width:68px; height:68px; margin:0 auto 24px; border:1px solid rgba(255,255,255,0.2); border-radius:20px; display:flex; align-items:center; justify-content:center; letter-spacing:0.3rem; font-size:30px; color:var(--accent); }
-    h1 { margin:0 0 28px; text-transform:uppercase; letter-spacing:0.35rem; font-size:24px; }
-    .primary { display:inline-flex; padding:18px 42px; border-radius:999px; text-decoration:none; text-transform:uppercase; letter-spacing:0.25rem; font-size:13px; font-weight:600; background:linear-gradient(120deg,rgba(61,213,255,0.95),rgba(14,165,233,0.95)); color:#010308; }
-    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:18px; margin-top:28px; }
-    a.card { border:1px solid var(--line); border-radius:22px; padding:24px; text-decoration:none; color:var(--text); background:rgba(5,8,17,0.7); }
-    a.card h2 { margin:0 0 8px; text-transform:uppercase; letter-spacing:0.2rem; font-size:15px; }
-    a.card p { margin:0; font-size:12px; color:var(--muted); }
-    .notice { margin-top:28px; color:var(--muted); font-size:13px; }
-    .back { margin-top:16px; display:inline-block; color:var(--muted); text-decoration:none; letter-spacing:0.15rem; font-size:12px; text-transform:uppercase; }
+    body { margin:0; min-height:100vh; background:radial-gradient(circle at top, rgba(61,213,255,0.12), transparent 60%), var(--bg); color:var(--text); font-family:"Space Grotesk","Segoe UI",sans-serif; padding:50px 20px; }
+    main { max-width:920px; margin:0 auto; border:1px solid var(--line); border-radius:40px; padding:60px 50px; background:rgba(5,10,22,0.9); box-shadow:0 60px 200px rgba(0,0,0,0.6); text-align:center; }
+    .symbol-cube { width:140px; height:140px; margin:0 auto 24px; position:relative; border-radius:28px; display:flex; align-items:center; justify-content:center; font-size:50px; letter-spacing:0.5rem; text-transform:uppercase; color:#0b1424; animation:float 6s ease-in-out infinite, spin 28s linear infinite; transform-style:preserve-3d; }
+    .symbol-cube::before { content:""; position:absolute; inset:0; border-radius:28px; background:linear-gradient(135deg, rgba(61,213,255,0.9), rgba(20,167,255,0.45)); box-shadow:0 25px 90px rgba(61,213,255,0.35); transform:translateZ(-20px); }
+    .symbol-cube::after { content:""; position:absolute; inset:16px; border-radius:20px; background:rgba(2,4,10,0.9); box-shadow:inset 0 0 40px rgba(61,213,255,0.35); transform:translateZ(30px); }
+    .symbol-cube span { position:relative; z-index:1; color:#f5f8ff; }
+    h1 { margin:0 0 10px; text-transform:uppercase; letter-spacing:0.45rem; font-size:28px; }
+    p.lead { margin:0 0 32px; letter-spacing:0.2rem; text-transform:uppercase; color:var(--muted); font-size:13px; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:20px; text-align:left; }
+    .card { border:1px solid var(--line); border-radius:28px; padding:26px; background:rgba(6,12,25,0.9); text-decoration:none; color:var(--text); position:relative; overflow:hidden; }
+    .card h2 { margin:0 0 10px; text-transform:uppercase; letter-spacing:0.3rem; font-size:16px; }
+    .card p { margin:0; font-size:13px; color:var(--muted); letter-spacing:0.12rem; }
+    .card::after { content:""; position:absolute; inset:0; background:radial-gradient(circle at top, rgba(61,213,255,0.08), transparent 60%); animation:glow 8s ease-in-out infinite; }
+    .notice { margin-top:32px; color:var(--muted); font-size:13px; letter-spacing:0.15rem; text-transform:uppercase; }
+    .back { margin-top:18px; display:inline-block; color:var(--muted); text-decoration:none; letter-spacing:0.2rem; font-size:12px; text-transform:uppercase; }
+    @keyframes float { 0%,100% { transform:translateY(-6px); } 50% { transform:translateY(6px); } }
+    @keyframes spin { 0% { transform:rotateX(0deg) rotateY(0deg); } 100% { transform:rotateX(360deg) rotateY(360deg); } }
+    @keyframes glow { 0%,100% { opacity:0.4; } 50% { opacity:0.8; } }
   </style>
 </head>
 <body>
   <main>
-    <div class="symbol">S</div>
+    <div class="symbol-cube"><span>S</span></div>
     <h1>Portal profesional</h1>
-    <a class="primary" href="mailto:contacto.starxmedic@gmail.com?subject=Agregar%20nota%20-%20Stark%20Command">Agregar nota</a>
+    <p class="lead">Sistema clínico Stark para equipos de salud</p>
     <section class="grid">
       <a class="card" href="mailto:contacto.starxmedic@gmail.com?subject=Pacientes%20Stark">
         <h2>Pacientes</h2>
-        <p>Listado vinculado y estado clínico.</p>
+        <p>Panel activo de pacientes vinculados, evolución y alertas críticas.</p>
       </a>
       <a class="card" href="mailto:contacto.starxmedic@gmail.com?subject=Resumen%20Stark">
         <h2>Resumen</h2>
-        <p>Notas, actividad y base de datos.</p>
+        <p>Insights diarios, reportes automáticos y base de conocimiento.</p>
       </a>
-      <a class="card" href="mailto:contacto.starxmedic@gmail.com?subject=Command%20Stark">
-        <h2>Command</h2>
-        <p>Alertas tácticas, prioridades y seguimientos.</p>
+      <a class="card" href="mailto:contacto.starxmedic@gmail.com?subject=Comandos%20Stark">
+        <h2>Comandos</h2>
+        <p>Actividades tácticas, órdenes rápidas y seguimiento Stark Command.</p>
       </a>
     </section>
-    <div class="notice">Acceso completo disponible solo para perfiles de salud verificados (médicos, estudiantes, enfermería, paramédicos, laboratorio, técnicos). Solicítalo desde el panel principal.</div>
+    <div class="notice">Acceso completo disponible solo para perfiles verificados (médicos, estudiantes, enfermería, laboratorio, técnicos). Solicítalo desde el panel principal.</div>
     <a class="back" href="/entrar">Volver al panel</a>
   </main>
+  <script src="/cta.js" defer></script>
 </body>
 </html>
