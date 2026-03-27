@@ -44,13 +44,9 @@
     .subscription-overlay p { margin:0; font-size:13px; letter-spacing:0.18rem; text-transform:uppercase; color:var(--muted); }
     .subscription-overlay button { padding:14px 32px; border:none; border-radius:999px; background:rgba(61,213,255,0.3); color:var(--text); text-transform:uppercase; letter-spacing:0.25rem; font-size:12px; cursor:pointer; }
     .subscription-overlay small { font-size:12px; color:rgba(236,243,255,0.55); letter-spacing:0.12rem; }
-  
-
-    param($m)
-
-    "<style>`n$($m.Groups[1].Value)`n</style>`n<body>"
-
-
+  </style>
+</head>
+<body>
   <main>
     <header>
       <h1>StarX Core</h1>
@@ -82,7 +78,8 @@
     <div class="subscription-overlay" id="subscription-overlay" style="display:none;">
       <h3>Activa tu sistema</h3>
       <p id="subscription-copy">Necesitas un plan vigente para continuar</p>
-      <button id="activate-plan">Activar</button>
+      <button id="activate-plan">Activar plan — S/29</button>
+      <small class="assist-note">Activación inicial asistida</small>
       <small id="subscription-note"></small>
     </div>
   </main>
@@ -135,6 +132,8 @@
     const activateBtn = document.getElementById("activate-plan");
     const subscriptionCopy = document.getElementById("subscription-copy");
     const subscriptionNote = document.getElementById("subscription-note");
+    const defaultActivateText = "Activar plan — S/29";
+    activateBtn.textContent = defaultActivateText;
 
     let currentSubscription = null;
     let statsCache = null;
@@ -190,7 +189,7 @@
         subscriptionNote.textContent = error.message;
       } finally {
         activateBtn.disabled = false;
-        activateBtn.textContent = "Activar";
+        activateBtn.textContent = defaultActivateText;
         renderSubscriptionState();
       }
     };
@@ -224,6 +223,7 @@
 
     jarvisToggle.addEventListener("click", () => togglePanel(!jarvisPanel.classList.contains("open")));
     jarvisClose.addEventListener("click", () => togglePanel(false));
+    togglePanel(true);
 
     const addMessage = (sender, text) => {
       const bubble = document.createElement("div");
