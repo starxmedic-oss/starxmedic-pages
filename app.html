@@ -23,26 +23,30 @@
     .status { display:flex; align-items:center; gap:10px; font-size:12px; letter-spacing:0.2rem; text-transform:uppercase; color:var(--muted); }
     .status span { width:10px; height:10px; border-radius:50%; background:#7cffb4; box-shadow:0 0 12px rgba(124,255,180,0.9); animation:pulse 3.6s ease-in-out infinite; }
     @keyframes pulse { 0%,100% { transform:scale(0.9); box-shadow:0 0 6px rgba(124,255,180,0.5); } 50% { transform:scale(1.2); box-shadow:0 0 16px rgba(124,255,180,1); } }
+    @keyframes energy { 0% { background-position:0% 50%; } 50% { background-position:100% 50%; } 100% { background-position:0% 50%; } }
     .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:22px; }
     .module { position:relative; padding:32px 24px 60px; border:1px solid var(--border); border-radius:30px; background:var(--panel); min-height:230px; cursor:pointer; transition:transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease; overflow:hidden; }
+    .module::after { content:""; position:absolute; inset:1px; border-radius:28px; background:linear-gradient(120deg, rgba(61,213,255,0.08), rgba(8,17,34,0.9)); background-size:220% 100%; animation:energy 5s linear infinite; opacity:0.7; }
     .module:hover { transform:translateY(-6px); border-color:rgba(61,213,255,0.4); box-shadow:0 20px 60px rgba(0,0,0,0.45); }
-    .cube { width:96px; height:96px; margin-bottom:28px; position:relative; display:flex; align-items:center; justify-content:center; font-size:26px; letter-spacing:0.4rem; font-weight:600; text-transform:uppercase; }
+    .cube { width:96px; height:96px; margin-bottom:28px; position:relative; display:flex; align-items:center; justify-content:center; font-size:26px; letter-spacing:0.4rem; font-weight:600; text-transform:uppercase; z-index:1; }
     .cube::before, .cube::after { content:""; position:absolute; inset:0; border-radius:24px; }
     .cube::before { background:linear-gradient(135deg, rgba(61,213,255,0.35), rgba(61,213,255,0.05)); border:1px solid rgba(61,213,255,0.3); }
     .cube::after { inset:12px; background:rgba(0,0,0,0.6); }
     .cube span { position:relative; z-index:1; }
-    .module h2 { margin:0; font-size:18px; letter-spacing:0.25rem; text-transform:uppercase; }
-    .module p { margin:8px 0 0; font-size:13px; letter-spacing:0.2rem; text-transform:uppercase; color:var(--muted); }
+    .module h2 { margin:0; font-size:18px; letter-spacing:0.25rem; text-transform:uppercase; position:relative; z-index:1; }
+    .module p { margin:8px 0 0; font-size:13px; letter-spacing:0.2rem; text-transform:uppercase; color:var(--muted); position:relative; z-index:1; }
     .module[data-kind="starx"] .cube::before { background:linear-gradient(135deg, rgba(61,213,255,0.65), rgba(61,213,255,0.25)); }
+    .module[data-kind="patient"] .cube::before { background:linear-gradient(135deg, rgba(123,255,207,0.7), rgba(61,213,255,0.25)); }
+    .module[data-kind="pro"] .cube::before { background:linear-gradient(135deg, rgba(255,141,102,0.7), rgba(255,219,193,0.25)); }
     .module[data-kind="wayruru"] .cube::before { background:linear-gradient(135deg, rgba(255,111,145,0.65), rgba(255,150,113,0.25)); }
     .module[data-kind="ofy"] .cube::before { background:linear-gradient(135deg, rgba(26,107,77,0.6), rgba(79,179,123,0.25)); }
     .module[data-kind="powder"] .cube::before { background:linear-gradient(135deg, rgba(255,193,7,0.6), rgba(255,179,0,0.25)); }
-    .jarvis { position:fixed; right:30px; bottom:30px; padding:16px 32px; border-radius:999px; background:rgba(61,213,255,0.18); border:1px solid rgba(61,213,255,0.35); color:var(--text); text-transform:uppercase; letter-spacing:0.3rem; font-size:12px; cursor:pointer; backdrop-filter:blur(10px); box-shadow:0 15px 40px rgba(0,0,0,0.35); }
+    .jarvis { position:fixed; right:30px; bottom:30px; padding:16px 32px; border-radius:999px; background:linear-gradient(120deg, rgba(61,213,255,0.25), rgba(20,167,255,0.25)); border:1px solid rgba(61,213,255,0.35); color:var(--text); text-transform:uppercase; letter-spacing:0.3rem; font-size:12px; cursor:pointer; backdrop-filter:blur(10px); box-shadow:0 15px 40px rgba(0,0,0,0.35); background-size:220% 100%; animation:energy 4s linear infinite; }
     .jarvis-panel { position:fixed; right:30px; bottom:100px; width:320px; height:420px; border-radius:30px; border:1px solid rgba(255,255,255,0.08); background:rgba(4,8,16,0.92); box-shadow:0 20px 60px rgba(0,0,0,0.5); display:flex; flex-direction:column; opacity:0; pointer-events:none; transition:opacity 0.3s ease, transform 0.3s ease; transform:translateY(20px); }
     .subscription-overlay { position:absolute; inset:0; background:rgba(1,3,10,0.92); border-radius:40px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:18px; padding:40px; }
     .subscription-overlay h3 { margin:0; font-size:20px; letter-spacing:0.3rem; text-transform:uppercase; }
     .subscription-overlay p { margin:0; font-size:13px; letter-spacing:0.18rem; text-transform:uppercase; color:var(--muted); }
-    .subscription-overlay button { padding:14px 32px; border:none; border-radius:999px; background:rgba(61,213,255,0.3); color:var(--text); text-transform:uppercase; letter-spacing:0.25rem; font-size:12px; cursor:pointer; }
+    .subscription-overlay button { padding:14px 32px; border:none; border-radius:999px; background:linear-gradient(120deg, rgba(61,213,255,0.35), rgba(20,167,255,0.35)); color:var(--text); text-transform:uppercase; letter-spacing:0.25rem; font-size:12px; cursor:pointer; background-size:220% 100%; animation:energy 4s linear infinite; box-shadow:0 15px 45px rgba(20,167,255,0.35); }
     .subscription-overlay small { font-size:12px; color:rgba(236,243,255,0.55); letter-spacing:0.12rem; }
   </style>
 </head>
@@ -57,6 +61,16 @@
       <article class="module" data-kind="starx" data-href="/index.html">
         <div class="cube"><span>S</span></div>
         <h2>StarX Medic</h2>
+        <p>Online</p>
+      </article>
+      <article class="module" data-kind="patient" data-href="/paciente.html">
+        <div class="cube"><span>PX</span></div>
+        <h2>Portal Paciente</h2>
+        <p>Online</p>
+      </article>
+      <article class="module" data-kind="pro" data-href="/medico.html">
+        <div class="cube"><span>MD</span></div>
+        <h2>Portal Profesional</h2>
         <p>Online</p>
       </article>
       <article class="module" data-kind="wayruru" data-href="/wayruru.html">

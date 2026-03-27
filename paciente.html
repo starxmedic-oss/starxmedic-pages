@@ -29,7 +29,7 @@
     .event-shell p { margin:0 0 24px; font-size:13px; letter-spacing:0.12rem; color:var(--muted); }
     label { display:block; font-size:12px; letter-spacing:0.2rem; text-transform:uppercase; color:var(--muted); margin-bottom:6px; }
     input, textarea { width:100%; border:1px solid rgba(255,255,255,0.12); border-radius:18px; padding:14px; margin-bottom:18px; background:rgba(3,7,15,0.85); color:var(--text); font-size:15px; }
-    button { border:none; border-radius:999px; padding:14px 32px; background:linear-gradient(120deg, rgba(61,213,255,0.95), rgba(20,167,255,0.85)); color:#01040b; text-transform:uppercase; letter-spacing:0.22rem; font-size:12px; font-weight:600; cursor:pointer; box-shadow:0 15px 45px rgba(20,167,255,0.35); position:relative; overflow:hidden; }
+    button { border:none; border-radius:999px; padding:14px 32px; background:linear-gradient(120deg, rgba(61,213,255,0.95), rgba(20,167,255,0.85)); color:#01040b; text-transform:uppercase; letter-spacing:0.22rem; font-size:12px; font-weight:600; cursor:pointer; box-shadow:0 15px 45px rgba(20,167,255,0.35); position:relative; overflow:hidden; background-size:220% 100%; animation:energy 4s linear infinite; }
     button::after { content:""; position:absolute; inset:0; background:linear-gradient(120deg, rgba(255,255,255,0.15), transparent, rgba(255,255,255,0.12)); mix-blend-mode:screen; opacity:0; transition:opacity 0.3s ease; }
     button:hover::after { opacity:0.8; }
     .status { font-size:13px; color:var(--muted); margin-top:8px; }
@@ -41,7 +41,7 @@
     .action-card button.active { background:linear-gradient(120deg, rgba(123,255,207,0.95), rgba(61,213,255,0.95)); box-shadow:0 15px 45px rgba(123,255,207,0.3); }
     .action-card::before { content:""; position:absolute; inset:0; background:radial-gradient(circle at top, rgba(61,213,255,0.1), transparent 60%); opacity:0.8; mix-blend-mode:screen; }
     .action-card .avatar-shell { margin-bottom:14px; }
-    .avatar { width:86px; height:86px; border-radius:50%; border:1px solid rgba(255,255,255,0.18); margin:0 auto 12px; display:flex; align-items:center; justify-content:center; font-size:32px; color:var(--accent-2); background:rgba(255,255,255,0.05); }
+    .avatar { width:86px; height:86px; border-radius:50%; border:1px solid rgba(255,255,255,0.18); margin:0 auto 12px; display:flex; align-items:center; justify-content:center; font-size:32px; color:var(--accent-2); background:rgba(255,255,255,0.05); background-size:cover; background-position:center; overflow:hidden; }
     .ghost { width:auto; padding:10px 22px; background:rgba(255,255,255,0.08); color:var(--text); box-shadow:none; }
     .insight-panel { border:1px dashed rgba(255,255,255,0.15); border-radius:24px; padding:18px; text-align:center; font-size:13px; letter-spacing:0.12rem; color:var(--muted); }
     .history-card, .link-mvp { border:1px solid var(--line); border-radius:30px; padding:32px; background:rgba(6,11,22,0.9); box-shadow:0 20px 80px rgba(0,0,0,0.45); }
@@ -54,6 +54,7 @@
     .link-item button { padding:6px 14px; font-size:11px; letter-spacing:0.12rem; }
     .back-link { text-align:center; }
     .back-link a { color:var(--muted); text-decoration:none; text-transform:uppercase; letter-spacing:0.2rem; font-size:12px; }
+    @keyframes energy { 0% { background-position:0% 50%; } 50% { background-position:100% 50%; } 100% { background-position:0% 50%; } }
   </style>
   </style>
 </head>
@@ -88,8 +89,9 @@
       </article>
       <article class="action-card profile">
         <div class="avatar-shell">
-          <div class="avatar">👤</div>
-          <button type="button" class="ghost">Cargar foto</button>
+          <div class="avatar" id="patient-avatar">👤</div>
+          <button type="button" class="ghost" id="avatar-upload">Cargar foto</button>
+          <input type="file" id="avatar-input" accept="image/*" hidden />
         </div>
         <h3>Mi perfil</h3>
         <p>Actualiza datos médicos, contactos de emergencia y hábitos personales.</p>
@@ -149,6 +151,9 @@
     const linkStatus = document.getElementById("link-status");
     const requestsEl = document.getElementById("link-requests");
     const activeEl = document.getElementById("link-active");
+    const avatarEl = document.getElementById("patient-avatar");
+    const avatarUploadBtn = document.getElementById("avatar-upload");
+    const avatarInput = document.getElementById("avatar-input");
     let patientId = "Paciente-001";
 
     if (!token) {
@@ -174,6 +179,32 @@
       }
       return data;
     };
+
+    const setAvatarPreview = (dataUrl) => {
+      if (!avatarEl) return;
+      avatarEl.style.backgroundImage = `url(${dataUrl})`;
+      avatarEl.textContent = "";
+    };
+
+    const storedAvatar = localStorage.getItem("starx_avatar");
+    if (storedAvatar) setAvatarPreview(storedAvatar);
+
+    if (avatarUploadBtn && avatarInput) {
+      avatarUploadBtn.addEventListener("click", () => avatarInput.click());
+      avatarInput.addEventListener("change", (event) => {
+        const file = event.target.files?.[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = () => {
+          const dataUrl = reader.result;
+          if (typeof dataUrl === "string") {
+            setAvatarPreview(dataUrl);
+            localStorage.setItem("starx_avatar", dataUrl);
+          }
+        };
+        reader.readAsDataURL(file);
+      });
+    }
 
     function updateTimestamp() {
       const now = new Date();

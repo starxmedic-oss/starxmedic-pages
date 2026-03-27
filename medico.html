@@ -19,12 +19,13 @@
     .card { border:1px solid var(--line); border-radius:28px; padding:26px; background:rgba(6,12,25,0.9); text-decoration:none; color:var(--text); position:relative; overflow:hidden; }
     .card h2 { margin:0 0 10px; text-transform:uppercase; letter-spacing:0.3rem; font-size:16px; }
     .card p { margin:0; font-size:13px; color:var(--muted); letter-spacing:0.12rem; }
-    .card::after { content:""; position:absolute; inset:0; background:radial-gradient(circle at top, rgba(61,213,255,0.08), transparent 60%); animation:glow 8s ease-in-out infinite; }
+    .card::after { content:""; position:absolute; inset:0; background:linear-gradient(120deg, rgba(61,213,255,0.08), rgba(20,167,255,0.12), rgba(61,213,255,0.08)); background-size:220% 100%; animation:energy 5s linear infinite; }
     .notice { margin-top:32px; color:var(--muted); font-size:13px; letter-spacing:0.15rem; text-transform:uppercase; }
     .back { margin-top:18px; display:inline-block; color:var(--muted); text-decoration:none; letter-spacing:0.2rem; font-size:12px; text-transform:uppercase; }
     @keyframes float { 0%,100% { transform:translateY(-6px); } 50% { transform:translateY(6px); } }
     @keyframes spin { 0% { transform:rotateX(0deg) rotateY(0deg); } 100% { transform:rotateX(360deg) rotateY(360deg); } }
     @keyframes glow { 0%,100% { opacity:0.4; } 50% { opacity:0.8; } }
+    @keyframes energy { 0% { background-position:0% 50%; } 50% { background-position:100% 50%; } 100% { background-position:0% 50%; } }
   </style>
 </head>
 <body>
