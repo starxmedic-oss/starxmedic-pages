@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StarX Medic · Founders Program</title>
+  <style>
+    :root { --bg:#01030b; --panel:#070f1c; --text:#eef3ff; --muted:rgba(238,243,255,0.7); --accent:#3dd5ff; }
+    * { box-sizing:border-box; }
+    body { margin:0; min-height:100vh; background:radial-gradient(circle at top, rgba(61,213,255,0.12), transparent 60%), var(--bg); font-family:"Space Grotesk","Segoe UI",sans-serif; color:var(--text); padding:40px 20px; }
+    main { max-width:960px; margin:0 auto; display:flex; flex-direction:column; gap:30px; }
+    h1 { margin:0; text-transform:uppercase; letter-spacing:0.4rem; font-size:26px; }
+    h2 { margin:0; text-transform:uppercase; letter-spacing:0.3rem; font-size:18px; }
+    p { margin:0; color:var(--muted); letter-spacing:0.12rem; }
+    .levels { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:20px; }
+    .card { border:1px solid rgba(255,255,255,0.1); border-radius:24px; padding:24px; background:rgba(7,15,28,0.92); box-shadow:0 30px 90px rgba(0,0,0,0.5); display:flex; flex-direction:column; gap:14px; }
+    .cta { display:flex; flex-wrap:wrap; gap:10px; }
+    .cta a { text-decoration:none; text-transform:uppercase; letter-spacing:0.2rem; font-size:11px; border-radius:999px; padding:10px 18px; border:1px solid rgba(255,255,255,0.2); color:var(--text); }
+    .primary { background:linear-gradient(120deg,#3dd5ff,#0d8ad7); color:#01040b; border:none; }
+    .payments { display:flex; gap:12px; flex-wrap:wrap; font-size:11px; letter-spacing:0.2rem; text-transform:uppercase; color:var(--muted); }
+    .transparency { border:1px solid rgba(255,255,255,0.12); border-radius:24px; padding:20px; background:rgba(6,12,24,0.92); }
+    a.back { text-transform:uppercase; letter-spacing:0.25rem; font-size:11px; color:var(--muted); text-decoration:none; }
+  </style>
+</head>
+<body>
+  <main>
+    <a class="back" href="/">Volver</a>
+    <section>
+      <h1>Apoya la infraestructura universal de salud</h1>
+      <p>StarX Medic es libre para todos. Si quieres acelerar su crecimiento, puedes participar como fundador temprano.</p>
+    </section>
+
+    <section class="levels">
+      <article class="card">
+        <h2>Supporter</h2>
+        <p>Impulsa infraestructura, servidores y soporte clínico inmediato.</p>
+        <div class="cta">
+          <a class="primary" href="https://vendemas.pe">Apoyar ahora</a>
+          <a href="mailto:founders@starxmedic.com?subject=Supporter">Unirme como fundador</a>
+        </div>
+      </article>
+      <article class="card">
+        <h2>Builder</h2>
+        <p>Acelera integraciones médicas, conexión paciente-profesional y despliegues regionales.</p>
+        <div class="cta">
+          <a class="primary" href="https://yape.app.link">Apoyar ahora</a>
+          <a href="mailto:founders@starxmedic.com?subject=Builder">Unirme como fundador</a>
+        </div>
+      </article>
+      <article class="card">
+        <h2>Institutional Ally</h2>
+        <p>Organizaciones que quieran financiar infraestructura, investigación y despliegues globales.</p>
+        <div class="cta">
+          <a class="primary" href="https://plin.pe">Apoyar ahora</a>
+          <a href="mailto:founders@starxmedic.com?subject=Institutional%20Ally">Unirme como fundador</a>
+        </div>
+      </article>
+    </section>
+
+    <section>
+      <h2>Medios habilitados</h2>
+      <div class="payments">
+        <span>Vendemás</span>
+        <span>Yape</span>
+        <span>Plin</span>
+        <span>Transferencias directas</span>
+      </div>
+    </section>
+
+    <section class="transparency">
+      <h2>Transparencia</h2>
+      <p>Tu apoyo acelera desarrollo, infraestructura, conexión médico-paciente, integración de pagos y acceso global.</p>
+    </section>
+  </main>
+</body>
+</html>
