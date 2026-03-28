@@ -7,7 +7,7 @@
   <style>
     :root { --bg:#01030a; --text:#f6f8ff; --muted:rgba(246,248,255,0.65); --line:rgba(255,255,255,0.1); --accent:#3dd5ff; }
     * { box-sizing:border-box; }
-    body { margin:0; min-height:100vh; background:radial-gradient(circle at top, rgba(61,213,255,0.12), transparent 60%), var(--bg); font-family:"Space Grotesk","Segoe UI",sans-serif; color:var(--text); display:flex; align-items:center; justify-content:center; padding:40px 20px; }
+    body { margin:0; min-height:100vh; background:radial-gradient(circle at top, rgba(61,213,255,0.12), transparent 60%), var(--bg); font-family:"Space Grotesk","Segoe UI",sans-serif; color:var(--text); display:flex; align-items:center; justify-content:center; padding:40px 20px; overflow-y:auto; }
     main { width:min(1000px,100%); }
     h1 { text-align:center; text-transform:uppercase; letter-spacing:0.35rem; font-size:26px; margin-bottom:12px; }
     p { text-align:center; color:var(--muted); margin-bottom:30px; }
@@ -17,6 +17,7 @@
     .price { font-size:34px; letter-spacing:0.1rem; }
     .features { list-style:none; padding:0; margin:0; color:var(--muted); line-height:1.6; }
     button { border:none; border-radius:999px; padding:14px; background:linear-gradient(120deg,#1ee267,#0f9b4a,#1ee267); color:#01040b; text-transform:uppercase; letter-spacing:0.2rem; font-weight:600; cursor:pointer; box-shadow:0 15px 45px rgba(30,226,103,0.35); }
+    .plan-current { background:rgba(255,255,255,0.08); color:var(--muted); box-shadow:none; cursor:default; }
     .note { margin-top:18px; text-align:center; font-size:13px; color:var(--muted); }
   </style>
 </head>
@@ -33,10 +34,10 @@
           <li>Historial básico</li>
           <li>Modo limitado</li>
         </ul>
-        <button onclick="window.location.href='/acceso.html'">Usar gratis</button>
+        <button class="plan-current" disabled>Plan actual</button>
       </div>
       <div class="card">
-        <h2>Plan Médico</h2>
+        <h2>Plan Médico Diario</h2>
         <div class="price">US$ 9.99 <span style="font-size:14px;">/ mes</span></div>
         <ul class="features">
           <li>Uso diario pacientes + eventos</li>
@@ -47,13 +48,13 @@
       </div>
       <div class="card">
         <h2>Core Medic</h2>
-        <div class="price">Consultar</div>
+        <div class="price">US$ 49.99 <span style="font-size:14px;">/ mes</span></div>
         <ul class="features">
-          <li>Automatización + IA</li>
-          <li>Alertas inteligentes</li>
-          <li>Control total multiplataforma</li>
+          <li>Control total de pacientes y estructura clínica</li>
+          <li>Seguimiento avanzado + automatización</li>
+          <li>Base para escalar tu propia clínica inteligente</li>
         </ul>
-        <button id="contact-core">Solicitar upgrade</button>
+        <button id="contact-core">Pagar y activar</button>
       </div>
     </div>
     <p class="note" id="plan-note">Pasarela de pago pendiente (Mercado Pago / Culqi). Necesitamos credenciales + webhook para activar automáticamente.</p>
@@ -63,7 +64,7 @@
       document.getElementById('plan-note').textContent = 'Listo para integrar con Mercado Pago/Culqi. Falta configurar checkout y webhook de confirmación.';
     });
     document.getElementById('contact-core').addEventListener('click', () => {
-      document.getElementById('plan-note').textContent = 'Core Medic requiere contacto directo. Integraremos onboarding premium.';
+      document.getElementById('plan-note').textContent = 'Core Medic usará el mismo flujo de pago automático; necesitamos credenciales para habilitarlo.';
     });
   </script>
 </body>

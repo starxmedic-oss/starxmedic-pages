@@ -18,14 +18,15 @@
       --accent-2:#7bffcf;
     }
     * { box-sizing:border-box; }
-    body { margin:0; min-height:100vh; background:radial-gradient(circle at top, rgba(61,213,255,0.12), transparent 55%), var(--bg); color:var(--text); font-family:"Space Grotesk","Segoe UI",sans-serif; padding:40px 20px 80px; }
+    body { margin:0; min-height:100vh; background:radial-gradient(circle at top, rgba(61,213,255,0.12), transparent 55%), var(--bg); color:var(--text); font-family:"Space Grotesk","Segoe UI",sans-serif; padding:40px 20px 80px; overflow-y:auto; }
     main { max-width:960px; margin:0 auto; display:flex; flex-direction:column; gap:24px; }
     .hero { display:flex; justify-content:space-between; align-items:flex-start; gap:20px; padding-bottom:8px; border-bottom:1px solid rgba(255,255,255,0.08); }
     .eyebrow { margin:0; font-size:12px; letter-spacing:0.4rem; text-transform:uppercase; color:var(--muted); }
+    .logout-btn { border:1px solid rgba(255,255,255,0.2); background:transparent; color:var(--text); border-radius:20px; padding:8px 16px; text-transform:uppercase; letter-spacing:0.15rem; cursor:pointer; }
     h1 { margin:6px 0 0; font-size:30px; letter-spacing:0.5rem; text-transform:uppercase; font-weight:400; }
     .timestamp { color:var(--muted); font-size:13px; letter-spacing:0.2rem; text-transform:uppercase; }
     .event-shell { border:1px solid var(--line); border-radius:32px; padding:36px; background:linear-gradient(135deg, rgba(61,213,255,0.08), rgba(7,15,26,0.9)); box-shadow:0 40px 120px rgba(0,0,0,0.45); }
-    .event-shell h2 { margin:0 0 8px; font-size:20px; letter-spacing:0.35rem; text-transform:uppercase; }
+    .event-shell h2 { margin:0 0 8px; font-size:28px; letter-spacing:0.45rem; text-transform:uppercase; }
     .event-shell p { margin:0 0 24px; font-size:13px; letter-spacing:0.12rem; color:var(--muted); }
     label { display:block; font-size:12px; letter-spacing:0.2rem; text-transform:uppercase; color:var(--muted); margin-bottom:6px; }
     input, textarea { width:100%; border:1px solid rgba(255,255,255,0.12); border-radius:18px; padding:14px; margin-bottom:18px; background:rgba(3,7,15,0.85); color:var(--text); font-size:15px; }
@@ -69,16 +70,19 @@
   <main>
     <header class="hero">
       <div>
-        <p class="eyebrow">StarX Medic Free</p>
+        <p class="eyebrow">StarX Medic · Free Mode</p>
         <h1>Portal paciente</h1>
       </div>
-      <div class="timestamp" id="timestamp">Actualizado</div>
+      <div style="display:flex; gap:12px; align-items:center;">
+        <div class="timestamp" id="timestamp">Actualizado</div>
+        <button class="logout-btn" id="logout-btn">Cerrar sesión</button>
+      </div>
     </header>
 
-    <div class="insight-panel" style="margin-bottom:24px;">
-      Modo Free activo · Paciente Premium = contacto con médicos reales.
-      <div style="margin-top:12px; display:flex; justify-content:center;">
-        <a href="/plan.html" style="border-radius:999px; padding:10px 20px; background:linear-gradient(120deg,#1ee267,#0f9b4a,#1ee267); color:#01040b; text-transform:uppercase; letter-spacing:0.15rem; font-weight:600; font-size:11px;">Activar Paciente Plus</a>
+    <div class="insight-panel" style="margin-bottom:24px; display:flex; flex-direction:column; gap:10px;">
+      <span>Modo Free activo · Paciente Premium = contacto con médicos reales, revisión de resultados, posibilidad de citas y el paso hacia un sistema de salud funcional.</span>
+      <div style="display:flex; justify-content:flex-end;">
+        <a href="/plan.html" style="border-radius:999px; padding:8px 16px; background:linear-gradient(120deg,#1ee267,#0f9b4a,#1ee267); color:#01040b; text-transform:uppercase; letter-spacing:0.12rem; font-weight:600; font-size:10px;">Activar Paciente Plus</a>
       </div>
     </div>
 
@@ -423,6 +427,12 @@
       } catch (error) {
         symptomStatus.textContent = error.message;
       }
+    });
+
+    document.getElementById("logout-btn")?.addEventListener("click", () => {
+      localStorage.removeItem("starx_token");
+      localStorage.removeItem("starx_profile");
+      window.location.href = "/acceso.html";
     });
 
     updateTimestamp();

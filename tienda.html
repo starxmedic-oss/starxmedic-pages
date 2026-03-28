@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StarX Medic · Tienda</title>
+  <style>
+    :root { --bg:#f4f6fb; --text:#0f1b3d; --muted:#4a5875; --card:#ffffff; --accent:#12c065; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:"Space Grotesk","Segoe UI",sans-serif; background:var(--bg); color:var(--text); }
+    header { text-align:center; padding:60px 20px 20px; }
+    header h1 { margin:0; font-size:34px; letter-spacing:0.2rem; }
+    header p { margin:8px 0 0; font-size:16px; color:var(--muted); }
+    main { max-width:960px; margin:0 auto; padding:20px; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:20px; }
+    .card { background:var(--card); border-radius:20px; padding:28px; box-shadow:0 20px 60px rgba(15,27,61,0.08); display:flex; flex-direction:column; gap:12px; }
+    .card h2 { margin:0; font-size:20px; }
+    .price { font-size:24px; color:var(--accent); }
+    button { border:none; border-radius:999px; padding:14px; background:var(--accent); color:white; text-transform:uppercase; letter-spacing:0.2rem; font-weight:600; cursor:pointer; }
+    footer { text-align:center; padding:40px 20px 60px; font-size:14px; color:var(--muted); }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>StarX Medic</h1>
+    <p>Plataforma digital de gestión médica</p>
+  </header>
+  <main>
+    <h3 style="text-transform:uppercase; letter-spacing:0.3rem; margin-bottom:20px;">Planes disponibles</h3>
+    <div class="grid">
+      <div class="card">
+        <h2>StarX Medic Free</h2>
+        <p>Acceso inmediato al registro de eventos y seguimiento básico.</p>
+        <div class="price">S/ 0</div>
+        <button disabled style="background:#d5dbe7; color:#6a748d; cursor:default;">Plan actual</button>
+      </div>
+      <div class="card">
+        <h2>Plan Médico Diario</h2>
+        <p>Control de pacientes, eventos diarios y panel profesional.</p>
+        <div class="price">US$ 9.99 / mes</div>
+        <button>Pagar ahora</button>
+      </div>
+      <div class="card">
+        <h2>Core Medic</h2>
+        <p>Estructura clínica completa, automatización y crecimiento.</p>
+        <div class="price">US$ 49.99 / mes</div>
+        <button>Pagar ahora</button>
+      </div>
+    </div>
+  </main>
+  <footer>
+    Compra segura · Activación digital inmediata
+  </footer>
+</body>
+</html>
