@@ -38,34 +38,34 @@
         <button class="plan-current" disabled>Plan actual</button>
       </div>
       <div class="card">
-        <h2>Plan Médico Diario</h2>
-        <div class="price">US$ 9.99 <span style="font-size:14px;">/ mes</span></div>
+        <h2>Plan Plus Paciente</h2>
+        <div class="price">US$ 2.99 – 9.99 <span style="font-size:14px;">/ mes</span></div>
         <ul class="features">
-          <li>Uso diario pacientes + eventos</li>
-          <li>Panel profesional</li>
-          <li>Seguimiento avanzado</li>
+          <li>Seguimiento inteligente y recordatorios</li>
+          <li>Historial enriquecido y exportable</li>
+          <li>Soporte para compartir con tu profesional</li>
         </ul>
-        <button id="pay-medico">Pagar y activar</button>
+        <button id="pay-paciente">Pagar y activar</button>
       </div>
       <div class="card">
-        <h2>Core Medic</h2>
-        <div class="price">US$ 49.99 <span style="font-size:14px;">/ mes</span></div>
+        <h2>Plan Pro Médico</h2>
+        <div class="price">US$ 9.99 <span style="font-size:14px;">/ mes</span></div>
         <ul class="features">
-          <li>Control total de pacientes y estructura clínica</li>
-          <li>Seguimiento avanzado + automatización</li>
-          <li>Base para escalar tu propia clínica inteligente</li>
+          <li>Organización avanzada de pacientes</li>
+          <li>Seguimiento sin límites y eficiencia diaria</li>
+          <li>Modo profesional para clínicas inteligentes</li>
         </ul>
-        <button id="contact-core">Pagar y activar</button>
+        <button id="pay-pro">Pagar y activar</button>
       </div>
     </div>
     <p class="note" id="plan-note">Pasarela de pago pendiente (Mercado Pago / Culqi). Necesitamos credenciales + webhook para activar automáticamente.</p>
   </main>
   <script>
-    document.getElementById('pay-medico').addEventListener('click', () => {
-      document.getElementById('plan-note').textContent = 'Listo para integrar con Mercado Pago/Culqi. Falta configurar checkout y webhook de confirmación.';
+    document.getElementById('pay-paciente').addEventListener('click', () => {
+      document.getElementById('plan-note').textContent = 'El Plan Plus Paciente se habilitará en cuanto configuremos Mercado Pago/Culqi + webhook.';
     });
-    document.getElementById('contact-core').addEventListener('click', () => {
-      document.getElementById('plan-note').textContent = 'Core Medic usará el mismo flujo de pago automático; necesitamos credenciales para habilitarlo.';
+    document.getElementById('pay-pro').addEventListener('click', () => {
+      document.getElementById('plan-note').textContent = 'Plan Pro Médico se activará vía el mismo checkout automático una vez tengamos credenciales.';
     });
   </script>
 </body>

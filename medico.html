@@ -16,7 +16,8 @@
     h1 { margin:0 0 10px; text-transform:uppercase; letter-spacing:0.45rem; font-size:28px; }
     p.lead { margin:0 0 32px; letter-spacing:0.2rem; text-transform:uppercase; color:var(--muted); font-size:13px; }
     .insight { border:1px solid rgba(255,255,255,0.15); border-radius:24px; padding:14px 18px; margin-bottom:24px; text-align:center; font-size:14px; letter-spacing:0.15rem; color:var(--muted); }
-    .insight a { margin-left:12px; text-transform:uppercase; letter-spacing:0.15rem; font-size:12px; color:var(--text); border:1px solid rgba(255,255,255,0.3); border-radius:999px; padding:8px 16px; text-decoration:none; }
+    .upgrade-hint { margin-top:20px; border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:14px 18px; display:none; justify-content:space-between; align-items:center; font-size:12px; letter-spacing:0.12rem; }
+    .upgrade-hint a { border-radius:12px; padding:8px 16px; background:linear-gradient(120deg,#1ee267,#0f9b4a,#1ee267); color:#01040b; text-transform:uppercase; letter-spacing:0.15rem; font-size:10px; text-decoration:none; }
     .profile-block { border:1px solid rgba(255,255,255,0.1); border-radius:24px; padding:20px; margin-bottom:24px; text-align:left; }
     .profile-block h3 { margin-top:0; letter-spacing:0.2rem; text-transform:uppercase; }
     .profile-block label { display:block; font-size:12px; letter-spacing:0.15rem; text-transform:uppercase; color:var(--muted); margin-bottom:6px; }
@@ -49,7 +50,7 @@
     <div class="symbol-cube"><span>S</span></div>
     <h1>Portal profesional</h1>
     <p class="lead">Sistema clínico Stark para equipos de salud</p>
-    <div class="insight">Estás usando StarX Medic Free <a href="/tienda.html">Activar Core Médico — $9.99</a></div>
+    <div class="insight">Estás usando StarX Medic Free · cuando necesites más, activa modo profesional.</div>
 
     <section class="profile-block" id="pro-profile-block">
       <h3>Completa tu perfil profesional</h3>
@@ -83,6 +84,10 @@
       <button class="radial-node node-c">Comando</button>
     </section>
     <p class="lead" id="radial-status" style="display:none;">Registra pacientes, guarda notas rápidas y ejecuta comandos diarios en segundos.</p>
+    <div class="upgrade-hint" id="pro-upgrade">
+      <span>Activa modo profesional completo (Plan Pro Médico US$9.99) para seguimiento avanzado.</span>
+      <a href="/tienda.html">Modo Pro</a>
+    </div>
     <div class="notice">Completa tu perfil para desbloquear el tablero profesional. Una vez listo, el botón central te permite guardar información al vuelo.</div>
     <a class="back" href="/app.html">Volver</a>
   </main>
@@ -143,6 +148,7 @@
 
     quickAdd?.addEventListener('click', () => {
       radialStatus.textContent = 'Registro rápido activo: guarda pacientes o notas clínicas al instante (en desarrollo).';
+      document.getElementById('pro-upgrade')?.style.setProperty('display','flex');
     });
   </script>
   <script src="/cta.js" defer></script>

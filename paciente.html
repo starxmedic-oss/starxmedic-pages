@@ -46,6 +46,8 @@
     .avatar { width:86px; height:86px; border-radius:50%; border:1px solid rgba(255,255,255,0.18); margin:0 auto 12px; display:flex; align-items:center; justify-content:center; font-size:32px; color:var(--accent-2); background:rgba(255,255,255,0.05); background-size:cover; background-position:center; overflow:hidden; }
     .ghost { width:auto; padding:10px 22px; background:rgba(255,255,255,0.08); color:var(--text); box-shadow:none; }
     .insight-panel { border:1px dashed rgba(255,255,255,0.15); border-radius:24px; padding:18px; text-align:center; font-size:13px; letter-spacing:0.12rem; color:var(--muted); }
+    .upgrade-hint { margin-top:18px; border:1px solid rgba(255,255,255,0.12); border-radius:18px; padding:14px 18px; display:none; justify-content:space-between; align-items:center; font-size:12px; letter-spacing:0.12rem; }
+    .upgrade-hint a { border-radius:12px; padding:8px 16px; background:linear-gradient(120deg,#1ee267,#0f9b4a,#1ee267); color:#01040b; text-transform:uppercase; letter-spacing:0.15rem; font-size:10px; text-decoration:none; }
     .history-card, .link-mvp { border:1px solid var(--line); border-radius:30px; padding:32px; background:rgba(6,11,22,0.9); box-shadow:0 20px 80px rgba(0,0,0,0.45); }
     .history-card h2, .link-mvp h2 { margin:0 0 16px; font-size:18px; letter-spacing:0.3rem; text-transform:uppercase; }
     .history-entry { border-top:1px solid rgba(255,255,255,0.08); padding:12px 0; font-size:14px; letter-spacing:0.08rem; }
@@ -81,9 +83,6 @@
 
     <div class="insight-panel" style="margin-bottom:24px; display:flex; flex-direction:column; gap:10px;">
       <span>Modo Free activo · Paciente Premium = contacto con médicos reales, revisión de resultados, posibilidad de citas y el paso hacia un sistema de salud funcional.</span>
-      <div style="display:flex; justify-content:flex-end;">
-        <a href="/tienda.html" style="border-radius:999px; padding:8px 16px; background:linear-gradient(120deg,#1ee267,#0f9b4a,#1ee267); color:#01040b; text-transform:uppercase; letter-spacing:0.12rem; font-weight:600; font-size:10px;">Activar Paciente Plus</a>
-      </div>
     </div>
 
     <section class="event-shell">
@@ -98,6 +97,11 @@
         <div class="status" id="symptom-status"></div>
       </form>
     </section>
+
+    <div class="upgrade-hint" id="patient-upgrade">
+      <span>Convierte esto en tu sistema de salud con seguimiento inteligente (Plan Plus desde US$2.99).</span>
+      <a href="/tienda.html">Ver opciones</a>
+    </div>
 
     <section class="primary-actions">
       <article class="action-card results">
@@ -182,9 +186,6 @@
       <a id="pro-link" class="pro-link" href="/medico.html">Ir al portal profesional</a>
     </section>
 
-    <div class="back-link" style="margin-bottom:18px;">
-      <a href="/tienda.html" style="display:inline-flex; padding:12px 26px; border-radius:999px; background:linear-gradient(120deg,#3dd5ff,#14a5e9); color:#01040b; text-transform:uppercase; letter-spacing:0.15rem;">Activar sistema</a>
-    </div>
     <div class="back-link">
       <a href="/app.html">Volver</a>
     </div>
@@ -421,6 +422,7 @@
       try {
         await postEntry(payload);
         symptomStatus.textContent = "Registrado ✔";
+        document.getElementById("patient-upgrade")?.style.setProperty("display","flex");
         e.target.reset();
         await loadHistory();
         updateTimestamp();
