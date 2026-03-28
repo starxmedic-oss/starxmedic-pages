@@ -8,7 +8,6 @@
     :root { --bg:#01040b; --panel:#070f1c; --line:rgba(255,255,255,0.08); --text:#f2f6ff; --muted:rgba(242,246,255,0.65); }
     * { box-sizing:border-box; }
     body { margin:0; min-height:100vh; background:radial-gradient(circle at top, rgba(61,213,255,0.12), transparent 60%), var(--bg); color:var(--text); font-family:"Space Grotesk","Segoe UI",sans-serif; padding:50px 20px; overflow-y:auto; }
-    .fixed-cta { position:fixed; top:18px; right:18px; background:linear-gradient(120deg,#1ee267,#0f9b4a,#1ee267); color:#01040b; padding:10px 26px; border-radius:999px; text-transform:uppercase; letter-spacing:0.18rem; font-weight:600; text-decoration:none; box-shadow:0 22px 70px rgba(30,226,103,0.35); animation:energy 4s linear infinite; }
     main { max-width:920px; margin:0 auto; border:1px solid var(--line); border-radius:40px; padding:60px 50px; background:rgba(5,10,22,0.9); box-shadow:0 60px 200px rgba(0,0,0,0.6); text-align:center; }
     .symbol-cube { width:140px; height:140px; margin:0 auto 24px; position:relative; border-radius:28px; display:flex; align-items:center; justify-content:center; font-size:50px; letter-spacing:0.5rem; text-transform:uppercase; color:#0b1424; animation:float 6s ease-in-out infinite, spin 28s linear infinite; transform-style:preserve-3d; }
     .symbol-cube::before { content:""; position:absolute; inset:0; border-radius:28px; background:linear-gradient(135deg, rgba(61,213,255,0.9), rgba(20,167,255,0.45)); box-shadow:0 25px 90px rgba(61,213,255,0.35); transform:translateZ(-20px); }
@@ -46,12 +45,11 @@
   </style>
 </head>
 <body>
-  <a class="fixed-cta" href="/tienda.html">Activar sistema</a>
   <main>
     <div class="symbol-cube"><span>S</span></div>
     <h1>Portal profesional</h1>
     <p class="lead">Sistema clínico Stark para equipos de salud</p>
-    <div class="insight">Estás usando StarX Medic Free <a href="/plan.html">Activar Core Médico — $9.99</a></div>
+    <div class="insight">Estás usando StarX Medic Free <a href="/tienda.html">Activar Core Médico — $9.99</a></div>
 
     <section class="profile-block" id="pro-profile-block">
       <h3>Completa tu perfil profesional</h3>
