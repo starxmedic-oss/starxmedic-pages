@@ -75,12 +75,10 @@
     </header>
 
     <div class="insight-panel" style="margin-bottom:24px;">
-      Estás usando StarX Medic en modo limitado
-      <div style="margin-top:12px; display:flex; gap:12px; flex-wrap:wrap; justify-content:center;">
-        <button id="patient-activate" style="border-radius:999px; padding:12px 24px; border:none; background:linear-gradient(120deg,#3dd5ff,#14a5e9); color:#01040b; text-transform:uppercase; letter-spacing:0.15rem; font-weight:600;">Activar sistema completo</button>
-        <a href="https://wa.me/51999999999?text=Hola%2C%20quiero%20activar%20StarX%20Medic%20con%20un%20asesor" target="_blank" rel="noreferrer" class="assist-cta" style="display:inline-flex; padding:12px 20px; border-radius:999px; border:1px solid rgba(255,255,255,0.3); text-transform:uppercase; letter-spacing:0.15rem; font-size:12px;">Activar con asesor</a>
+      Estás usando StarX Medic Free
+      <div style="margin-top:12px; display:flex; justify-content:center;">
+        <a href="/plan.html" style="border-radius:999px; padding:12px 24px; background:linear-gradient(120deg,#3dd5ff,#14a5e9); color:#01040b; text-transform:uppercase; letter-spacing:0.15rem; font-weight:600;">Activar sistema completo</a>
       </div>
-      <div id="patient-activate-status" style="margin-top:10px; font-size:12px; letter-spacing:0.12rem;"></div>
     </div>
 
     <section class="event-shell">
@@ -204,8 +202,6 @@
     const proOpenBtn = document.getElementById("open-pro-form");
     const proStatus = document.getElementById("pro-status");
     const proLink = document.getElementById("pro-link");
-    const patientActivateBtn = document.getElementById("patient-activate");
-    const patientActivateStatus = document.getElementById("patient-activate-status");
     let patientId = "Paciente-001";
 
     if (!token) {
@@ -230,22 +226,6 @@
         throw new Error(data.error || data.message || "Error inesperado");
       }
       return data;
-    };
-
-    const subscribeBasic = async () => {
-      const res = await fetch(`${API_BASE}/subscribe`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`
-        },
-        body: JSON.stringify({ plan: "basic" })
-      });
-      if (!res.ok) {
-        const err = await res.json().catch(() => ({}));
-        throw new Error(err.error || "No se pudo activar");
-      }
-      return res.json();
     };
 
     const setAvatarPreview = (dataUrl) => {
@@ -311,16 +291,6 @@
         updateProAccess();
       });
     }
-
-    patientActivateBtn?.addEventListener("click", async () => {
-      patientActivateStatus.textContent = "Activando...";
-      try {
-        await subscribeBasic();
-        patientActivateStatus.textContent = "Plan activado";
-      } catch (error) {
-        patientActivateStatus.textContent = error.message;
-      }
-    });
 
     updateProAccess();
 

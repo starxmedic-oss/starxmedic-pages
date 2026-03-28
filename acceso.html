@@ -4,50 +4,24 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="Cache-Control" content="no-store" />
-  <meta http-equiv="Pragma" content="no-cache" />
-  <meta http-equiv="Expires" content="0" />
-  <title>Acceso | StarX</title>
+  <title>Acceso | StarX Medic</title>
   <style>
     :root { --bg:#030814; --panel:#0c1222; --line:rgba(255,255,255,0.08); --text:#f2f5ff; --muted:rgba(242,245,255,0.6); --accent:#3dd5ff; }
     * { box-sizing:border-box; }
     body { margin:0; min-height:100vh; background:var(--bg); color:var(--text); font-family:"Space Grotesk","Segoe UI",sans-serif; display:flex; align-items:center; justify-content:center; padding:40px 20px; }
-    main { width: min(420px,100%); border:1px solid var(--line); border-radius:28px; padding:40px 36px; background:var(--panel); box-shadow:0 40px 150px rgba(0,0,0,0.45); }
+    main { width: min(420px,100%); border:1px solid var(--line); border-radius:28px; padding:40px 36px; background:var(--panel); box-shadow:0 40px 150px rgba(0,0,0,0.45); text-align:center; }
     h1 { margin:0 0 24px; text-transform:uppercase; letter-spacing:0.35rem; font-size:20px; }
-    label { display:block; font-size:12px; letter-spacing:0.2rem; text-transform:uppercase; color:var(--muted); margin-bottom:6px; }
+    label { display:block; font-size:12px; letter-spacing:0.2rem; text-transform:uppercase; color:var(--muted); margin-bottom:6px; text-align:left; }
     input { width:100%; border:1px solid var(--line); border-radius:14px; padding:14px; margin-bottom:18px; background:#050a18; color:var(--text); font-size:15px; }
-    button { width:100%; border:none; border-radius:999px; padding:14px; background:linear-gradient(120deg,rgba(61,213,255,0.95),rgba(14,165,233,0.95)); color:#01040b; text-transform:uppercase; letter-spacing:0.2rem; font-size:13px; font-weight:600; cursor:pointer; box-shadow:0 12px 30px rgba(61,213,255,0.25); background-size:220% 100%; animation:energy 4s linear infinite; }
-    .activate-link { display:block; margin-top:14px; text-align:center; text-decoration:none; text-transform:uppercase; letter-spacing:0.2rem; font-size:12px; font-weight:600; color:#01040b; padding:12px 0; border-radius:999px; background:linear-gradient(120deg, rgba(123,255,207,0.9), rgba(61,213,255,0.8)); background-size:220% 100%; animation:energy 4s linear infinite; box-shadow:0 12px 30px rgba(123,255,207,0.25); }
+    button { width:100%; border:none; border-radius:999px; padding:14px; background:linear-gradient(120deg,rgba(61,213,255,0.95),rgba(14,165,233,0.95)); color:#01040b; text-transform:uppercase; letter-spacing:0.2rem; font-size:13px; font-weight:600; cursor:pointer; box-shadow:0 12px 30px rgba(61,213,255,0.25); }
     .status-text { margin-top:12px; font-size:13px; letter-spacing:0.1rem; text-transform:uppercase; color:var(--muted); min-height:18px; }
-    .links { margin-top:20px; display:flex; flex-direction:column; gap:6px; }
-    .links a { color:var(--muted); text-decoration:none; font-size:13px; letter-spacing:0.1rem; text-transform:uppercase; }
-    .limited-banner { margin-top:22px; border:1px solid var(--line); border-radius:20px; padding:18px; background:rgba(255,255,255,0.04); text-align:center; }
-    .limited-banner p { margin:0 0 12px; font-size:13px; letter-spacing:0.15rem; text-transform:uppercase; color:var(--muted); }
-    .limited-actions { display:flex; flex-direction:column; gap:10px; }
-    .limited-actions button, .limited-actions a { border-radius:999px; padding:12px; text-transform:uppercase; letter-spacing:0.2rem; font-size:12px; font-weight:600; border:none; }
-    .limited-actions button { background:linear-gradient(120deg,rgba(61,213,255,0.95),rgba(14,165,233,0.95)); color:#01040b; }
-    .limited-actions a { background:rgba(255,255,255,0.08); color:var(--text); border:1px solid rgba(255,255,255,0.2); text-align:center; }
-    .portal-block { margin-top:28px; border:1px solid var(--line); border-radius:22px; padding:20px; background:rgba(5,10,23,0.6); }
-    .portal-note { margin:0 0 14px; font-size:12px; letter-spacing:0.18rem; text-transform:uppercase; color:var(--muted); text-align:center; }
-    .portals { display:none; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:16px; }
-    .portals.visible { display:grid; }
-    .portal-btn { position:relative; border-radius:22px; padding:18px 20px; text-align:center; text-decoration:none; text-transform:uppercase; letter-spacing:0.25rem; font-size:12px; font-weight:600; color:#01040b; overflow:hidden; background:linear-gradient(120deg, rgba(61,213,255,0.9), rgba(20,167,255,0.7)); background-size:220% 100%; animation:energy 4s linear infinite; box-shadow:0 18px 60px rgba(20,167,255,0.25); }
-    .portal-btn.pro { background:linear-gradient(120deg, rgba(123,255,207,0.9), rgba(61,213,255,0.7)); box-shadow:0 18px 60px rgba(123,255,207,0.25); }
-    .portals { margin-top:32px; display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:16px; }
-    .portal-btn { position:relative; border-radius:22px; padding:18px 20px; text-align:center; text-decoration:none; text-transform:uppercase; letter-spacing:0.25rem; font-size:12px; font-weight:600; color:#01040b; overflow:hidden; background:#14a7ff; box-shadow:0 18px 60px rgba(20,167,255,0.25); }
-    .portal-btn::before { content:""; position:absolute; inset:0; background:linear-gradient(120deg, rgba(61,213,255,0.2), rgba(20,167,255,0.6), rgba(61,213,255,0.2)); animation:flow 4s linear infinite; opacity:0.8; }
-    .portal-btn span { position:relative; z-index:1; }
-    .portal-btn.pro { background:#26ffd4; color:#021b13; box-shadow:0 18px 60px rgba(38,255,212,0.25); }
-    @keyframes flow { 0% { transform:translateX(-20%); } 50% { transform:translateX(20%); } 100% { transform:translateX(60%); } }
-    @keyframes energy {
-      0% { background-position:0% 50%; }
-      50% { background-position:100% 50%; }
-      100% { background-position:0% 50%; }
-    }
+    .signup { margin-top:18px; font-size:13px; letter-spacing:0.15rem; text-transform:uppercase; }
+    .signup a { color:var(--accent); text-decoration:none; }
   </style>
 </head>
 <body>
   <main>
-    <h1>Acceso StarX</h1>
+    <h1>StarX Medic</h1>
     <form id="login-form">
       <label for="email">Correo</label>
       <input id="email" type="email" placeholder="usuario@starx.com" required />
@@ -56,45 +30,12 @@
       <button type="submit">Iniciar sesión</button>
       <div id="login-status" class="status-text"></div>
     </form>
-    <a class="activate-link" href="https://wa.me/?text=Hola%2C%20quiero%20activar%20mi%20sistema%20StarX%20y%20ver%20una%20demo">Activar sistema</a>
-    <div class="links">
-      <a href="/registro">Crear usuario</a>
-      <a href="#">Olvidé mi contraseña</a>
-    </div>
-    <div class="limited-banner">
-      <p>Estás usando StarX Medic en modo limitado</p>
-      <div class="limited-actions">
-        <button id="limited-activate">Activar sistema completo</button>
-        <a href="https://wa.me/51999999999?text=Hola%2C%20quiero%20activar%20StarX%20Medic%20con%20un%20asesor" target="_blank" rel="noreferrer">Activar con asesor</a>
-        <span id="limited-status" style="font-size:12px; letter-spacing:0.12rem; color:rgba(255,255,255,0.7);"></span>
-      </div>
-    </div>
-    <div class="portal-block">
-      <p id="portal-note" class="portal-note">Inicia sesión para elegir un portal.</p>
-      <div id="portal-grid" class="portals">
-        <a class="portal-btn" href="/paciente.html">Portal Paciente</a>
-      </div>
-    </div>
+    <div class="signup">¿Aún no tienes cuenta? <a href="/acceso.html">Crear cuenta gratis</a></div>
   </main>
   <script>
     const API_BASE = "https://api.starxmedic.com";
     const loginForm = document.getElementById("login-form");
     const statusEl = document.getElementById("login-status");
-    const portalGrid = document.getElementById("portal-grid");
-    const portalNote = document.getElementById("portal-note");
-    const limitedBtn = document.getElementById("limited-activate");
-    const limitedStatus = document.getElementById("limited-status");
-
-    const showPortals = () => {
-      if (!portalGrid) return;
-      portalGrid.classList.add("visible");
-      if (portalNote) portalNote.textContent = "Elige tu portal";
-    };
-
-    if (localStorage.getItem("starx_token")) {
-      showPortals();
-      statusEl.textContent = "Sesión activa — selecciona un portal";
-    }
 
     loginForm.addEventListener("submit", async (e) => {
       e.preventDefault();
@@ -117,33 +58,9 @@
         if (data.user) {
           localStorage.setItem("starx_profile", JSON.stringify(data.user));
         }
-        statusEl.textContent = "Acceso concedido — elige tu portal";
-        showPortals();
+        window.location.href = "/app.html";
       } catch (error) {
         statusEl.textContent = error.message || "No se pudo iniciar sesión";
-      }
-    });
-
-    limitedBtn?.addEventListener("click", async () => {
-      const token = localStorage.getItem("starx_token");
-      if (!token) {
-        limitedStatus.textContent = "Inicia sesión para activar";
-        return;
-      }
-      limitedStatus.textContent = "Activando...";
-      try {
-        const res = await fetch(`${API_BASE}/subscribe`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`
-          },
-          body: JSON.stringify({ plan: "basic" })
-        });
-        if (!res.ok) throw new Error("No se pudo activar");
-        limitedStatus.textContent = "Plan activado";
-      } catch (error) {
-        limitedStatus.textContent = error.message;
       }
     });
   </script>
