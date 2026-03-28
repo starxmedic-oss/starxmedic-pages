@@ -15,6 +15,13 @@
     .symbol-cube span { position:relative; z-index:1; color:#f5f8ff; }
     h1 { margin:0 0 10px; text-transform:uppercase; letter-spacing:0.45rem; font-size:28px; }
     p.lead { margin:0 0 32px; letter-spacing:0.2rem; text-transform:uppercase; color:var(--muted); font-size:13px; }
+    .insight { border:1px solid rgba(255,255,255,0.15); border-radius:24px; padding:14px 18px; margin-bottom:24px; text-align:center; font-size:14px; letter-spacing:0.15rem; color:var(--muted); }
+    .insight a { margin-left:12px; text-transform:uppercase; letter-spacing:0.15rem; font-size:12px; color:var(--text); border:1px solid rgba(255,255,255,0.3); border-radius:999px; padding:8px 16px; text-decoration:none; }
+    .profile-block { border:1px solid rgba(255,255,255,0.1); border-radius:24px; padding:20px; margin-bottom:24px; text-align:left; }
+    .profile-block h3 { margin-top:0; letter-spacing:0.2rem; text-transform:uppercase; }
+    .profile-block label { display:block; font-size:12px; letter-spacing:0.15rem; text-transform:uppercase; color:var(--muted); margin-bottom:6px; }
+    .profile-block input, .profile-block select { width:100%; border-radius:14px; border:1px solid rgba(255,255,255,0.15); padding:12px; margin-bottom:12px; background:rgba(255,255,255,0.05); color:var(--text); }
+    .profile-block button { width:100%; border:none; border-radius:999px; padding:12px; background:linear-gradient(120deg,#3dd5ff,#14a5e9); color:#01040b; text-transform:uppercase; letter-spacing:0.15rem; font-weight:600; cursor:pointer; }
     .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:20px; text-align:left; }
     .card { border:1px solid var(--line); border-radius:28px; padding:26px; background:rgba(6,12,25,0.9); text-decoration:none; color:var(--text); position:relative; overflow:hidden; }
     .card h2 { margin:0 0 10px; text-transform:uppercase; letter-spacing:0.3rem; font-size:16px; }
@@ -33,33 +40,64 @@
     <div class="symbol-cube"><span>S</span></div>
     <h1>Portal profesional</h1>
     <p class="lead">Sistema clínico Stark para equipos de salud</p>
-    <section class="grid">
-      <a class="card" href="mailto:contacto.starxmedic@gmail.com?subject=Pacientes%20Stark">
+    <div class="insight">Estás usando StarX Medic Free <a href="/plan.html">Activar Core Médico — $9.99</a></div>
+
+    <section class="profile-block" id="pro-profile-block">
+      <h3>Completa tu perfil profesional</h3>
+      <form id="pro-profile-form">
+        <label for="pro-type">Tipo de usuario</label>
+        <select id="pro-type">
+          <option value="estudiante">Estudiante</option>
+          <option value="medico">Médico</option>
+          <option value="especialista">Especialista</option>
+        </select>
+        <label for="pro-specialty-form">Especialidad</label>
+        <input id="pro-specialty-form" type="text" placeholder="Ej. Emergencias" />
+        <label for="pro-license-form">Número de colegiatura (opcional)</label>
+        <input id="pro-license-form" type="text" placeholder="CMP / Registro" />
+        <button type="submit">Guardar perfil</button>
+      </form>
+    </section>
+
+    <section class="grid" id="pro-content" style="display:none;">
+      <div class="card">
         <h2>Pacientes</h2>
         <p>Panel activo de pacientes vinculados, evolución y alertas críticas.</p>
-      </a>
-      <a class="card" href="mailto:contacto.starxmedic@gmail.com?subject=Resumen%20Stark">
-        <h2>Resumen</h2>
+      </div>
+      <div class="card">
+        <h2>Resumen clínico</h2>
         <p>Insights diarios, reportes automáticos y base de conocimiento.</p>
-      </a>
-      <a class="card" href="mailto:contacto.starxmedic@gmail.com?subject=Comandos%20Stark">
+      </div>
+      <div class="card">
         <h2>Comandos</h2>
         <p>Actividades tácticas, órdenes rápidas y seguimiento Stark Command.</p>
-      </a>
+      </div>
     </section>
-    <div class="notice">Acceso completo disponible solo para perfiles verificados (médicos, estudiantes, enfermería, laboratorio, técnicos). Solicítalo desde el panel principal.</div>
-    <a class="back" href="/entrar">Volver al panel</a>
+    <div class="notice">Completa tu perfil para desbloquear herramientas profesionales adicionales.</div>
+    <a class="back" href="/app.html">Volver</a>
   </main>
   <script>
-    (function(){
-      try {
-        if (localStorage.getItem("starx_pro_enabled") !== "true") {
-          window.location.href = "/paciente.html#activar-pro";
-        }
-      } catch (error) {
-        window.location.href = "/paciente.html#activar-pro";
-      }
-    })();
+    const profileBlock = document.getElementById('pro-profile-block');
+    const profileForm = document.getElementById('pro-profile-form');
+    const proContent = document.getElementById('pro-content');
+    const savedProfile = localStorage.getItem('starx_pro_profile');
+
+    if (savedProfile) {
+      profileBlock.style.display = 'none';
+      proContent.style.display = 'grid';
+    }
+
+    profileForm?.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const profile = {
+        type: document.getElementById('pro-type').value,
+        specialty: document.getElementById('pro-specialty-form').value,
+        license: document.getElementById('pro-license-form').value
+      };
+      localStorage.setItem('starx_pro_profile', JSON.stringify(profile));
+      profileBlock.style.display = 'none';
+      proContent.style.display = 'grid';
+    });
   </script>
   <script src="/cta.js" defer></script>
 </body>
