@@ -8,6 +8,7 @@
     :root { --bg:#02030a; --panel:#0d1424; --text:#f6f8ff; --muted:rgba(246,248,255,0.65); --accent:#3dd5ff; }
     * { box-sizing:border-box; }
     body { margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center; padding:40px 20px; font-family:"Space Grotesk","Segoe UI",sans-serif; background:radial-gradient(circle at top, rgba(61,213,255,0.12), transparent 60%), var(--bg); color:var(--text); overflow-y:auto; }
+    .fixed-cta { position:fixed; top:18px; right:18px; background:linear-gradient(120deg,#1ee267,#0f9b4a,#1ee267); color:#01040b; padding:10px 24px; border-radius:999px; text-transform:uppercase; letter-spacing:0.18rem; font-weight:600; text-decoration:none; box-shadow:0 18px 60px rgba(30,226,103,0.35); animation:energy 4s linear infinite; }
     main { width:min(420px,100%); border:1px solid rgba(255,255,255,0.08); border-radius:28px; background:var(--panel); padding:40px 36px; box-shadow:0 40px 150px rgba(0,0,0,0.45); }
     h1 { margin:0 0 24px; text-transform:uppercase; letter-spacing:0.35rem; font-size:20px; text-align:center; }
     label { display:block; font-size:12px; letter-spacing:0.2rem; text-transform:uppercase; color:var(--muted); margin-bottom:6px; }
@@ -15,9 +16,11 @@
     button { width:100%; border:none; border-radius:999px; padding:14px; background:linear-gradient(120deg,rgba(61,213,255,0.95),rgba(14,165,233,0.95)); color:#01040b; text-transform:uppercase; letter-spacing:0.2rem; font-size:13px; font-weight:600; cursor:pointer; }
     .google { margin-top:12px; width:100%; border:1px solid rgba(255,255,255,0.2); background:transparent; color:var(--muted); }
     .status { margin-top:12px; font-size:13px; letter-spacing:0.12rem; text-align:center; }
+    @keyframes energy { 0% { background-position:0% 50%; } 50% { background-position:100% 50%; } 100% { background-position:0% 50%; } }
   </style>
 </head>
 <body>
+  <a class="fixed-cta" href="/tienda.html">Activar sistema</a>
   <main>
     <h1>Crear cuenta</h1>
     <form id="signup-form">

@@ -32,10 +32,11 @@
       0%,100% { transform:scale(1); opacity:0.18; }
       50% { transform:scale(1.03); opacity:0.28; }
     }
+    .fixed-cta { position:fixed; top:18px; right:18px; z-index:9; background:linear-gradient(120deg,#1ee267,#0f9b4a,#1ee267); color:#01040b; padding:12px 28px; border-radius:999px; text-transform:uppercase; letter-spacing:0.18rem; font-weight:600; text-decoration:none; box-shadow:0 20px 60px rgba(30,226,103,0.35); animation:energy 4s linear infinite; }
     main { text-align:center; padding:90px 70px; border:1px solid rgba(255,255,255,0.05); border-radius:40px; background:rgba(0,4,12,0.75); box-shadow:0 0 200px rgba(61,213,255,0.22); position:relative; z-index:1; }
     .symbol {
-      width:170px;
-      height:170px;
+      width:240px;
+      height:240px;
       margin:0 auto 40px;
       position:relative;
       display:flex;
@@ -102,10 +103,11 @@
   </style>
 </head>
 <body>
+  <a class="fixed-cta" href="/tienda.html">Activar sistema</a>
   <main>
     <div class="symbol"><span>S</span></div>
-    <h1>Centraliza pacientes, eventos y seguimiento en un solo sistema médico inteligente.</h1>
-    <p>StarX Medic te ayuda a capturar eventos, seguir pacientes y tomar decisiones con IA, pero el cierre siempre queda en tus manos.</p>
+    <h1>StarX Medic es la consola clínica para pacientes y profesionales que quieren dejar de improvisar.</h1>
+    <p>Pacientes registran eventos y resultados en segundos. Profesionales organizan consultas, alertas y decisiones como si ya dirigieran su propia clínica inteligente.</p>
     <div class="status">
       <span class="dot"></span>
     </div>
@@ -113,15 +115,7 @@
       <a class="btn primary" href="/acceso.html">Crear cuenta gratis</a>
       <a class="btn secondary" href="https://www.youtube.com/watch?v=ysz5S6PUM-U" target="_blank" rel="noreferrer">Ver cómo funciona</a>
     </div>
-    <div class="tagline">Modo Autopilot Medic</div>
-    <section class="commercial" id="como">
-      <h2>StarX Medic Core — $9.99/mes</h2>
-      <p>Convierte cualquier médico en una clínica inteligente: organización avanzada, panel profesional, seguimiento y automatización lista para crecer.</p>
-      <a class="btn btn-plan" style="display:inline-flex; margin-top:12px;" href="/plan.html">Ver plan</a>
-    </section>
-    <div class="button-row" style="margin-top:20px;">
-      <a class="btn btn-plan" href="/plan.html">Activar sistema</a>
-    </div>
+    <div class="tagline">Pacientes + Profesionales · Autopilot Medic</div>
   </main>
   <script src="/cta.js" defer></script>
 </body>

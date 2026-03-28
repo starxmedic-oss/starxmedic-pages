@@ -8,6 +8,7 @@
     :root { --bg:#01030a; --panel:#081225; --text:#f5f7ff; --muted:rgba(245,247,255,0.6); --accent:#3dd5ff; }
     * { box-sizing:border-box; }
     body { margin:0; min-height:100vh; background:radial-gradient(circle at top, rgba(61,213,255,0.15), transparent 60%), var(--bg); font-family:"Space Grotesk","Segoe UI",sans-serif; color:var(--text); display:flex; justify-content:center; align-items:center; padding:40px 20px; overflow-y:auto; }
+    .fixed-cta { position:fixed; top:18px; right:18px; background:linear-gradient(120deg,#1ee267,#0f9b4a,#1ee267); color:#01040b; padding:10px 26px; border-radius:999px; text-transform:uppercase; letter-spacing:0.2rem; font-weight:600; text-decoration:none; box-shadow:0 20px 60px rgba(30,226,103,0.35); animation:energy 4s linear infinite; }
     main { width:min(900px,100%); }
     h1 { text-align:center; text-transform:uppercase; letter-spacing:0.35rem; font-weight:400; margin-bottom:10px; }
     p { text-align:center; color:var(--muted); letter-spacing:0.12rem; margin-bottom:32px; }
@@ -18,22 +19,24 @@
     .portal-card h2 { position:relative; z-index:1; margin:0 0 12px; font-size:26px; letter-spacing:0.2rem; }
     .portal-card p { position:relative; z-index:1; text-align:left; margin:0; color:var(--muted); }
     @keyframes flow { 0% { transform:translateX(-20%); } 100% { transform:translateX(20%); } }
+    @keyframes energy { 0% { background-position:0% 50%; } 50% { background-position:100% 50%; } 100% { background-position:0% 50%; } }
   </style>
 </head>
 <body>
+  <a class="fixed-cta" href="/tienda.html">Activar sistema</a>
   <main>
     <h1>StarX Medic</h1>
     <p>Selecciona el portal que necesitas</p>
     <div class="portal-grid">
       <a class="portal-card" href="/paciente.html">
-        <span>Free</span>
+        <span>Tu historia clínica</span>
         <h2>Portal Paciente</h2>
-        <p>Registra eventos, revisa historial y siente el valor de StarX Medic.</p>
+        <p>Registra eventos personales, guarda resultados y empieza a convertir tu vida médica en un sistema real.</p>
       </a>
       <a class="portal-card" href="/medico.html">
-        <span>Pro</span>
+        <span>Profesionales</span>
         <h2>Portal Profesional</h2>
-        <p>Herramientas para médicos y clínicas con seguimiento avanzado.</p>
+        <p>Médicos, enfermería, técnicos y estudiantes organizan pacientes, órdenes y alertas en una interfaz viva y moderna.</p>
       </a>
     </div>
   </main>

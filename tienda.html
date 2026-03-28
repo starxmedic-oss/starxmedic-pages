@@ -8,6 +8,7 @@
     :root { --bg:#f4f6fb; --text:#0f1b3d; --muted:#4a5875; --card:#ffffff; --accent:#12c065; }
     * { box-sizing:border-box; }
     body { margin:0; font-family:"Space Grotesk","Segoe UI",sans-serif; background:var(--bg); color:var(--text); }
+    .fixed-cta { position:fixed; top:18px; right:18px; background:linear-gradient(120deg,#1ee267,#0f9b4a,#1ee267); color:white; padding:10px 26px; border-radius:999px; text-transform:uppercase; letter-spacing:0.18rem; font-weight:600; text-decoration:none; box-shadow:0 18px 50px rgba(18,192,101,0.35); animation:energy 4s linear infinite; }
     header { text-align:center; padding:60px 20px 20px; }
     header h1 { margin:0; font-size:34px; letter-spacing:0.2rem; }
     header p { margin:8px 0 0; font-size:16px; color:var(--muted); }
@@ -16,11 +17,13 @@
     .card { background:var(--card); border-radius:20px; padding:28px; box-shadow:0 20px 60px rgba(15,27,61,0.08); display:flex; flex-direction:column; gap:12px; }
     .card h2 { margin:0; font-size:20px; }
     .price { font-size:24px; color:var(--accent); }
-    button { border:none; border-radius:999px; padding:14px; background:var(--accent); color:white; text-transform:uppercase; letter-spacing:0.2rem; font-weight:600; cursor:pointer; }
+    button { border:none; border-radius:999px; padding:14px; background:var(--accent); color:white; text-transform:uppercase; letter-spacing:0.2rem; font-weight:600; cursor:pointer; animation:energy 4s linear infinite; box-shadow:0 18px 50px rgba(18,192,101,0.35); }
     footer { text-align:center; padding:40px 20px 60px; font-size:14px; color:var(--muted); }
+    @keyframes energy { 0% { background-position:0% 50%; } 50% { background-position:100% 50%; } 100% { background-position:0% 50%; } }
   </style>
 </head>
 <body>
+  <a class="fixed-cta" href="/tienda.html">Activar sistema</a>
   <header>
     <h1>StarX Medic</h1>
     <p>Plataforma digital de gestión médica</p>
