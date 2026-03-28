@@ -57,20 +57,9 @@
     .avatar { width:86px; height:86px; border-radius:50%; border:1px solid rgba(255,255,255,0.18); margin:0 auto 12px; display:flex; align-items:center; justify-content:center; font-size:32px; color:var(--accent-2); background:rgba(255,255,255,0.05); background-size:cover; background-position:center; overflow:hidden; }
     .ghost { width:auto; padding:10px 22px; background:rgba(255,255,255,0.08); color:var(--text); box-shadow:none; }
     .insight-panel { border:1px dashed rgba(255,255,255,0.15); border-radius:24px; padding:18px; text-align:center; font-size:13px; letter-spacing:0.12rem; color:var(--muted); }
-    .history-card, .link-mvp { border:1px solid var(--line); border-radius:30px; padding:32px; background:rgba(6,11,22,0.9); box-shadow:0 20px 80px rgba(0,0,0,0.45); }
-    .history-card h2, .link-mvp h2 { margin:0 0 16px; font-size:18px; letter-spacing:0.3rem; text-transform:uppercase; }
+    .history-card { border:1px solid var(--line); border-radius:30px; padding:32px; background:rgba(6,11,22,0.9); box-shadow:0 20px 80px rgba(0,0,0,0.45); }
+    .history-card h2 { margin:0 0 16px; font-size:18px; letter-spacing:0.3rem; text-transform:uppercase; }
     .history-entry { border-top:1px solid rgba(255,255,255,0.08); padding:12px 0; font-size:14px; letter-spacing:0.08rem; }
-    .link-lists { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:18px; margin-top:12px; }
-    .link-box { border:1px solid rgba(255,255,255,0.12); border-radius:18px; padding:14px; min-height:80px; font-size:14px; color:var(--muted); }
-    .link-item { display:flex; justify-content:space-between; align-items:center; padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.05); }
-    .link-item:last-child { border-bottom:none; }
-    .link-item button { padding:6px 14px; font-size:11px; letter-spacing:0.12rem; }
-    .pro-activation { border:1px solid var(--line); border-radius:30px; padding:28px; background:rgba(6,11,22,0.9); box-shadow:0 20px 80px rgba(0,0,0,0.4); }
-    .pro-activation h2 { margin:0 0 10px; letter-spacing:0.35rem; text-transform:uppercase; font-size:16px; }
-    .pro-activation p { margin:0 0 18px; font-size:13px; color:var(--muted); letter-spacing:0.1rem; }
-    .pro-form { margin-top:16px; border-top:1px solid rgba(255,255,255,0.08); padding-top:18px; display:flex; flex-direction:column; gap:14px; }
-    .pro-form.hidden { display:none; }
-    .pro-link { display:none; margin-top:12px; text-decoration:none; text-transform:uppercase; letter-spacing:0.2rem; font-size:12px; color:#01040b; background:linear-gradient(120deg, rgba(123,255,207,0.9), rgba(61,213,255,0.8)); padding:12px 24px; border-radius:999px; background-size:220% 100%; animation:energy 4s linear infinite; text-align:center; }
     .back-link { text-align:center; }
     .back-link a { color:var(--muted); text-decoration:none; text-transform:uppercase; letter-spacing:0.2rem; font-size:12px; }
     @keyframes energy { 0% { background-position:0% 50%; } 50% { background-position:100% 50%; } 100% { background-position:0% 50%; } }
@@ -85,7 +74,7 @@
       <div class="avatar" id="patient-avatar">👤</div>
       <div>
         <h2>Mi perfil</h2>
-        <p>Tu información, bajo tu control. Cárgala y compártela cuando quieras.</p>
+        <p>Información bajo tu control.</p>
         <div class="profile-actions">
           <button type="button" class="ghost" id="avatar-upload">Cargar foto</button>
           <input type="file" id="avatar-input" accept="image/*" hidden />
@@ -134,61 +123,6 @@
         <div class="history-entry">No hay registros aún. Tus eventos aparecerán aquí.</div>
       </div>
     </section>
-
-    <section class="link-mvp">
-      <h2>Vincular profesional</h2>
-      <form id="link-form">
-        <label for="link-email">Email del profesional</label>
-        <input id="link-email" type="email" placeholder="correo@starx.com" required />
-        <button type="submit">Vincular</button>
-      </form>
-      <div class="status" id="link-status"></div>
-      <div class="link-lists">
-        <div>
-          <h3>Solicitudes</h3>
-          <div id="link-requests" class="link-box">Sin solicitudes</div>
-        </div>
-        <div>
-          <h3>Vínculos activos</h3>
-          <div id="link-active" class="link-box">Sin profesionales vinculados</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="pro-activation" id="activar-pro">
-      <h2>Activar portal profesional</h2>
-      <p>Convierte tu cuenta en perfil profesional completando los datos requeridos.</p>
-      <button type="button" id="open-pro-form">Activar portal profesional</button>
-      <form id="pro-form" class="pro-form hidden">
-        <div>
-          <label for="pro-name">Nombre profesional</label>
-          <input id="pro-name" type="text" placeholder="Nombre completo" />
-        </div>
-        <div>
-          <label for="pro-specialty">Especialidad</label>
-          <input id="pro-specialty" type="text" placeholder="Ej. Medicina interna" />
-        </div>
-        <div>
-          <label for="pro-license">Número de colegiatura</label>
-          <input id="pro-license" type="text" placeholder="CMP / Registro" />
-        </div>
-        <div>
-          <label for="pro-college">Colegio médico</label>
-          <input id="pro-college" type="text" placeholder="Ej. CMP Lima" />
-        </div>
-        <div>
-          <label for="pro-institution">Institución / centro</label>
-          <input id="pro-institution" type="text" placeholder="Clínica / Hospital" />
-        </div>
-        <button type="submit">Guardar datos</button>
-      </form>
-      <div class="status" id="pro-status"></div>
-      <a id="pro-link" class="pro-link" href="/medico.html">Ir al portal profesional</a>
-    </section>
-
-    <div class="back-link">
-      <a href="/app.html">Volver</a>
-    </div>
   </main>
 
   <script>
@@ -199,18 +133,9 @@
     const symptomStatus = document.getElementById("symptom-status");
     const panelEl = document.getElementById("context-panel");
     const navButtons = document.querySelectorAll(".primary-actions button[data-panel]");
-    const linkForm = document.getElementById("link-form");
-    const linkEmail = document.getElementById("link-email");
-    const linkStatus = document.getElementById("link-status");
-    const requestsEl = document.getElementById("link-requests");
-    const activeEl = document.getElementById("link-active");
     const avatarEl = document.getElementById("patient-avatar");
     const avatarUploadBtn = document.getElementById("avatar-upload");
     const avatarInput = document.getElementById("avatar-input");
-    const proForm = document.getElementById("pro-form");
-    const proOpenBtn = document.getElementById("open-pro-form");
-    const proStatus = document.getElementById("pro-status");
-    const proLink = document.getElementById("pro-link");
     let patientId = "Paciente-001";
 
     if (!token) {
@@ -263,45 +188,6 @@
       });
     }
 
-    const updateProAccess = () => {
-      const enabled = localStorage.getItem("starx_pro_enabled") === "true";
-      if (!proForm || !proOpenBtn || !proLink) return;
-      if (enabled) {
-        proForm.classList.add("hidden");
-        proOpenBtn.style.display = "none";
-        proLink.style.display = "inline-flex";
-        proStatus.textContent = "Portal profesional listo";
-      } else {
-        proOpenBtn.style.display = "inline-flex";
-        proLink.style.display = "none";
-        proStatus.textContent = "";
-      }
-    };
-
-    if (proOpenBtn && proForm) {
-      proOpenBtn.addEventListener("click", () => {
-        proForm.classList.remove("hidden");
-      });
-      proForm.addEventListener("submit", (event) => {
-        event.preventDefault();
-        const name = document.getElementById("pro-name").value.trim();
-        const specialty = document.getElementById("pro-specialty").value.trim();
-        const license = document.getElementById("pro-license").value.trim();
-        const college = document.getElementById("pro-college").value.trim();
-        const institution = document.getElementById("pro-institution").value.trim();
-        if (!name || !specialty || !license || !college) {
-          proStatus.textContent = "Completa todos los campos requeridos";
-          return;
-        }
-        const profile = { name, specialty, license, college, institution };
-        localStorage.setItem("starx_pro_profile", JSON.stringify(profile));
-        localStorage.setItem("starx_pro_enabled", "true");
-        proStatus.textContent = "Datos registrados. Portal profesional activado.";
-        updateProAccess();
-      });
-    }
-
-    updateProAccess();
 
     function updateTimestamp() {
       const now = new Date();
