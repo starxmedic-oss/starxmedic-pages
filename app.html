@@ -47,13 +47,18 @@
     .module[data-kind="wayruru"] .cube::before { background:linear-gradient(135deg, rgba(255,111,145,0.65), rgba(255,150,113,0.25)); }
     .module[data-kind="ofy"] .cube::before { background:linear-gradient(135deg, rgba(26,107,77,0.6), rgba(79,179,123,0.25)); }
     .module[data-kind="powder"] .cube::before { background:linear-gradient(135deg, rgba(255,193,7,0.6), rgba(255,179,0,0.25)); }
+    .activation-banner { border:1px solid var(--border); border-radius:28px; padding:18px 24px; background:rgba(8,14,26,0.9); display:flex; justify-content:space-between; align-items:center; gap:20px; box-shadow:0 20px 80px rgba(0,0,0,0.35); }
+    .activation-banner.hidden { display:none; }
+    .banner-actions button { width:auto; }
+    #core-grid.limited { filter:blur(2px); opacity:0.6; }
+    .monetization-panel { display:none; border:1px solid var(--border); border-radius:30px; padding:28px; background:rgba(6,12,24,0.9); box-shadow:0 20px 60px rgba(0,0,0,0.4); margin-bottom:24px; }
+    .monetization-panel.visible { display:block; }
+    .monetization-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:16px; }
+    .monet-card { border:1px solid rgba(255,255,255,0.08); border-radius:22px; padding:18px; background:rgba(8,12,24,0.9); }
+    .monet-card .label { margin:0 0 8px; font-size:12px; color:var(--muted); letter-spacing:0.18rem; text-transform:uppercase; }
+    .monet-card .value { margin:0; font-size:22px; letter-spacing:0.25rem; }
     .jarvis { position:fixed; right:30px; bottom:30px; padding:16px 32px; border-radius:999px; background:linear-gradient(120deg, rgba(61,213,255,0.25), rgba(20,167,255,0.25)); border:1px solid rgba(61,213,255,0.35); color:var(--text); text-transform:uppercase; letter-spacing:0.3rem; font-size:12px; cursor:pointer; backdrop-filter:blur(10px); box-shadow:0 15px 40px rgba(0,0,0,0.35); background-size:220% 100%; animation:energy 4s linear infinite; }
     .jarvis-panel { position:fixed; right:30px; bottom:100px; width:320px; height:420px; border-radius:30px; border:1px solid rgba(255,255,255,0.08); background:rgba(4,8,16,0.92); box-shadow:0 20px 60px rgba(0,0,0,0.5); display:flex; flex-direction:column; opacity:0; pointer-events:none; transition:opacity 0.3s ease, transform 0.3s ease; transform:translateY(20px); }
-    .subscription-overlay { position:absolute; inset:0; background:rgba(1,3,10,0.92); border-radius:40px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:18px; padding:40px; }
-    .subscription-overlay h3 { margin:0; font-size:20px; letter-spacing:0.3rem; text-transform:uppercase; }
-    .subscription-overlay p { margin:0; font-size:13px; letter-spacing:0.18rem; text-transform:uppercase; color:var(--muted); }
-    .subscription-overlay button { padding:14px 32px; border:none; border-radius:999px; background:linear-gradient(120deg, rgba(61,213,255,0.35), rgba(20,167,255,0.35)); color:var(--text); text-transform:uppercase; letter-spacing:0.25rem; font-size:12px; cursor:pointer; background-size:220% 100%; animation:energy 4s linear infinite; box-shadow:0 15px 45px rgba(20,167,255,0.35); }
-    .subscription-overlay small { font-size:12px; color:rgba(236,243,255,0.55); letter-spacing:0.12rem; }
   </style>
 </head>
 <body>
@@ -121,13 +126,37 @@
         <p>Online</p>
       </article>
     </section>
-    <div class="subscription-overlay" id="subscription-overlay" style="display:none;">
-      <h3>Activa tu sistema</h3>
-      <p id="subscription-copy">Necesitas un plan vigente para continuar</p>
-      <button id="activate-plan">Activar plan — S/29</button>
-      <small class="assist-note">Activación inicial asistida</small>
-      <small id="subscription-note"></small>
+    <div class="activation-banner hidden" id="activation-banner">
+      <div>
+        <p id="subscription-copy">Activa tu sistema para desbloquear todas las funciones.</p>
+        <small class="assist-note">Modo limitado activo</small>
+      </div>
+      <div class="banner-actions">
+        <button id="activate-plan">Activar ahora — S/29</button>
+      </div>
+      <div class="status" id="subscription-note"></div>
     </div>
+    <section class="monetization-panel" id="monetization-panel">
+      <h3>Panel de monetización</h3>
+      <div class="monetization-grid">
+        <div class="monet-card">
+          <p class="label">Usuarios totales</p>
+          <p class="value" id="monet-users">--</p>
+        </div>
+        <div class="monet-card">
+          <p class="label">Usuarios activos</p>
+          <p class="value" id="monet-active">--</p>
+        </div>
+        <div class="monet-card">
+          <p class="label">Usuarios sin plan</p>
+          <p class="value" id="monet-inactive">--</p>
+        </div>
+        <div class="monet-card">
+          <p class="label">Conversiones</p>
+          <p class="value" id="monet-conv">--</p>
+        </div>
+      </div>
+    </section>
   </main>
   <button class="jarvis" id="jarvis-toggle">Jarvis</button>
   <aside class="jarvis-panel" id="jarvis-panel">
@@ -174,17 +203,24 @@
     });
 
     const grid = document.getElementById("core-grid");
-    const overlay = document.getElementById("subscription-overlay");
+    const activationBanner = document.getElementById("activation-banner");
     const controlSystemEl = document.getElementById("control-system");
     const controlUsersEl = document.getElementById("control-users");
     const controlEventsEl = document.getElementById("control-events");
     const controlSubsEl = document.getElementById("control-subs");
     const controlColonyEl = document.getElementById("control-colony");
+    const monetPanel = document.getElementById("monetization-panel");
+    const monetUsersEl = document.getElementById("monet-users");
+    const monetActiveEl = document.getElementById("monet-active");
+    const monetInactiveEl = document.getElementById("monet-inactive");
+    const monetConvEl = document.getElementById("monet-conv");
     const activateBtn = document.getElementById("activate-plan");
     const subscriptionCopy = document.getElementById("subscription-copy");
     const subscriptionNote = document.getElementById("subscription-note");
     const defaultActivateText = "Activar plan — S/29";
     activateBtn.textContent = defaultActivateText;
+    const isAdmin = localStorage.getItem("starx_admin") === "true";
+    if (isAdmin && monetPanel) monetPanel.classList.add("visible");
 
     let currentSubscription = null;
     let statsCache = null;
@@ -192,14 +228,13 @@
 
     const renderSubscriptionState = () => {
       const active = currentSubscription && currentSubscription.status === "active";
+      if (!grid) return;
       if (!active) {
-        overlay.style.display = "flex";
-        grid.style.filter = "blur(4px)";
-        grid.style.pointerEvents = "none";
+        if (activationBanner) activationBanner.classList.remove("hidden");
+        grid.classList.add("limited");
       } else {
-        overlay.style.display = "none";
-        grid.style.filter = "none";
-        grid.style.pointerEvents = "auto";
+        if (activationBanner) activationBanner.classList.add("hidden");
+        grid.classList.remove("limited");
       }
     };
 
@@ -210,11 +245,11 @@
         const response = await request("/my-subscription");
         currentSubscription = response.subscription;
         if (currentSubscription && currentSubscription.status === "active") {
-          subscriptionCopy.textContent = "Plan activo";
+          subscriptionCopy.textContent = "Sistema activo";
           subscriptionNote.textContent = currentSubscription.plan.toUpperCase();
         } else {
-          subscriptionCopy.textContent = "Necesitas un plan vigente para continuar";
-          subscriptionNote.textContent = "";
+          subscriptionCopy.textContent = "Activa tu sistema para desbloquear todas las funciones";
+          subscriptionNote.textContent = "Versión limitada";
         }
       } catch (error) {
         subscriptionCopy.textContent = "No se pudo verificar la suscripción";
@@ -234,7 +269,7 @@
           body: JSON.stringify({ plan: "basic" })
         });
         currentSubscription = response.subscription;
-        subscriptionCopy.textContent = "Plan activado";
+        subscriptionCopy.textContent = "Sistema activado";
         subscriptionNote.textContent = currentSubscription.plan.toUpperCase();
       } catch (error) {
         subscriptionCopy.textContent = "No se pudo activar";
@@ -258,11 +293,20 @@
     };
 
     const updateControlPanel = (stats, colony) => {
-      if (controlUsersEl) controlUsersEl.textContent = stats?.users_total ?? "--";
+      const users = stats?.users_total ?? 0;
+      const subs = stats?.subscriptions_total ?? 0;
+      const inactive = Math.max(users - subs, 0);
+      if (controlUsersEl) controlUsersEl.textContent = users;
       if (controlEventsEl) controlEventsEl.textContent = stats?.events_total ?? "--";
-      if (controlSubsEl) controlSubsEl.textContent = stats?.subscriptions_total ?? "--";
+      if (controlSubsEl) controlSubsEl.textContent = subs;
       if (controlSystemEl) controlSystemEl.textContent = colony?.status ? colony.status.toUpperCase() : "SIN DATOS";
       if (controlColonyEl) controlColonyEl.textContent = colony ? `${colony.nodes_total || 0} nodos` : "--";
+      if (monetPanel && monetPanel.classList.contains("visible")) {
+        if (monetUsersEl) monetUsersEl.textContent = users;
+        if (monetActiveEl) monetActiveEl.textContent = subs;
+        if (monetInactiveEl) monetInactiveEl.textContent = inactive;
+        if (monetConvEl) monetConvEl.textContent = subs;
+      }
     };
 
     const refreshControl = async (force = false) => {
@@ -321,6 +365,21 @@
       }
       if (cmd === "modulos") {
         addMessage("bot", "StarX, Wayruru, OFY, Powder");
+        return;
+      }
+      if (cmd === "plan") {
+        const plan = currentSubscription ? `${currentSubscription.plan.toUpperCase()} (${currentSubscription.status})` : "sin plan";
+        addMessage("bot", `Tu plan actual es ${plan}. Usa “activar” para desbloquear todo.`);
+        return;
+      }
+      if (cmd === "activar" || cmd === "mejorar sistema") {
+        if (currentSubscription && currentSubscription.status === "active") {
+          addMessage("bot", "Tu sistema ya está activo.");
+        } else {
+          addMessage("bot", "Activando plan basic...");
+          await subscribeBasic();
+          addMessage("bot", "Plan basic activo. ¡Disfruta el sistema completo!");
+        }
         return;
       }
       if (cmd === "usuarios" || cmd === "eventos" || cmd === "links" || cmd === "suscripciones") {
