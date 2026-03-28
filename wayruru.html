@@ -2,46 +2,150 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="Cache-Control" content="no-store" />
-  <title>Wayruru Smart Travel</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wayruru Travel</title>
   <style>
-    :root { --bg:#0a0313; --text:#fef8ff; --muted:rgba(254,248,255,0.6); --accent1:#ff6f91; --accent2:#ff9671; }
+    :root { --accent:#ff4d4f; --text:#111; --muted:#444; }
     * { box-sizing:border-box; }
-    body { margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center; background:radial-gradient(circle at top, rgba(255,111,145,0.2), transparent 60%), radial-gradient(circle at bottom, rgba(255,150,113,0.15), transparent 55%), var(--bg); font-family:"Space Grotesk","Segoe UI",sans-serif; color:var(--text); }
-    main { text-align:center; padding:90px 70px; border:1px solid rgba(255,255,255,0.08); border-radius:40px; background:rgba(10,3,19,0.8); box-shadow:0 0 220px rgba(255,111,145,0.22); position:relative; overflow:hidden; }
-    main::after { content:""; position:absolute; inset:-50%; background:radial-gradient(circle, rgba(255,255,255,0.05), transparent 60%); filter:blur(80px); animation:glow 18s ease-in-out infinite; }
-    @keyframes glow { 0%,100% { transform:scale(1); opacity:0.4; } 50% { transform:scale(1.08); opacity:0.7; } }
-    .shell { position:relative; z-index:1; }
-    .symbol { width:170px; height:170px; margin:0 auto 40px; position:relative; display:flex; align-items:center; justify-content:center; color:#120516; font-size:62px; letter-spacing:0.5rem; font-weight:600; text-transform:uppercase; animation:float 6s ease-in-out infinite, spin 30s linear infinite; transform-style:preserve-3d; }
-    .symbol::before, .symbol::after { content:""; position:absolute; inset:0; border-radius:24px; }
-    .symbol::before { background:linear-gradient(135deg, rgba(255,111,145,0.95), rgba(255,150,113,0.7)); box-shadow:0 20px 80px rgba(255,111,145,0.35); transform:translateZ(-18px); }
-    .symbol::after { inset:14px; background:rgba(5,0,12,0.85); box-shadow:inset 0 0 40px rgba(255,111,145,0.35); transform:translateZ(28px); }
-    .symbol span { position:relative; z-index:2; color:var(--text); }
-    @keyframes float { 0%,100% { transform:translateY(-6px); } 50% { transform:translateY(6px); } }
-    @keyframes spin { 0% { transform:rotateX(0deg) rotateY(0deg); } 100% { transform:rotateX(360deg) rotateY(360deg); } }
-    h1 { margin:0 0 10px; font-size:34px; letter-spacing:0.45rem; text-transform:uppercase; font-weight:300; }
-    .subtitle { margin:0 0 24px; font-size:16px; letter-spacing:0.3rem; color:rgba(254,248,255,0.75); text-transform:uppercase; font-weight:300; }
-    .status { margin:28px auto 18px; display:flex; justify-content:center; }
-    .status .dot { width:10px; height:10px; border-radius:50%; background:#a0ffb5; box-shadow:0 0 12px rgba(160,255,181,0.8); animation:pulseDot 3.6s ease-in-out infinite; }
-    @keyframes pulseDot { 0%,100% { transform:scale(0.9); box-shadow:0 0 6px rgba(160,255,181,0.4); } 50% { transform:scale(1.2); box-shadow:0 0 16px rgba(160,255,181,1); } }
-    .tagline { margin-top:12px; font-size:12px; letter-spacing:0.25rem; text-transform:uppercase; color:rgba(254,248,255,0.45); }
-    .signature { margin-top:40px; font-size:11px; letter-spacing:0.35rem; text-transform:uppercase; color:rgba(254,248,255,0.35); }
-    a { text-decoration:none; display:inline-flex; padding:16px 40px; border-radius:999px; background:linear-gradient(120deg, var(--accent1), var(--accent2)); color:#150714; text-transform:uppercase; letter-spacing:0.25rem; font-weight:600; font-size:14px; margin-top:10px; }
+    body { margin:0; font-family:"Space Grotesk","Segoe UI",sans-serif; background:#fff; color:var(--text); line-height:1.5; }
+    header { padding:24px 40px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #eee; position:sticky; top:0; background:#fff; z-index:10; }
+    nav ul { list-style:none; display:flex; gap:24px; margin:0; padding:0; }
+    nav a { text-decoration:none; color:var(--text); text-transform:uppercase; letter-spacing:0.15rem; font-size:12px; }
+    .hero { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:30px; padding:60px 40px; align-items:center; }
+    .hero-text h1 { font-size:48px; margin:0 0 16px; }
+    .hero-text p { margin:0 0 26px; color:var(--muted); font-size:18px; }
+    .hero-actions { display:flex; gap:12px; flex-wrap:wrap; }
+    .btn { text-decoration:none; padding:14px 26px; border-radius:999px; text-transform:uppercase; letter-spacing:0.2rem; font-size:12px; font-weight:600; border:2px solid var(--accent); color:#fff; background:var(--accent); }
+    .btn.secondary { background:#fff; color:var(--accent); }
+    .hero-image { min-height:320px; border-radius:24px; background:url('https://images.unsplash.com/photo-1502920514313-52581002a659?auto=format&fit=crop&w=1200&q=80') center/cover; }
+    section { padding:50px 40px; border-bottom:1px solid #f5f5f5; }
+    h2 { text-transform:uppercase; letter-spacing:0.3rem; margin:0 0 20px; }
+    .story { max-width:720px; color:var(--muted); font-size:18px; }
+    .packages { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:20px; }
+    .package { border:1px solid #eee; border-radius:16px; padding:20px; display:flex; flex-direction:column; gap:8px; }
+    .package strong { font-size:20px; }
+    .package span { color:var(--muted); font-size:14px; text-transform:uppercase; letter-spacing:0.1rem; }
+    .assist-widget { position:fixed; right:24px; bottom:24px; width:260px; background:#fff; border:1px solid #eee; border-radius:18px; padding:18px; box-shadow:0 20px 50px rgba(0,0,0,0.1); }
+    .assist-widget p { margin:0 0 12px; color:var(--muted); }
+    .assist-widget button { width:100%; padding:10px; border:none; border-radius:999px; margin-bottom:10px; background:var(--accent); color:#fff; text-transform:uppercase; letter-spacing:0.15rem; font-size:11px; cursor:pointer; }
+    .assist-widget button.secondary { background:#fff; color:var(--accent); border:2px solid var(--accent); }
+    .client-section { max-width:620px; }
+    .client-section input { width:100%; padding:12px; border:1px solid #ddd; border-radius:12px; margin:10px 0; }
+    .client-section button { border:none; padding:12px 24px; border-radius:999px; text-transform:uppercase; background:var(--accent); color:#fff; letter-spacing:0.15rem; cursor:pointer; }
+    .promo-box { margin-top:16px; padding:16px; border:1px dashed var(--accent); border-radius:12px; display:none; }
+    footer { padding:40px; text-align:center; color:var(--muted); font-size:14px; }
+    @media (max-width:600px) { header { flex-direction:column; gap:12px; } nav ul { flex-wrap:wrap; justify-content:center; } .assist-widget { position:static; width:100%; margin-top:20px; } }
   </style>
 </head>
 <body>
-  <main>
-    <div class="shell">
-      <div class="symbol"><span>W</span></div>
-      <h1>Wayruru Smart Travel</h1>
-      <p class="subtitle">Cada viaje, una decisión inteligente.</p>
-      <div class="status"><span class="dot"></span></div>
-      <a href="/wayruru-login.html">Ingresar</a>
-      <div class="tagline">Advanced Travel Intelligence</div>
-      <div class="signature">Impulsado por tecnología STARX</div>
-    </div>
+  <header>
+    <div style="font-weight:700; letter-spacing:0.3rem; text-transform:uppercase;">Wayruru Travel</div>
+    <nav>
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#quienes">Quiénes somos</a></li>
+        <li><a href="#viajes">Viajes</a></li>
+        <li><a href="#empresas">Empresas</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="inicio">
+    <section class="hero">
+      <div class="hero-text">
+        <p>Viajes reales</p>
+        <h1>Descubre el mundo con Wayruru Travel</h1>
+        <p>Paquetes personalizados, atención directa y experiencias diseñadas para ti.</p>
+        <div class="hero-actions">
+          <a class="btn" href="#viajes">Ver viajes</a>
+          <a class="btn secondary" href="https://wa.me/TUNUMERO?text=Hola%2C%20quiero%20viajar%20con%20Wayruru">Contactar por WhatsApp</a>
+        </div>
+      </div>
+      <div class="hero-image"></div>
+    </section>
+
+    <section id="quienes">
+      <h2>Quiénes somos</h2>
+      <p class="story">Wayruru Travel nació para acompañar a viajeros que buscan experiencias auténticas. Trabajamos con proveedores locales, diseñamos itinerarios flexibles y mantenemos contacto humano antes, durante y después de cada viaje.</p>
+    </section>
+
+    <section id="viajes">
+      <h2>Viajes destacados</h2>
+      <div class="packages">
+        <div class="package">
+          <strong>Andes Experience</strong>
+          <span>5 días · Desde $780</span>
+          <p>Recorre Cusco, Valle Sagrado y Machu Picchu con guía dedicado.</p>
+          <a class="btn" href="https://wa.me/TUNUMERO?text=Quiero%20este%20paquete%20de%20viaje">Solicitar este viaje</a>
+        </div>
+        <div class="package">
+          <strong>Caribe Wayruru</strong>
+          <span>7 días · Desde $1,200</span>
+          <p>Playas privadas, coordinación de vuelos y concierge 24/7.</p>
+          <a class="btn" href="https://wa.me/TUNUMERO?text=Quiero%20este%20paquete%20de%20viaje">Solicitar este viaje</a>
+        </div>
+        <div class="package">
+          <strong>Europa Libre</strong>
+          <span>10 días · Desde $1,950</span>
+          <p>Itinerario modular: Madrid, París y Roma con experiencias selectas.</p>
+          <a class="btn" href="https://wa.me/TUNUMERO?text=Quiero%20este%20paquete%20de%20viaje">Solicitar este viaje</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="empresas">
+      <h2>Empresas</h2>
+      <p class="story">Diseñamos programas para equipos y ejecutivos: coordinamos vuelos, alojamientos, traslados y soporte local. Solicita una propuesta personalizada y nos conectamos el mismo día.</p>
+      <a class="btn" href="mailto:empresas@wayrurutravel.com">Solicitar propuesta</a>
+    </section>
+
+    <section id="clientes">
+      <h2>¿Eres cliente Wayruru?</h2>
+      <div class="client-section">
+        <p>Ingresa tu código para ver promociones exclusivas.</p>
+        <input id="client-code" type="text" placeholder="Código Wayruru" />
+        <button id="unlock-promos">Ver promociones</button>
+        <div class="promo-box" id="promo-box">
+          <strong>Promociones activas:</strong>
+          <ul>
+            <li>Upgrade de habitación en tu próximo viaje.</li>
+            <li>Traslado privado sin costo en destinos Andinos.</li>
+          </ul>
+        </div>
+        <p style="margin-top:14px;">Si ya viajaste con Wayruru y no tienes tu código, <a href="https://wa.me/TUNUMERO?text=Necesito%20mi%20c%C3%B3digo%20Wayruru">solicítalo aquí</a>.</p>
+      </div>
+    </section>
+
+    <section id="contacto">
+      <h2>Contacto</h2>
+      <p class="story">Coordinamos por WhatsApp, correo o llamada. Cuéntanos tu idea y armamos el viaje juntos.</p>
+      <p>WhatsApp: <a href="https://wa.me/TUNUMERO?text=Hola%20Wayruru">+51 XXX XXX XXX</a></p>
+      <p>Email: <a href="mailto:hola@wayrurutravel.com">hola@wayrurutravel.com</a></p>
+    </section>
   </main>
-  <script src="/cta.js" defer></script>
+
+  <div class="assist-widget">
+    <p>Hola, soy tu asistente Wayruru 👋 Si eres cliente, tengo algo especial para ti.</p>
+    <button id="widget-promos">Ver promociones</button>
+    <button class="secondary" onclick="window.open('https://wa.me/TUNUMERO?text=Quiero%20viajar%20con%20Wayruru','_blank')">Hablar por WhatsApp</button>
+  </div>
+
+  <footer>
+    © Wayruru Travel — Venta asistida, viajes reales.
+  </footer>
+
+  <script>
+    const promoBox = document.getElementById("promo-box");
+    const unlockBtn = document.getElementById("unlock-promos");
+    const widgetPromos = document.getElementById("widget-promos");
+    unlockBtn.addEventListener("click", () => {
+      promoBox.style.display = "block";
+    });
+    widgetPromos.addEventListener("click", () => {
+      promoBox.style.display = "block";
+      document.getElementById("client-code").focus();
+    });
+  </script>
 </body>
 </html>
