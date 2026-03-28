@@ -18,14 +18,11 @@
       --accent-2:#7bffcf;
     }
     * { box-sizing:border-box; }
-    body { margin:0; min-height:100vh; background:radial-gradient(circle at top, rgba(61,213,255,0.12), transparent 55%), var(--bg); color:var(--text); font-family:"Space Grotesk","Segoe UI",sans-serif; padding:40px 20px 80px; overflow-y:auto; }
-    main { max-width:960px; margin:0 auto; display:flex; flex-direction:column; gap:24px; }
-    .hero { display:flex; justify-content:space-between; align-items:flex-start; gap:20px; padding-bottom:8px; border-bottom:1px solid rgba(255,255,255,0.08); }
-    .eyebrow { margin:0; font-size:12px; letter-spacing:0.4rem; text-transform:uppercase; color:var(--muted); }
-    .logout-btn { border:1px solid rgba(255,255,255,0.2); background:transparent; color:var(--text); border-radius:20px; padding:8px 16px; text-transform:uppercase; letter-spacing:0.15rem; cursor:pointer; }
-    h1 { margin:6px 0 0; font-size:30px; letter-spacing:0.5rem; text-transform:uppercase; font-weight:400; }
+    body { margin:0; min-height:100vh; background:radial-gradient(circle at top, rgba(61,213,255,0.12), transparent 55%), var(--bg); color:var(--text); font-family:"Space Grotesk","Segoe UI",sans-serif; padding:30px 16px; overflow-y:auto; }
+    main { max-width:520px; margin:0 auto; display:flex; flex-direction:column; gap:18px; align-items:center; }
+    .logout-btn { border:1px solid rgba(255,255,255,0.2); background:transparent; color:var(--text); border-radius:20px; padding:6px 14px; text-transform:uppercase; letter-spacing:0.15rem; cursor:pointer; font-size:11px; }
     .timestamp { color:var(--muted); font-size:12px; letter-spacing:0.2rem; text-transform:uppercase; text-align:right; }
-    .event-shell { border:1px solid rgba(61,213,255,0.25); border-radius:32px; padding:36px; background:radial-gradient(circle at top, rgba(61,213,255,0.12), transparent 60%), rgba(7,15,26,0.9); box-shadow:0 50px 150px rgba(0,0,0,0.55); position:relative; overflow:hidden; }
+    .event-shell { border:1px solid rgba(61,213,255,0.25); border-radius:32px; padding:28px; background:radial-gradient(circle at top, rgba(61,213,255,0.12), transparent 60%), rgba(7,15,26,0.9); box-shadow:0 40px 120px rgba(0,0,0,0.5); position:relative; overflow:hidden; width:100%; }
     .event-shell::after { content:""; position:absolute; inset:-40% -10%; background:radial-gradient(circle, rgba(61,213,255,0.15), transparent 60%); animation:energy 6s linear infinite; opacity:0.6; }
     .event-shell form, .event-shell h2, .event-shell p { position:relative; z-index:1; }
     .hero-symbol { width:140px; height:140px; margin:0 auto 20px; border-radius:30px; display:flex; align-items:center; justify-content:center; font-size:42px; letter-spacing:0.4rem; text-transform:uppercase; color:#031125; position:relative; animation:float 6s ease-in-out infinite, spin 30s linear infinite; transform-style:preserve-3d; }
@@ -33,12 +30,11 @@
     .hero-symbol::after { content:""; position:absolute; inset:0; border-radius:30px; background:linear-gradient(135deg, rgba(61,213,255,0.95), rgba(16,94,255,0.55)); box-shadow:0 20px 60px rgba(61,213,255,0.35); transform:translateZ(-15px); }
     .hero-symbol::after { inset:14px; background:rgba(2,5,13,0.85); box-shadow:inset 0 0 30px rgba(61,213,255,0.35); transform:translateZ(25px); }
     .hero-symbol span { position:relative; z-index:2; color:var(--text); font-weight:600; }
-    .profile-stack { display:flex; gap:20px; align-items:center; justify-content:center; margin-bottom:30px; flex-wrap:wrap; }
-    .profile-stack h2 { margin:0 0 6px; letter-spacing:0.35rem; text-transform:uppercase; }
-    .profile-stack p { margin:0 0 12px; letter-spacing:0.12rem; color:var(--muted); font-size:12px; }
-    .profile-line { display:flex; justify-content:center; gap:12px; margin-bottom:24px; flex-wrap:wrap; }
-    .profile-line button { border:none; border-bottom:1px solid rgba(255,255,255,0.3); background:transparent; color:var(--text); text-transform:uppercase; letter-spacing:0.25rem; font-size:11px; padding:6px 0; cursor:pointer; }
-    .profile-line button.active { border-color:rgba(61,213,255,0.8); color:rgba(61,213,255,0.9); }
+    .profile-stack { display:flex; gap:16px; align-items:center; justify-content:center; margin-bottom:16px; flex-wrap:wrap; }
+    .profile-stack h2 { margin:0; letter-spacing:0.35rem; text-transform:uppercase; font-size:18px; }
+    .profile-line { display:flex; justify-content:center; gap:10px; margin-bottom:18px; flex-wrap:wrap; }
+    .profile-line button { border:none; border-radius:20px; padding:8px 14px; background:linear-gradient(120deg, rgba(61,213,255,0.4), rgba(7,30,60,0.9)); color:var(--text); text-transform:uppercase; letter-spacing:0.2rem; font-size:10px; cursor:pointer; box-shadow:0 10px 30px rgba(0,0,0,0.4); }
+    .profile-line button.active { background:linear-gradient(120deg, rgba(61,213,255,0.9), rgba(20,167,255,0.8)); }
     .event-shell h2 { margin:0 0 8px; font-size:28px; letter-spacing:0.45rem; text-transform:uppercase; }
     .event-shell p { margin:0 0 24px; font-size:13px; letter-spacing:0.12rem; color:var(--muted); }
     label { display:block; font-size:12px; letter-spacing:0.2rem; text-transform:uppercase; color:var(--muted); margin-bottom:6px; }
@@ -91,7 +87,6 @@
     <section class="event-shell">
       <div class="timestamp" id="timestamp">Actualizado</div>
       <h2>Registrar evento</h2>
-      <p>Describe lo que está ocurriendo ahora para que tu profesional lo reciba al instante.</p>
       <form id="symptom-form">
         <label for="evento">Síntoma / evento</label>
         <textarea id="evento" rows="3" placeholder="Dolor torácico leve, 10:32 PM" required></textarea>
@@ -101,12 +96,6 @@
         <div class="status" id="symptom-status"></div>
       </form>
     </section>
-
-    <div class="insight-panel" style="margin-bottom:24px;">
-      StarX Medic pronto permitirá que compartas esta información con el médico que elijas. Tú controlas qué verán y cuándo.
-    </div>
-
-
     <section class="history-card">
       <h2>Historial</h2>
       <div id="history">
@@ -136,6 +125,7 @@
         btn.classList.add("active");
       });
     });
+    navButtons[0]?.classList.add("active");
 
     if (!token) {
       window.location.href = "/acceso";
