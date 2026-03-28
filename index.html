@@ -106,6 +106,18 @@
     .how-grid article { border:1px solid rgba(255,255,255,0.08); border-radius:20px; padding:18px; background:rgba(4,10,22,0.8); }
     .how-grid h3 { margin:0 0 10px; letter-spacing:0.3rem; font-size:13px; text-transform:uppercase; }
     .how-grid p, .credits p { margin:0; letter-spacing:0.12rem; color:rgba(238,243,255,0.7); }
+    .section-block { margin-top:40px; }
+    .section-block h2 { text-transform:uppercase; letter-spacing:0.35rem; font-size:18px; margin:0 0 16px; }
+    .card-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:18px; }
+    .card-grid article { border:1px solid rgba(255,255,255,0.08); border-radius:20px; padding:18px; background:rgba(4,10,22,0.8); }
+    .card-grid h3 { margin:0 0 8px; letter-spacing:0.3rem; font-size:13px; text-transform:uppercase; }
+    .card-grid p { margin:0; letter-spacing:0.12rem; color:rgba(238,243,255,0.7); }
+    .roadmap-list { list-style:none; padding:0; margin:0; display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:12px; }
+    .roadmap-list li { border:1px solid rgba(255,255,255,0.08); border-radius:18px; padding:14px; text-transform:uppercase; letter-spacing:0.25rem; font-size:11px; color:rgba(238,243,255,0.75); background:rgba(4,10,22,0.8); }
+    .habit-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:18px; }
+    .habit-grid ul { margin:0; padding-left:18px; color:rgba(238,243,255,0.7); }
+    .channels { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px; }
+    .channels a, .channels span { color:rgba(238,243,255,0.8); text-transform:uppercase; letter-spacing:0.2rem; text-decoration:none; border-bottom:1px solid rgba(238,243,255,0.2); padding-bottom:4px; display:block; }
   </style>
 </head>
 <body>
@@ -120,7 +132,8 @@
       <a class="btn primary" href="/acceso.html">Crear cuenta gratis</a>
       <a class="btn secondary" href="https://www.youtube.com/watch?v=ysz5S6PUM-U" target="_blank" rel="noreferrer">Ver cómo funciona</a>
     </div>
-    <div class="tagline">StarX conecta salud a nivel global.</div>
+    <div class="tagline">StarX Medic es la infraestructura universal de salud, libre para todos.</div>
+    <div class="tagline" style="margin-top:8px;">StarX conecta salud a nivel global.</div>
     <div class="tagline" style="margin-top:8px;">Tu información es tuya. Tú decides cómo usarla.</div>
     <div class="tagline" style="margin-top:8px;">La plataforma es libre; la transacción crea valor.</div>
     <section class="how">
@@ -149,6 +162,102 @@
       <h2>Créditos StarX (concepto)</h2>
       <p>Estamos preparando una moneda interna cerrada: compras créditos, los usas para servicios, profesionales reciben valor y StarX controla el flujo. No es cripto, no se ha lanzado; es nuestra capa futura.</p>
     </section>
+
+    <section class="section-block distribution">
+      <h2>Distribución StarX</h2>
+      <div class="card-grid">
+        <article>
+          <h3>Pacientes</h3>
+          <p>Organiza historial, comparte cuando quieras y regresa cada día a registrar eventos.</p>
+        </article>
+        <article>
+          <h3>Profesionales</h3>
+          <p>Registra notas, usa la IA y lleva tu base clínica en segundos.</p>
+        </article>
+        <article>
+          <h3>Clínicas</h3>
+          <p>Conecta equipos y agendas sobre una infraestructura común.</p>
+        </article>
+        <article>
+          <h3>Aliados</h3>
+          <p>Founders y socios aceleran infraestructura y expansión global.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-block network">
+      <h2>Crecimiento por red</h2>
+      <div class="card-grid">
+        <article><h3>Compartir</h3><p>Pacientes envían su historial.</p></article>
+        <article><h3>Invitar</h3><p>Médicos invitan a sus pacientes.</p></article>
+        <article><h3>Buscar</h3><p>Pacientes encuentran profesionales.</p></article>
+        <article><h3>Conectar</h3><p>Cada consulta fortalece la red.</p></article>
+      </div>
+    </section>
+
+    <section class="section-block standard">
+      <h2>Estándar StarX</h2>
+      <div class="card-grid">
+        <article><h3>Historial universal</h3><p>Si tienes datos de salud, deberían vivir en StarX.</p></article>
+        <article><h3>Profesionales conectados</h3><p>Si atiendes personas, StarX es tu consola clínica.</p></article>
+        <article><h3>Consultas asistidas</h3><p>Si consultas con un profesional, StarX debería facilitarlo.</p></article>
+      </div>
+    </section>
+
+    <section class="section-block">
+      <h2>Hoja de ruta</h2>
+      <ul class="roadmap-list">
+        <li>Hoy · Organización personal y profesional</li>
+        <li>Próximo · Conexión médico-paciente</li>
+        <li>Luego · Citas, pagos, red global</li>
+        <li>Después · Alianzas, investigación, expansión</li>
+      </ul>
+    </section>
+
+    <section class="section-block habit">
+      <h2>Loop de hábito</h2>
+      <div class="habit-grid">
+        <article>
+          <h3>Pacientes</h3>
+          <ul>
+            <li>Registrar eventos diarios</li>
+            <li>Revisar historial y resultados</li>
+            <li>Preparar consultas</li>
+          </ul>
+        </article>
+        <article>
+          <h3>Profesionales</h3>
+          <ul>
+            <li>Registrar notas clínicas</li>
+            <li>Revisar base de datos</li>
+            <li>Usar IA para priorizar acciones</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-block">
+      <h2>Canales StarX</h2>
+      <div class="channels">
+        <a href="/founders.html">Founders</a>
+        <a href="/tienda.html">Tienda</a>
+        <a href="https://www.youtube.com/watch?v=ysz5S6PUM-U" target="_blank" rel="noreferrer">Video “Cómo funciona”</a>
+        <span>Canal YouTube · Próximamente</span>
+        <span>WhatsApp Business · Próximamente</span>
+        <span>Campaña social · Preparada</span>
+      </div>
+    </section>
+
+    <section class="section-block trust">
+      <h2>Capa de confianza</h2>
+      <div class="card-grid">
+        <article><h3>Control</h3><p>El usuario decide qué información comparte y con quién.</p></article>
+        <article><h3>Acceso libre</h3><p>StarX sigue siendo gratuito para pacientes y profesionales.</p></article>
+        <article><h3>Uso responsable</h3><p>Privacidad y anonimización antes de participar en investigación.</p></article>
+        <article><h3>Participación voluntaria</h3><p>Cuando habilitemos estudios, siempre será con consentimiento explícito.</p></article>
+      </div>
+    </section>
+
     <div class="tagline" style="margin-top:24px;"><a href="/vision.html">Leer visión global</a></div>
   </main>
   <script src="/cta.js" defer></script>
