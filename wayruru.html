@@ -13,8 +13,16 @@
     nav a { text-decoration:none; color:var(--text); text-transform:uppercase; letter-spacing:0.15rem; font-size:12px; }
     .hero { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:30px; padding:60px 40px; align-items:center; }
     .hero-text h1 { font-size:48px; margin:0 0 16px; }
-    .hero-text p { margin:0 0 26px; color:var(--muted); font-size:18px; }
-    .hero-actions { display:flex; gap:12px; flex-wrap:wrap; }
+    .hero-text p { margin:0 0 18px; color:var(--muted); font-size:18px; }
+    .hero-actions { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:20px; }
+    .search-box { border:1px solid #eee; border-radius:18px; padding:16px; display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; }
+    .search-box input, .search-box select { padding:12px; border:1px solid #ddd; border-radius:12px; font-size:15px; }
+    .search-box button { border:none; border-radius:999px; padding:12px 0; background:var(--accent); color:#fff; text-transform:uppercase; letter-spacing:0.15rem; font-size:12px; cursor:pointer; }
+    .filters { padding:20px 40px; display:flex; flex-wrap:wrap; gap:12px; border-bottom:1px solid #f5f5f5; }
+    .filters button { border:1px solid #ddd; background:#fff; border-radius:999px; padding:10px 18px; text-transform:uppercase; letter-spacing:0.1rem; font-size:11px; cursor:pointer; }
+    .filters button.active { border-color:var(--accent); color:var(--accent); }
+    .trust { padding:30px 40px; display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px; border-bottom:1px solid #f5f5f5; }
+    .trust div { border:1px solid #eee; border-radius:12px; padding:16px; }
     .btn { text-decoration:none; padding:14px 26px; border-radius:999px; text-transform:uppercase; letter-spacing:0.2rem; font-size:12px; font-weight:600; border:2px solid var(--accent); color:#fff; background:var(--accent); }
     .btn.secondary { background:#fff; color:var(--accent); }
     .hero-image { min-height:320px; border-radius:24px; background:url('https://images.unsplash.com/photo-1502920514313-52581002a659?auto=format&fit=crop&w=1200&q=80') center/cover; }
@@ -24,6 +32,8 @@
     .values { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px; margin-top:24px; }
     .values div { border:1px solid #eee; border-radius:12px; padding:16px; }
     .values strong { display:block; margin-bottom:8px; }
+    .difference { border:1px solid #eee; border-radius:18px; padding:24px; display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px; }
+    .difference div { border:1px solid #f1f1f1; border-radius:12px; padding:16px; }
     .contact-form { max-width:520px; display:flex; flex-direction:column; gap:12px; margin-top:20px; }
     .contact-form input, .contact-form textarea { padding:12px; border:1px solid #ddd; border-radius:12px; font-size:15px; }
     .contact-form button { width:auto; border:none; border-radius:999px; padding:12px 30px; text-transform:uppercase; letter-spacing:0.15rem; background:var(--accent); color:#fff; cursor:pointer; }
@@ -67,8 +77,34 @@
           <a class="btn" href="#viajes">Ver viajes</a>
           <a class="btn secondary" href="https://wa.me/TUNUMERO?text=Hola%2C%20quiero%20viajar%20con%20Wayruru">Contactar por WhatsApp</a>
         </div>
+        <form class="search-box" id="search-box">
+          <input type="text" placeholder="Destino" required />
+          <input type="text" placeholder="Fechas" />
+          <select>
+            <option>1 persona</option>
+            <option>2 personas</option>
+            <option>3 personas</option>
+            <option>4+ personas</option>
+          </select>
+          <button type="submit">Buscar viajes</button>
+        </form>
       </div>
       <div class="hero-image"></div>
+    </section>
+
+    <section class="filters">
+      <button class="active">Todos</button>
+      <button>Andes</button>
+      <button>Caribe</button>
+      <button>Europa</button>
+      <button>Viajes cortos</button>
+      <button>Viajes largos</button>
+    </section>
+
+    <section class="trust">
+      <div><strong>Viajes personalizados</strong><p>Itinerarios flexibles para cada tipo de viajero.</p></div>
+      <div><strong>Atención directa</strong><p>Hablas con un experto Wayruru en todo momento.</p></div>
+      <div><strong>Experiencias reales</strong><p>Seleccionamos alojamientos y actividades probadas.</p></div>
     </section>
 
     <section id="quienes">
@@ -97,19 +133,19 @@
           <strong>Andes Experience</strong>
           <span>5 días · Desde $780</span>
           <p>Recorre Cusco, Valle Sagrado y Machu Picchu con guía dedicado.</p>
-          <a class="btn" href="https://wa.me/TUNUMERO?text=Quiero%20informaci%C3%B3n%20sobre%20este%20viaje">Solicitar este viaje</a>
+          <a class="btn" href="https://wa.me/TUNUMERO?text=Quiero%20este%20viaje%20a%20Andes%20Experience">Solicitar este viaje</a>
         </div>
         <div class="package">
           <strong>Caribe Wayruru</strong>
           <span>7 días · Desde $1,200</span>
           <p>Playas privadas, coordinación de vuelos y concierge 24/7.</p>
-          <a class="btn" href="https://wa.me/TUNUMERO?text=Quiero%20informaci%C3%B3n%20sobre%20este%20viaje">Solicitar este viaje</a>
+          <a class="btn" href="https://wa.me/TUNUMERO?text=Quiero%20este%20viaje%20a%20Caribe%20Wayruru">Solicitar este viaje</a>
         </div>
         <div class="package">
           <strong>Europa Libre</strong>
           <span>10 días · Desde $1,950</span>
           <p>Itinerario modular: Madrid, París y Roma con experiencias selectas.</p>
-          <a class="btn" href="https://wa.me/TUNUMERO?text=Quiero%20informaci%C3%B3n%20sobre%20este%20viaje">Solicitar este viaje</a>
+          <a class="btn" href="https://wa.me/TUNUMERO?text=Quiero%20este%20viaje%20a%20Europa%20Libre">Solicitar este viaje</a>
         </div>
       </div>
     </section>
@@ -137,6 +173,20 @@
       </div>
     </section>
 
+    <section>
+      <h2>Diferencia</h2>
+      <div class="difference">
+        <div>
+          <strong>Despegar</strong>
+          <p>Automático, frío, autoservicio.</p>
+        </div>
+        <div>
+          <strong>Wayruru</strong>
+          <p>Guiado, humano y personalizado por WhatsApp.</p>
+        </div>
+      </div>
+    </section>
+
     <section id="contacto">
       <h2>Contacto</h2>
       <p class="story">Coordinamos por WhatsApp, correo o llamada. Cuéntanos tu idea y armamos el viaje juntos.</p>
@@ -153,7 +203,7 @@
   </main>
 
   <div class="assist-widget">
-    <p>Hola, soy tu asistente Wayruru 👋 Si eres cliente, tengo algo especial para ti.</p>
+    <p>Hola 👋 ¿Buscas un viaje? Te ayudo a encontrarlo.</p>
     <button id="widget-promos">Ver promociones</button>
     <button class="secondary" onclick="window.open('https://wa.me/TUNUMERO?text=Quiero%20viajar%20con%20Wayruru','_blank')">Hablar por WhatsApp</button>
   </div>
@@ -168,6 +218,7 @@
     const widgetPromos = document.getElementById("widget-promos");
     const contactForm = document.getElementById("contact-form");
     const contactStatus = document.getElementById("contact-status");
+    const searchBox = document.getElementById("search-box");
     unlockBtn.addEventListener("click", () => {
       promoBox.style.display = "block";
     });
@@ -175,6 +226,12 @@
       promoBox.style.display = "block";
       document.getElementById("client-code").focus();
     });
+    if (searchBox) {
+      searchBox.addEventListener("submit", (event) => {
+        event.preventDefault();
+        alert("Buscamos viajes similares y te respondemos por WhatsApp.");
+      });
+    }
     if (contactForm) {
       contactForm.addEventListener("submit", (event) => {
         event.preventDefault();
