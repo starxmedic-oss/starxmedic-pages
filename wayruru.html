@@ -21,6 +21,12 @@
     section { padding:50px 40px; border-bottom:1px solid #f5f5f5; }
     h2 { text-transform:uppercase; letter-spacing:0.3rem; margin:0 0 20px; }
     .story { max-width:720px; color:var(--muted); font-size:18px; }
+    .values { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px; margin-top:24px; }
+    .values div { border:1px solid #eee; border-radius:12px; padding:16px; }
+    .values strong { display:block; margin-bottom:8px; }
+    .contact-form { max-width:520px; display:flex; flex-direction:column; gap:12px; margin-top:20px; }
+    .contact-form input, .contact-form textarea { padding:12px; border:1px solid #ddd; border-radius:12px; font-size:15px; }
+    .contact-form button { width:auto; border:none; border-radius:999px; padding:12px 30px; text-transform:uppercase; letter-spacing:0.15rem; background:var(--accent); color:#fff; cursor:pointer; }
     .packages { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:20px; }
     .package { border:1px solid #eee; border-radius:16px; padding:20px; display:flex; flex-direction:column; gap:8px; }
     .package strong { font-size:20px; }
@@ -68,6 +74,20 @@
     <section id="quienes">
       <h2>Quiénes somos</h2>
       <p class="story">Wayruru Travel nació para acompañar a viajeros que buscan experiencias auténticas. Trabajamos con proveedores locales, diseñamos itinerarios flexibles y mantenemos contacto humano antes, durante y después de cada viaje.</p>
+      <div class="values">
+        <div>
+          <strong>Confianza</strong>
+          <p>Coordinamos cada etapa contigo para que sepas exactamente qué esperar.</p>
+        </div>
+        <div>
+          <strong>Experiencia</strong>
+          <p>Más de 10 años creando viajes personalizados en América, Europa y Caribe.</p>
+        </div>
+        <div>
+          <strong>Enfoque humano</strong>
+          <p>Hablamos por WhatsApp, llamada o correo. Siempre hay una persona Wayruru.</p>
+        </div>
+      </div>
     </section>
 
     <section id="viajes">
@@ -77,19 +97,19 @@
           <strong>Andes Experience</strong>
           <span>5 días · Desde $780</span>
           <p>Recorre Cusco, Valle Sagrado y Machu Picchu con guía dedicado.</p>
-          <a class="btn" href="https://wa.me/TUNUMERO?text=Quiero%20este%20paquete%20de%20viaje">Solicitar este viaje</a>
+          <a class="btn" href="https://wa.me/TUNUMERO?text=Quiero%20informaci%C3%B3n%20sobre%20este%20viaje">Solicitar este viaje</a>
         </div>
         <div class="package">
           <strong>Caribe Wayruru</strong>
           <span>7 días · Desde $1,200</span>
           <p>Playas privadas, coordinación de vuelos y concierge 24/7.</p>
-          <a class="btn" href="https://wa.me/TUNUMERO?text=Quiero%20este%20paquete%20de%20viaje">Solicitar este viaje</a>
+          <a class="btn" href="https://wa.me/TUNUMERO?text=Quiero%20informaci%C3%B3n%20sobre%20este%20viaje">Solicitar este viaje</a>
         </div>
         <div class="package">
           <strong>Europa Libre</strong>
           <span>10 días · Desde $1,950</span>
           <p>Itinerario modular: Madrid, París y Roma con experiencias selectas.</p>
-          <a class="btn" href="https://wa.me/TUNUMERO?text=Quiero%20este%20paquete%20de%20viaje">Solicitar este viaje</a>
+          <a class="btn" href="https://wa.me/TUNUMERO?text=Quiero%20informaci%C3%B3n%20sobre%20este%20viaje">Solicitar este viaje</a>
         </div>
       </div>
     </section>
@@ -122,6 +142,13 @@
       <p class="story">Coordinamos por WhatsApp, correo o llamada. Cuéntanos tu idea y armamos el viaje juntos.</p>
       <p>WhatsApp: <a href="https://wa.me/TUNUMERO?text=Hola%20Wayruru">+51 XXX XXX XXX</a></p>
       <p>Email: <a href="mailto:hola@wayrurutravel.com">hola@wayrurutravel.com</a></p>
+      <form class="contact-form" id="contact-form">
+        <input id="contact-name" type="text" placeholder="Nombre" required />
+        <input id="contact-email" type="email" placeholder="Email" required />
+        <textarea id="contact-message" rows="3" placeholder="Cuéntanos tu viaje"></textarea>
+        <button type="submit">Enviar</button>
+      </form>
+      <div class="status" id="contact-status"></div>
     </section>
   </main>
 
@@ -139,6 +166,8 @@
     const promoBox = document.getElementById("promo-box");
     const unlockBtn = document.getElementById("unlock-promos");
     const widgetPromos = document.getElementById("widget-promos");
+    const contactForm = document.getElementById("contact-form");
+    const contactStatus = document.getElementById("contact-status");
     unlockBtn.addEventListener("click", () => {
       promoBox.style.display = "block";
     });
@@ -146,6 +175,13 @@
       promoBox.style.display = "block";
       document.getElementById("client-code").focus();
     });
+    if (contactForm) {
+      contactForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        if (contactStatus) contactStatus.textContent = "Mensaje enviado. Te respondemos en breve.";
+        contactForm.reset();
+      });
+    }
   </script>
 </body>
 </html>
