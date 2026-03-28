@@ -17,7 +17,11 @@
     * { box-sizing:border-box; }
     body { margin:0; min-height:100vh; background:radial-gradient(circle at top, rgba(61,213,255,0.18), transparent 60%), var(--bg); font-family:"Space Grotesk","Segoe UI",sans-serif; color:var(--text); display:flex; justify-content:center; padding:60px 20px; }
     main { width:100%; max-width:1100px; }
-    header { margin-bottom:40px; display:flex; flex-direction:column; gap:6px; }
+    header { margin-bottom:28px; display:flex; flex-direction:column; gap:6px; }
+    .onboarding { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px; margin-bottom:24px; }
+    .step-card { border:1px solid var(--border); border-radius:24px; padding:18px; background:rgba(7,12,24,0.9); }
+    .step-card span { display:block; font-size:12px; letter-spacing:0.3rem; text-transform:uppercase; color:var(--muted); margin-bottom:8px; }
+    .step-card p { margin:0; font-size:14px; letter-spacing:0.1rem; }
     .control-center { border:1px solid var(--border); border-radius:36px; padding:32px; background:rgba(5,10,22,0.9); box-shadow:0 30px 120px rgba(0,0,0,0.45); margin-bottom:26px; }
     .control-center h2 { margin:0 0 18px; text-transform:uppercase; letter-spacing:0.3rem; }
     .control-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:16px; }
@@ -31,6 +35,16 @@
     @keyframes pulse { 0%,100% { transform:scale(0.9); box-shadow:0 0 6px rgba(124,255,180,0.5); } 50% { transform:scale(1.2); box-shadow:0 0 16px rgba(124,255,180,1); } }
     @keyframes energy { 0% { background-position:0% 50%; } 50% { background-position:100% 50%; } 100% { background-position:0% 50%; } }
     .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:22px; }
+    .lead-capture { border:1px solid var(--border); border-radius:28px; padding:24px; background:rgba(6,12,24,0.9); box-shadow:0 20px 60px rgba(0,0,0,0.35); }
+    .lead-capture form { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:12px; }
+    .lead-capture input, .lead-capture textarea { border:1px solid rgba(255,255,255,0.12); border-radius:14px; padding:12px; background:rgba(5,10,20,0.85); color:var(--text); }
+    .lead-capture button { width:auto; }
+    .industry-grid { border:1px solid var(--border); border-radius:30px; padding:28px; background:rgba(5,11,22,0.9); display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px; }
+    .industry-card { border:1px solid rgba(255,255,255,0.1); border-radius:20px; padding:16px; font-size:13px; letter-spacing:0.1rem; color:var(--muted); }
+    .plan-offer { border:1px solid var(--border); border-radius:30px; padding:26px; background:rgba(6,12,24,0.9); }
+    .plan-offer h3 { margin:0 0 10px; letter-spacing:0.3rem; text-transform:uppercase; }
+    .plan-features { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:8px; color:var(--muted); letter-spacing:0.1rem; }
+    .plan-features li::before { content:"▸"; margin-right:8px; }
     .module { position:relative; padding:32px 24px 60px; border:1px solid var(--border); border-radius:30px; background:var(--panel); min-height:230px; cursor:pointer; transition:transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease; overflow:hidden; }
     .module::after { content:""; position:absolute; inset:1px; border-radius:28px; background:linear-gradient(120deg, rgba(61,213,255,0.08), rgba(8,17,34,0.9)); background-size:220% 100%; animation:energy 5s linear infinite; opacity:0.7; }
     .module:hover { transform:translateY(-6px); border-color:rgba(61,213,255,0.4); box-shadow:0 20px 60px rgba(0,0,0,0.45); }
@@ -47,10 +61,13 @@
     .module[data-kind="wayruru"] .cube::before { background:linear-gradient(135deg, rgba(255,111,145,0.65), rgba(255,150,113,0.25)); }
     .module[data-kind="ofy"] .cube::before { background:linear-gradient(135deg, rgba(26,107,77,0.6), rgba(79,179,123,0.25)); }
     .module[data-kind="powder"] .cube::before { background:linear-gradient(135deg, rgba(255,193,7,0.6), rgba(255,179,0,0.25)); }
-    .activation-banner { border:1px solid var(--border); border-radius:28px; padding:18px 24px; background:rgba(8,14,26,0.9); display:flex; justify-content:space-between; align-items:center; gap:20px; box-shadow:0 20px 80px rgba(0,0,0,0.35); }
+    .activation-banner { border:1px solid var(--border); border-radius:28px; padding:18px 24px; background:rgba(8,14,26,0.9); display:flex; flex-direction:column; gap:14px; box-shadow:0 20px 80px rgba(0,0,0,0.35); }
     .activation-banner.hidden { display:none; }
-    .banner-actions button { width:auto; }
-    #core-grid.limited { filter:blur(2px); opacity:0.6; }
+    .limited-benefits { margin:0; padding-left:18px; color:var(--muted); font-size:13px; letter-spacing:0.08rem; }
+    .banner-actions { display:flex; gap:12px; flex-wrap:wrap; }
+    .banner-actions button, .assist-cta { width:auto; }
+    .assist-cta { display:inline-flex; padding:12px 26px; border-radius:999px; text-decoration:none; text-transform:uppercase; letter-spacing:0.2rem; font-size:11px; font-weight:600; color:#01040b; background:linear-gradient(120deg, rgba(123,255,207,0.9), rgba(61,213,255,0.8)); background-size:220% 100%; animation:energy 4s linear infinite; box-shadow:0 12px 40px rgba(123,255,207,0.25); }
+    #core-grid.limited { filter:blur(1.5px); opacity:0.65; }
     .monetization-panel { display:none; border:1px solid var(--border); border-radius:30px; padding:28px; background:rgba(6,12,24,0.9); box-shadow:0 20px 60px rgba(0,0,0,0.4); margin-bottom:24px; }
     .monetization-panel.visible { display:block; }
     .monetization-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:16px; }
@@ -68,6 +85,21 @@
       <div class="subtitle">Sistema operativo empresarial</div>
       <div class="status"><span></span>System Live</div>
     </header>
+
+    <section class="onboarding">
+      <div class="step-card">
+        <span>Paso 1</span>
+        <p>Bienvenido a StarX: tu centro de control vivo.</p>
+      </div>
+      <div class="step-card">
+        <span>Paso 2</span>
+        <p>Explora módulos, métricas y Colony en tiempo real.</p>
+      </div>
+      <div class="step-card">
+        <span>Paso 3</span>
+        <p>Activa tu sistema para liberar el modo completo.</p>
+      </div>
+    </section>
     <section class="control-center">
       <h2>Centro de control</h2>
       <div class="control-grid">
@@ -126,13 +158,49 @@
         <p>Online</p>
       </article>
     </section>
+
+    <section class="industry-grid">
+      <div class="industry-card"><strong>Salud:</strong> coordina pacientes, eventos y profesionales en vivo.</div>
+      <div class="industry-card"><strong>Viajes:</strong> Wayruru usa StarX para leads y seguimiento inteligente.</div>
+      <div class="industry-card"><strong>Contabilidad:</strong> OFY centraliza clientes y decisiones estratégicas.</div>
+      <div class="industry-card"><strong>Industria:</strong> Powder & Bulk controla operaciones y volumen.</div>
+    </section>
+    <p style="text-align:center; letter-spacing:0.2rem; text-transform:uppercase; color:var(--muted);">StarX ya se está adaptando a salud, viajes, contabilidad e industria.</p>
+
+    <section class="plan-offer">
+      <h3>Plan Basic</h3>
+      <ul class="plan-features">
+        <li>Activación inicial asistida</li>
+        <li>Acceso a StarX Core y Portales</li>
+        <li>Soporte de arranque</li>
+      </ul>
+    </section>
+
+    <section class="lead-capture">
+      <h3>¿Necesitas que lo armemos contigo?</h3>
+      <form id="lead-form">
+        <input id="lead-name" type="text" placeholder="Nombre" required />
+        <input id="lead-email" type="email" placeholder="Email" required />
+        <input id="lead-sector" type="text" placeholder="Rubro" />
+        <textarea id="lead-need" rows="2" placeholder="Necesidad principal"></textarea>
+        <button class="btn-energy" type="submit">Quiero acompañamiento</button>
+      </form>
+      <div class="status" id="lead-status"></div>
+    </section>
+
     <div class="activation-banner hidden" id="activation-banner">
       <div>
         <p id="subscription-copy">Activa tu sistema para desbloquear todas las funciones.</p>
         <small class="assist-note">Modo limitado activo</small>
+        <ul class="limited-benefits">
+          <li>Reportes completos</li>
+          <li>Colony en tiempo real</li>
+          <li>Soporte asistido</li>
+        </ul>
       </div>
       <div class="banner-actions">
         <button id="activate-plan">Activar ahora — S/29</button>
+        <a class="assist-cta" href="https://wa.me/?text=Hola%2C%20quiero%20activar%20mi%20sistema%20StarX%20con%20asistencia.">Quiero activarlo conmigo</a>
       </div>
       <div class="status" id="subscription-note"></div>
     </div>
@@ -154,6 +222,10 @@
         <div class="monet-card">
           <p class="label">Conversiones</p>
           <p class="value" id="monet-conv">--</p>
+        </div>
+        <div class="monet-card">
+          <p class="label">Colony admin</p>
+          <p class="value" id="monet-colony">--</p>
         </div>
       </div>
     </section>
@@ -214,9 +286,12 @@
     const monetActiveEl = document.getElementById("monet-active");
     const monetInactiveEl = document.getElementById("monet-inactive");
     const monetConvEl = document.getElementById("monet-conv");
+    const monetColonyEl = document.getElementById("monet-colony");
     const activateBtn = document.getElementById("activate-plan");
     const subscriptionCopy = document.getElementById("subscription-copy");
     const subscriptionNote = document.getElementById("subscription-note");
+    const leadForm = document.getElementById("lead-form");
+    const leadStatus = document.getElementById("lead-status");
     const defaultActivateText = "Activar plan — S/29";
     activateBtn.textContent = defaultActivateText;
     const isAdmin = localStorage.getItem("starx_admin") === "true";
@@ -285,6 +360,28 @@
 
     loadSubscription();
 
+    if (leadForm) {
+      leadForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const payload = {
+          name: document.getElementById("lead-name").value.trim(),
+          email: document.getElementById("lead-email").value.trim(),
+          sector: document.getElementById("lead-sector").value.trim(),
+          need: document.getElementById("lead-need").value.trim(),
+          created_at: new Date().toISOString()
+        };
+        if (!payload.name || !payload.email) {
+          if (leadStatus) leadStatus.textContent = "Completa nombre y email";
+          return;
+        }
+        const leads = JSON.parse(localStorage.getItem("starx_leads") || "[]");
+        leads.push(payload);
+        localStorage.setItem("starx_leads", JSON.stringify(leads));
+        leadForm.reset();
+        if (leadStatus) leadStatus.textContent = "Recibido. Te contactamos.";
+      });
+    }
+
     const fetchStats = async (force = false) => {
       if (!force && statsCache) return statsCache;
       const data = await request("/stats");
@@ -306,6 +403,7 @@
         if (monetActiveEl) monetActiveEl.textContent = subs;
         if (monetInactiveEl) monetInactiveEl.textContent = inactive;
         if (monetConvEl) monetConvEl.textContent = subs;
+        if (monetColonyEl) monetColonyEl.textContent = colony?.status ? colony.status.toUpperCase() : "--";
       }
     };
 
@@ -370,6 +468,18 @@
       if (cmd === "plan") {
         const plan = currentSubscription ? `${currentSubscription.plan.toUpperCase()} (${currentSubscription.status})` : "sin plan";
         addMessage("bot", `Tu plan actual es ${plan}. Usa “activar” para desbloquear todo.`);
+        return;
+      }
+      if (cmd === "demo") {
+        addMessage("bot", "Te muestro cómo funciona y lo activamos juntos. Usa el botón ‘Quiero activarlo conmigo’ o escribe “activar”.");
+        return;
+      }
+      if (cmd === "beneficios") {
+        addMessage("bot", "Activar desbloquea reportes completos, Colony en vivo y soporte asistido. Es todo tu sistema en modo Stark.");
+        return;
+      }
+      if (cmd === "por qué pagar") {
+        addMessage("bot", "Pagas para tener el sistema vivo 24/7, con seguimiento, alertas y acompañamiento Stark. Es tu centro de mando listo." );
         return;
       }
       if (cmd === "activar" || cmd === "mejorar sistema") {
