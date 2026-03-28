@@ -18,6 +18,12 @@
     body { margin:0; min-height:100vh; background:radial-gradient(circle at top, rgba(61,213,255,0.18), transparent 60%), var(--bg); font-family:"Space Grotesk","Segoe UI",sans-serif; color:var(--text); display:flex; justify-content:center; padding:60px 20px; }
     main { width:100%; max-width:1100px; }
     header { margin-bottom:40px; display:flex; flex-direction:column; gap:6px; }
+    .control-center { border:1px solid var(--border); border-radius:36px; padding:32px; background:rgba(5,10,22,0.9); box-shadow:0 30px 120px rgba(0,0,0,0.45); margin-bottom:26px; }
+    .control-center h2 { margin:0 0 18px; text-transform:uppercase; letter-spacing:0.3rem; }
+    .control-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:16px; }
+    .control-card { border:1px solid rgba(255,255,255,0.08); border-radius:24px; padding:18px; background:rgba(7,13,28,0.9); }
+    .control-card .label { margin:0 0 8px; text-transform:uppercase; letter-spacing:0.15rem; font-size:12px; color:var(--muted); }
+    .control-card .value { margin:0; font-size:24px; letter-spacing:0.3rem; }
     h1 { margin:0; text-transform:uppercase; letter-spacing:0.4rem; font-weight:300; }
     .subtitle { text-transform:uppercase; letter-spacing:0.3rem; font-size:13px; color:var(--muted); }
     .status { display:flex; align-items:center; gap:10px; font-size:12px; letter-spacing:0.2rem; text-transform:uppercase; color:var(--muted); }
@@ -57,6 +63,32 @@
       <div class="subtitle">Sistema operativo empresarial</div>
       <div class="status"><span></span>System Live</div>
     </header>
+    <section class="control-center">
+      <h2>Centro de control</h2>
+      <div class="control-grid">
+        <div class="control-card">
+          <p class="label">Estado del sistema</p>
+          <p class="value" id="control-system">--</p>
+        </div>
+        <div class="control-card">
+          <p class="label">Usuarios</p>
+          <p class="value" id="control-users">--</p>
+        </div>
+        <div class="control-card">
+          <p class="label">Eventos</p>
+          <p class="value" id="control-events">--</p>
+        </div>
+        <div class="control-card">
+          <p class="label">Suscripciones</p>
+          <p class="value" id="control-subs">--</p>
+        </div>
+        <div class="control-card">
+          <p class="label">Colony</p>
+          <p class="value" id="control-colony">--</p>
+        </div>
+      </div>
+    </section>
+
     <section class="grid" id="core-grid">
       <article class="module" data-kind="starx" data-href="/index.html">
         <div class="cube"><span>S</span></div>
@@ -143,6 +175,11 @@
 
     const grid = document.getElementById("core-grid");
     const overlay = document.getElementById("subscription-overlay");
+    const controlSystemEl = document.getElementById("control-system");
+    const controlUsersEl = document.getElementById("control-users");
+    const controlEventsEl = document.getElementById("control-events");
+    const controlSubsEl = document.getElementById("control-subs");
+    const controlColonyEl = document.getElementById("control-colony");
     const activateBtn = document.getElementById("activate-plan");
     const subscriptionCopy = document.getElementById("subscription-copy");
     const subscriptionNote = document.getElementById("subscription-note");
@@ -151,6 +188,7 @@
 
     let currentSubscription = null;
     let statsCache = null;
+    let colonyCache = null;
 
     const renderSubscriptionState = () => {
       const active = currentSubscription && currentSubscription.status === "active";
@@ -219,6 +257,31 @@
       return data;
     };
 
+    const updateControlPanel = (stats, colony) => {
+      if (controlUsersEl) controlUsersEl.textContent = stats?.users_total ?? "--";
+      if (controlEventsEl) controlEventsEl.textContent = stats?.events_total ?? "--";
+      if (controlSubsEl) controlSubsEl.textContent = stats?.subscriptions_total ?? "--";
+      if (controlSystemEl) controlSystemEl.textContent = colony?.status ? colony.status.toUpperCase() : "SIN DATOS";
+      if (controlColonyEl) controlColonyEl.textContent = colony ? `${colony.nodes_total || 0} nodos` : "--";
+    };
+
+    const refreshControl = async (force = false) => {
+      try {
+        const stats = await fetchStats(force);
+        const res = await fetch(`${API_BASE}/colony/status`);
+        const colony = await res.json();
+        if (!res.ok || colony.ok === false) throw new Error("Colony offline");
+        colonyCache = colony;
+        updateControlPanel(stats, colony);
+      } catch (error) {
+        if (controlSystemEl) controlSystemEl.textContent = "SIN DATOS";
+        if (controlColonyEl) controlColonyEl.textContent = "--";
+      }
+    };
+
+    refreshControl(true);
+    setInterval(() => refreshControl(true), 60000);
+
     const jarvisToggle = document.getElementById("jarvis-toggle");
     const jarvisPanel = document.getElementById("jarvis-panel");
     const jarvisClose = document.getElementById("jarvis-close");
@@ -252,7 +315,8 @@
       if (!cmd) return;
       if (cmd === "estado") {
         const plan = currentSubscription ? `${currentSubscription.plan.toUpperCase()} (${currentSubscription.status})` : "sin plan";
-        addMessage("bot", `Sistema activo ▸ Plan ${plan}`);
+        const colonyState = colonyCache?.status ? colonyCache.status.toUpperCase() : "SIN DATOS";
+        addMessage("bot", `Sistema activo ▸ Plan ${plan} ▸ Colony ${colonyState}`);
         return;
       }
       if (cmd === "modulos") {
@@ -277,6 +341,7 @@
           const res = await fetch(`${API_BASE}/colony/status`);
           const data = await res.json();
           if (!data.ok) throw new Error("Estado no disponible");
+          colonyCache = data;
           addMessage(
             "bot",
             `Colony ▸ Nodos: ${data.nodes_total} · Señales: ${data.signals_total} · Estado: ${data.status}`
