@@ -18,6 +18,7 @@
     body { margin:0; min-height:100vh; background:radial-gradient(circle at top, rgba(61,213,255,0.18), transparent 60%), var(--bg); font-family:"Space Grotesk","Segoe UI",sans-serif; color:var(--text); display:flex; justify-content:center; padding:60px 20px; }
     main { width:100%; max-width:1100px; }
     header { margin-bottom:28px; display:flex; flex-direction:column; gap:6px; }
+    .value-message { margin:6px 0 20px; letter-spacing:0.18rem; text-transform:uppercase; color:var(--muted); font-size:13px; }
     .onboarding { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px; margin-bottom:24px; }
     .step-card { border:1px solid var(--border); border-radius:24px; padding:18px; background:rgba(7,12,24,0.9); }
     .step-card span { display:block; font-size:12px; letter-spacing:0.3rem; text-transform:uppercase; color:var(--muted); margin-bottom:8px; }
@@ -85,6 +86,8 @@
       <div class="subtitle">Sistema operativo empresarial</div>
       <div class="status"><span></span>System Live</div>
     </header>
+
+    <p class="value-message">StarX te permite gestionar pacientes, eventos y datos en un solo sistema inteligente.</p>
 
     <section class="onboarding">
       <div class="step-card">
@@ -190,7 +193,7 @@
 
     <div class="activation-banner hidden" id="activation-banner">
       <div>
-        <p id="subscription-copy">Activa tu sistema para desbloquear todas las funciones.</p>
+        <p id="subscription-copy">Estás en modo limitado — activa tu sistema.</p>
         <small class="assist-note">Modo limitado activo</small>
         <ul class="limited-benefits">
           <li>Reportes completos</li>
@@ -200,7 +203,7 @@
       </div>
       <div class="banner-actions">
         <button id="activate-plan">Activar ahora — S/29</button>
-        <a class="assist-cta" href="https://wa.me/?text=Hola%2C%20quiero%20activar%20mi%20sistema%20StarX%20con%20asistencia.">Quiero activarlo conmigo</a>
+        <a class="assist-cta" href="https://wa.me/TUNUMERO?text=Quiero%20activar%20StarX">Quiero activarlo conmigo</a>
       </div>
       <div class="status" id="subscription-note"></div>
     </div>
@@ -323,7 +326,7 @@
           subscriptionCopy.textContent = "Sistema activo";
           subscriptionNote.textContent = currentSubscription.plan.toUpperCase();
         } else {
-          subscriptionCopy.textContent = "Activa tu sistema para desbloquear todas las funciones";
+          subscriptionCopy.textContent = "Estás en modo limitado — activa tu sistema.";
           subscriptionNote.textContent = "Versión limitada";
         }
       } catch (error) {
@@ -466,30 +469,23 @@
         return;
       }
       if (cmd === "plan") {
-        const plan = currentSubscription ? `${currentSubscription.plan.toUpperCase()} (${currentSubscription.status})` : "sin plan";
-        addMessage("bot", `Tu plan actual es ${plan}. Usa “activar” para desbloquear todo.`);
+        addMessage("bot", "Plan básico disponible, activa para desbloquear funciones.");
         return;
       }
       if (cmd === "demo") {
-        addMessage("bot", "Te muestro cómo funciona y lo activamos juntos. Usa el botón ‘Quiero activarlo conmigo’ o escribe “activar”.");
+        addMessage("bot", "Estás usando una versión real limitada. Activa para ver todo el sistema.");
         return;
       }
       if (cmd === "beneficios") {
-        addMessage("bot", "Activar desbloquea reportes completos, Colony en vivo y soporte asistido. Es todo tu sistema en modo Stark.");
+        addMessage("bot", "Activar desbloquea reportes completos, Colony vivo y soporte Stark.");
         return;
       }
       if (cmd === "por qué pagar") {
-        addMessage("bot", "Pagas para tener el sistema vivo 24/7, con seguimiento, alertas y acompañamiento Stark. Es tu centro de mando listo." );
+        addMessage("bot", "Pagas por tener el centro de mando 24/7, con seguimiento y asistencia.");
         return;
       }
       if (cmd === "activar" || cmd === "mejorar sistema") {
-        if (currentSubscription && currentSubscription.status === "active") {
-          addMessage("bot", "Tu sistema ya está activo.");
-        } else {
-          addMessage("bot", "Activando plan basic...");
-          await subscribeBasic();
-          addMessage("bot", "Plan basic activo. ¡Disfruta el sistema completo!");
-        }
+        addMessage("bot", "Puedes activar tu sistema ahora mismo desde el botón “Activar ahora”.");
         return;
       }
       if (cmd === "usuarios" || cmd === "eventos" || cmd === "links" || cmd === "suscripciones") {
