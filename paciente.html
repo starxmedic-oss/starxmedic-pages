@@ -30,7 +30,7 @@
     label { display:block; font-size:12px; letter-spacing:0.2rem; text-transform:uppercase; color:var(--muted); margin-bottom:6px; }
     input, textarea { width:100%; border:1px solid rgba(255,255,255,0.12); border-radius:18px; padding:14px; margin-bottom:18px; background:rgba(3,7,15,0.85); color:var(--text); font-size:15px; }
     button { border:none; border-radius:999px; padding:14px 32px; background:linear-gradient(120deg, rgba(61,213,255,0.95), rgba(20,167,255,0.85)); color:#01040b; text-transform:uppercase; letter-spacing:0.22rem; font-size:12px; font-weight:600; cursor:pointer; box-shadow:0 15px 45px rgba(20,167,255,0.35); position:relative; overflow:hidden; background-size:220% 100%; animation:energy 4s linear infinite; }
-    .event-shell button { font-size:14px; letter-spacing:0.25rem; }
+    .register-btn { font-size:16px; letter-spacing:0.3rem; padding:18px 34px; background:linear-gradient(120deg,#1ee267,#0f9b4a,#1ee267); box-shadow:0 20px 50px rgba(30,226,103,0.35); }
     button::after { content:""; position:absolute; inset:0; background:linear-gradient(120deg, rgba(255,255,255,0.15), transparent, rgba(255,255,255,0.12)); mix-blend-mode:screen; opacity:0; transition:opacity 0.3s ease; }
     button:hover::after { opacity:0.8; }
     .status { font-size:13px; color:var(--muted); margin-top:8px; }
@@ -76,9 +76,9 @@
     </header>
 
     <div class="insight-panel" style="margin-bottom:24px;">
-      Estás usando StarX Medic Free
+      Modo Free activo · Paciente Premium = contacto con médicos reales.
       <div style="margin-top:12px; display:flex; justify-content:center;">
-        <a href="/plan.html" style="border-radius:999px; padding:12px 24px; background:linear-gradient(120deg,#3dd5ff,#14a5e9); color:#01040b; text-transform:uppercase; letter-spacing:0.15rem; font-weight:600;">Activar sistema completo</a>
+        <a href="/plan.html" style="border-radius:999px; padding:10px 20px; background:linear-gradient(120deg,#1ee267,#0f9b4a,#1ee267); color:#01040b; text-transform:uppercase; letter-spacing:0.15rem; font-weight:600; font-size:11px;">Activar Paciente Plus</a>
       </div>
     </div>
 
@@ -90,7 +90,7 @@
         <textarea id="evento" rows="3" placeholder="Dolor torácico leve, 10:32 PM" required></textarea>
         <label for="intensidad">Notas / intensidad</label>
         <input id="intensidad" type="text" placeholder="Ej. Moderado, acompañado de mareos" />
-        <button type="submit">Guardar evento</button>
+        <button type="submit" class="register-btn">Registrar evento</button>
         <div class="status" id="symptom-status"></div>
       </form>
     </section>
