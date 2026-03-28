@@ -20,6 +20,12 @@
     .status-text { margin-top:12px; font-size:13px; letter-spacing:0.1rem; text-transform:uppercase; color:var(--muted); min-height:18px; }
     .links { margin-top:20px; display:flex; flex-direction:column; gap:6px; }
     .links a { color:var(--muted); text-decoration:none; font-size:13px; letter-spacing:0.1rem; text-transform:uppercase; }
+    .limited-banner { margin-top:22px; border:1px solid var(--line); border-radius:20px; padding:18px; background:rgba(255,255,255,0.04); text-align:center; }
+    .limited-banner p { margin:0 0 12px; font-size:13px; letter-spacing:0.15rem; text-transform:uppercase; color:var(--muted); }
+    .limited-actions { display:flex; flex-direction:column; gap:10px; }
+    .limited-actions button, .limited-actions a { border-radius:999px; padding:12px; text-transform:uppercase; letter-spacing:0.2rem; font-size:12px; font-weight:600; border:none; }
+    .limited-actions button { background:linear-gradient(120deg,rgba(61,213,255,0.95),rgba(14,165,233,0.95)); color:#01040b; }
+    .limited-actions a { background:rgba(255,255,255,0.08); color:var(--text); border:1px solid rgba(255,255,255,0.2); text-align:center; }
     .portal-block { margin-top:28px; border:1px solid var(--line); border-radius:22px; padding:20px; background:rgba(5,10,23,0.6); }
     .portal-note { margin:0 0 14px; font-size:12px; letter-spacing:0.18rem; text-transform:uppercase; color:var(--muted); text-align:center; }
     .portals { display:none; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:16px; }
@@ -55,6 +61,14 @@
       <a href="/registro">Crear usuario</a>
       <a href="#">Olvidé mi contraseña</a>
     </div>
+    <div class="limited-banner">
+      <p>Estás usando StarX Medic en modo limitado</p>
+      <div class="limited-actions">
+        <button id="limited-activate">Activar sistema completo</button>
+        <a href="https://wa.me/51999999999?text=Hola%2C%20quiero%20activar%20StarX%20Medic%20con%20un%20asesor" target="_blank" rel="noreferrer">Activar con asesor</a>
+        <span id="limited-status" style="font-size:12px; letter-spacing:0.12rem; color:rgba(255,255,255,0.7);"></span>
+      </div>
+    </div>
     <div class="portal-block">
       <p id="portal-note" class="portal-note">Inicia sesión para elegir un portal.</p>
       <div id="portal-grid" class="portals">
@@ -68,6 +82,8 @@
     const statusEl = document.getElementById("login-status");
     const portalGrid = document.getElementById("portal-grid");
     const portalNote = document.getElementById("portal-note");
+    const limitedBtn = document.getElementById("limited-activate");
+    const limitedStatus = document.getElementById("limited-status");
 
     const showPortals = () => {
       if (!portalGrid) return;
@@ -105,6 +121,29 @@
         showPortals();
       } catch (error) {
         statusEl.textContent = error.message || "No se pudo iniciar sesión";
+      }
+    });
+
+    limitedBtn?.addEventListener("click", async () => {
+      const token = localStorage.getItem("starx_token");
+      if (!token) {
+        limitedStatus.textContent = "Inicia sesión para activar";
+        return;
+      }
+      limitedStatus.textContent = "Activando...";
+      try {
+        const res = await fetch(`${API_BASE}/subscribe`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+          },
+          body: JSON.stringify({ plan: "basic" })
+        });
+        if (!res.ok) throw new Error("No se pudo activar");
+        limitedStatus.textContent = "Plan activado";
+      } catch (error) {
+        limitedStatus.textContent = error.message;
       }
     });
   </script>

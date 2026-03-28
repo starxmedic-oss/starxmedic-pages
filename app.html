@@ -203,7 +203,7 @@
       </div>
       <div class="banner-actions">
         <button id="activate-plan">Activar ahora — S/29</button>
-        <a class="assist-cta" href="https://wa.me/TUNUMERO?text=Quiero%20activar%20StarX">Quiero activarlo conmigo</a>
+        <a class="assist-cta" href="https://wa.me/51999999999?text=Hola%2C%20quiero%20activar%20StarX%20Medic%20con%20un%20asesor" target="_blank" rel="noreferrer">Activar con asesor</a>
       </div>
       <div class="status" id="subscription-note"></div>
     </div>
@@ -225,6 +225,10 @@
         <div class="monet-card">
           <p class="label">Conversiones</p>
           <p class="value" id="monet-conv">--</p>
+        </div>
+        <div class="monet-card">
+          <p class="label">Eventos totales</p>
+          <p class="value" id="monet-events">--</p>
         </div>
         <div class="monet-card">
           <p class="label">Colony admin</p>
@@ -289,6 +293,7 @@
     const monetActiveEl = document.getElementById("monet-active");
     const monetInactiveEl = document.getElementById("monet-inactive");
     const monetConvEl = document.getElementById("monet-conv");
+    const monetEventsEl = document.getElementById("monet-events");
     const monetColonyEl = document.getElementById("monet-colony");
     const activateBtn = document.getElementById("activate-plan");
     const subscriptionCopy = document.getElementById("subscription-copy");
@@ -406,6 +411,7 @@
         if (monetActiveEl) monetActiveEl.textContent = subs;
         if (monetInactiveEl) monetInactiveEl.textContent = inactive;
         if (monetConvEl) monetConvEl.textContent = subs;
+        if (monetEventsEl) monetEventsEl.textContent = stats?.events_total ?? "--";
         if (monetColonyEl) monetColonyEl.textContent = colony?.status ? colony.status.toUpperCase() : "--";
       }
     };
@@ -482,6 +488,10 @@
       }
       if (cmd === "por qué pagar") {
         addMessage("bot", "Pagas por tener el centro de mando 24/7, con seguimiento y asistencia.");
+        return;
+      }
+      if (cmd === "modo limitado") {
+        addMessage("bot", "Modo limitado muestra datos pero no desbloquea IA ni seguimiento. Activa para verlo completo.");
         return;
       }
       if (cmd === "activar" || cmd === "mejorar sistema") {
