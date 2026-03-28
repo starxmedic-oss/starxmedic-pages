@@ -2,148 +2,113 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portal Profesional | StarX</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portal Profesional | StarX Medic</title>
   <style>
-    :root { --bg:#01040b; --panel:#070f1c; --line:rgba(255,255,255,0.08); --text:#f2f6ff; --muted:rgba(242,246,255,0.65); }
+    :root { --bg:#01030a; --text:#f5f7ff; --muted:rgba(245,247,255,0.65); }
     * { box-sizing:border-box; }
-    body { margin:0; min-height:100vh; background:radial-gradient(circle at top, rgba(61,213,255,0.12), transparent 60%), var(--bg); color:var(--text); font-family:"Space Grotesk","Segoe UI",sans-serif; padding:50px 20px; overflow-y:auto; }
-    main { max-width:920px; margin:0 auto; border:1px solid var(--line); border-radius:40px; padding:60px 50px; background:rgba(5,10,22,0.9); box-shadow:0 60px 200px rgba(0,0,0,0.6); text-align:center; }
-    .symbol-cube { width:140px; height:140px; margin:0 auto 24px; position:relative; border-radius:28px; display:flex; align-items:center; justify-content:center; font-size:50px; letter-spacing:0.5rem; text-transform:uppercase; color:#0b1424; animation:float 6s ease-in-out infinite, spin 28s linear infinite; transform-style:preserve-3d; }
-    .symbol-cube::before { content:""; position:absolute; inset:0; border-radius:28px; background:linear-gradient(135deg, rgba(61,213,255,0.9), rgba(20,167,255,0.45)); box-shadow:0 25px 90px rgba(61,213,255,0.35); transform:translateZ(-20px); }
-    .symbol-cube::after { content:""; position:absolute; inset:16px; border-radius:20px; background:rgba(2,4,10,0.9); box-shadow:inset 0 0 40px rgba(61,213,255,0.35); transform:translateZ(30px); }
-    .symbol-cube span { position:relative; z-index:1; color:#f5f8ff; }
-    h1 { margin:0 0 10px; text-transform:uppercase; letter-spacing:0.45rem; font-size:28px; }
-    p.lead { margin:0 0 32px; letter-spacing:0.2rem; text-transform:uppercase; color:var(--muted); font-size:13px; }
-    .insight { border:1px solid rgba(255,255,255,0.15); border-radius:24px; padding:14px 18px; margin-bottom:24px; text-align:center; font-size:14px; letter-spacing:0.15rem; color:var(--muted); }
-    .profile-block { border:1px solid rgba(255,255,255,0.1); border-radius:24px; padding:20px; margin-bottom:24px; text-align:left; }
-    .profile-block h3 { margin-top:0; letter-spacing:0.2rem; text-transform:uppercase; }
-    .profile-block label { display:block; font-size:12px; letter-spacing:0.15rem; text-transform:uppercase; color:var(--muted); margin-bottom:6px; }
-    .profile-block input, .profile-block select { width:100%; border-radius:14px; border:1px solid rgba(255,255,255,0.15); padding:12px; margin-bottom:12px; background:rgba(255,255,255,0.05); color:var(--text); }
-    .profile-block button { width:100%; border:none; border-radius:999px; padding:12px; background:linear-gradient(120deg,#3dd5ff,#14a5e9); color:#01040b; text-transform:uppercase; letter-spacing:0.15rem; font-weight:600; cursor:pointer; }
-    .avatar-upload { display:flex; align-items:center; gap:16px; margin-bottom:16px; }
-    .avatar-preview { width:80px; height:80px; border-radius:50%; border:1px solid rgba(255,255,255,0.2); display:flex; align-items:center; justify-content:center; font-size:26px; color:var(--muted); background:rgba(255,255,255,0.05); cursor:pointer; background-size:cover; background-position:center; }
-    .avatar-copy { font-size:12px; letter-spacing:0.15rem; color:var(--muted); text-transform:uppercase; }
-    .radial-shell { position:relative; width:320px; height:320px; margin:40px auto; }
-    .radial-center { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:150px; height:150px; border-radius:50%; border:none; background:linear-gradient(135deg, rgba(61,213,255,0.9), rgba(20,167,255,0.6)); box-shadow:0 30px 90px rgba(61,213,255,0.4); color:#021025; font-size:60px; text-shadow:0 0 20px rgba(255,255,255,0.4); cursor:pointer; animation:float 6s ease-in-out infinite; }
-    .radial-node { position:absolute; width:120px; height:120px; border-radius:50%; border:1px solid rgba(255,255,255,0.15); background:rgba(6,12,25,0.9); color:var(--text); text-transform:uppercase; letter-spacing:0.15rem; font-size:11px; display:flex; align-items:center; justify-content:center; box-shadow:0 20px 60px rgba(0,0,0,0.4); }
-    .node-a { top:5%; left:5%; }
-    .node-b { top:-2%; right:5%; }
+    body { margin:0; min-height:100vh; background:radial-gradient(circle at top, rgba(61,213,255,0.14), transparent 60%), #00040c; color:var(--text); font-family:"Space Grotesk","Segoe UI",sans-serif; display:flex; justify-content:center; align-items:center; padding:24px; }
+    main { width:100%; max-width:420px; display:flex; flex-direction:column; align-items:center; gap:18px; }
+    .hero-symbol { width:140px; height:140px; border-radius:30px; display:flex; align-items:center; justify-content:center; font-size:42px; letter-spacing:0.4rem; text-transform:uppercase; color:#031125; position:relative; animation:float 6s ease-in-out infinite, spin 30s linear infinite; transform-style:preserve-3d; }
+    .hero-symbol::before,
+    .hero-symbol::after { content:""; position:absolute; inset:0; border-radius:30px; background:linear-gradient(135deg, rgba(61,213,255,0.95), rgba(16,94,255,0.55)); box-shadow:0 20px 60px rgba(61,213,255,0.35); transform:translateZ(-15px); }
+    .hero-symbol::after { inset:14px; background:rgba(2,5,13,0.85); box-shadow:inset 0 0 30px rgba(61,213,255,0.35); transform:translateZ(25px); }
+    .hero-symbol span { position:relative; z-index:2; }
+    .radial-shell { position:relative; width:320px; height:320px; max-width:90vw; max-height:90vw; }
+    .radial-center { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:150px; height:150px; border-radius:50%; border:none; background:linear-gradient(135deg, rgba(61,213,255,0.95), rgba(123,60,255,0.9)); color:#021024; font-size:64px; cursor:pointer; box-shadow:0 40px 120px rgba(61,213,255,0.45); text-shadow:0 0 20px rgba(255,255,255,0.5); }
+    .radial-node { position:absolute; width:110px; height:110px; border-radius:50%; border:none; background:linear-gradient(135deg, rgba(10,30,60,0.9), rgba(25,90,150,0.9)); color:var(--text); text-transform:uppercase; letter-spacing:0.2rem; font-size:11px; cursor:pointer; box-shadow:0 25px 70px rgba(0,0,0,0.55); display:flex; align-items:center; justify-content:center; }
+    .node-a { top:10%; left:5%; }
+    .node-b { top:10%; right:5%; }
     .node-c { bottom:5%; left:50%; transform:translateX(-50%); }
-    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:20px; text-align:left; }
-    .card { border:1px solid var(--line); border-radius:28px; padding:26px; background:rgba(6,12,25,0.9); text-decoration:none; color:var(--text); position:relative; overflow:hidden; }
-    .card h2 { margin:0 0 10px; text-transform:uppercase; letter-spacing:0.3rem; font-size:16px; }
-    .card p { margin:0; font-size:13px; color:var(--muted); letter-spacing:0.12rem; }
-    .card::after { content:""; position:absolute; inset:0; background:linear-gradient(120deg, rgba(61,213,255,0.08), rgba(20,167,255,0.12), rgba(61,213,255,0.08)); background-size:220% 100%; animation:energy 5s linear infinite; }
-    .notice { margin-top:32px; color:var(--muted); font-size:13px; letter-spacing:0.15rem; text-transform:uppercase; }
-    .back { margin-top:18px; display:inline-block; color:var(--muted); text-decoration:none; letter-spacing:0.2rem; font-size:12px; text-transform:uppercase; }
-    @keyframes float { 0%,100% { transform:translateY(-6px); } 50% { transform:translateY(6px); } }
+    .modal { position:fixed; inset:0; display:none; align-items:center; justify-content:center; }
+    .modal.active { display:flex; }
+    .overlay { position:fixed; inset:0; background:rgba(0,0,0,0.7); opacity:0; pointer-events:none; transition:opacity 0.3s ease; }
+    .overlay.active { opacity:1; pointer-events:auto; }
+    .modal-card { width:90%; max-width:420px; background:rgba(4,10,22,0.95); border-radius:20px; padding:24px; border:1px solid rgba(61,213,255,0.2); box-shadow:0 40px 120px rgba(0,0,0,0.6); }
+    .modal-card h2 { margin:0 0 16px; letter-spacing:0.3rem; text-transform:uppercase; font-size:16px; }
+    label { display:block; margin:12px 0 6px; letter-spacing:0.15rem; text-transform:uppercase; font-size:11px; color:var(--muted); }
+    input, textarea { width:100%; border:1px solid rgba(255,255,255,0.15); border-radius:12px; padding:12px; background:rgba(4,8,16,0.9); color:var(--text); }
+    textarea { resize:none; }
+    .modal-card button[type="submit"] { width:100%; margin-top:20px; border:none; border-radius:999px; padding:12px; background:linear-gradient(120deg, rgba(61,213,255,0.95), rgba(123,60,255,0.95)); color:#01040b; text-transform:uppercase; letter-spacing:0.2rem; cursor:pointer; }
+    .toast { margin-top:12px; text-align:center; font-size:12px; letter-spacing:0.15rem; color:var(--muted); min-height:16px; }
     @keyframes spin { 0% { transform:rotateX(0deg) rotateY(0deg); } 100% { transform:rotateX(360deg) rotateY(360deg); } }
-    @keyframes glow { 0%,100% { opacity:0.4; } 50% { opacity:0.8; } }
-    @keyframes energy { 0% { background-position:0% 50%; } 50% { background-position:100% 50%; } 100% { background-position:0% 50%; } }
+    @keyframes float { 0%,100% { transform:translateY(-6px); } 50% { transform:translateY(6px); } }
+    @media (max-width:480px) {
+      body { padding:16px; }
+      .radial-shell { width:260px; height:260px; }
+      .radial-center { width:120px; height:120px; font-size:52px; }
+      .radial-node { width:88px; height:88px; font-size:10px; }
+    }
   </style>
 </head>
 <body>
   <main>
-    <div class="symbol-cube"><span>S</span></div>
-    <h1>Portal profesional</h1>
-    <p class="lead">Sistema clínico Stark para equipos de salud</p>
-    <div class="insight">Estás usando StarX Medic Free · cuando necesites más, activa modo profesional.</div>
-
-    <section class="profile-block" id="pro-profile-block">
-      <h3>Completa tu perfil profesional</h3>
-      <form id="pro-profile-form">
-        <div class="avatar-upload">
-          <div class="avatar-preview" id="pro-avatar">+</div>
-          <div class="avatar-copy">Foto de perfil para identificarte en el portal (toca para subir).</div>
-          <input type="file" id="pro-photo" accept="image/*" hidden />
-        </div>
-        <label for="pro-type">Categoría</label>
-        <select id="pro-type">
-          <option value="estudiante">Estudiante</option>
-          <option value="medico">Médico</option>
-          <option value="especialista">Especialista</option>
-          <option value="enfermeria">Enfermería</option>
-          <option value="tecnico">Técnico</option>
-          <option value="otro">Otro profesional de salud</option>
-        </select>
-        <label for="pro-specialty-form">Especialidad / rama</label>
-        <input id="pro-specialty-form" type="text" placeholder="Emergencias, Pediatría, UCI…" />
-        <label for="pro-license-form">Número de colegiatura (opcional)</label>
-        <input id="pro-license-form" type="text" placeholder="CMP / Registro" />
-        <button type="submit">Guardar perfil</button>
-      </form>
-    </section>
-
-    <section class="radial-shell" id="radial-shell" style="display:none;">
+    <div class="hero-symbol"><span>S</span></div>
+    <section class="radial-shell">
       <button class="radial-center" id="quick-add">+</button>
-      <button class="radial-node node-a">Paciente</button>
-      <button class="radial-node node-b">Resumen clínico</button>
-      <button class="radial-node node-c">Comando</button>
+      <button class="radial-node node-a">Pacientes</button>
+      <button class="radial-node node-b">Resultados</button>
+      <button class="radial-node node-c">Pendientes</button>
     </section>
-    <p class="lead" id="radial-status" style="display:none;">Registra pacientes, guarda notas rápidas y ejecuta comandos diarios en segundos.</p>
-    <div class="notice">Completa tu perfil para desbloquear el tablero profesional. Pronto podrás ver información compartida por tus pacientes y aceptar consultas directamente.</div>
-    <a class="back" href="/app.html">Volver</a>
   </main>
+
+  <div class="overlay" id="quick-overlay"></div>
+  <div class="modal" id="quick-modal">
+    <form class="modal-card" id="quick-form">
+      <h2>Registro rápido</h2>
+      <label for="patient-name">Paciente</label>
+      <input id="patient-name" type="text" placeholder="Nombre / código" required />
+      <label for="patient-event">¿Qué ocurre?</label>
+      <textarea id="patient-event" rows="2" placeholder="Motivo o evento" required></textarea>
+      <label for="patient-plan">Conducta / indicación</label>
+      <textarea id="patient-plan" rows="2" placeholder="Tratamiento, conducta o indicación" required></textarea>
+      <label for="patient-next">Pendiente</label>
+      <input id="patient-next" type="text" placeholder="Próxima acción" />
+      <button type="submit">Guardar registro</button>
+      <div class="toast" id="quick-toast"></div>
+    </form>
+  </div>
+
   <script>
-    const profileBlock = document.getElementById('pro-profile-block');
-    const profileForm = document.getElementById('pro-profile-form');
-    const proAvatar = document.getElementById('pro-avatar');
-    const proPhoto = document.getElementById('pro-photo');
-    const radialShell = document.getElementById('radial-shell');
-    const radialStatus = document.getElementById('radial-status');
-    const quickAdd = document.getElementById('quick-add');
-    const savedProfile = localStorage.getItem('starx_pro_profile');
-    const savedAvatar = localStorage.getItem('starx_pro_avatar');
+    const quickAdd = document.getElementById("quick-add");
+    const quickModal = document.getElementById("quick-modal");
+    const quickOverlay = document.getElementById("quick-overlay");
+    const quickForm = document.getElementById("quick-form");
+    const quickToast = document.getElementById("quick-toast");
 
-    const setAvatar = (dataUrl) => {
-      if (!proAvatar) return;
-      proAvatar.textContent = '';
-      proAvatar.style.backgroundImage = `url(${dataUrl})`;
+    const openModal = () => {
+      quickModal.classList.add("active");
+      quickOverlay.classList.add("active");
+      document.getElementById("patient-name").focus();
     };
 
-    if (savedAvatar) setAvatar(savedAvatar);
-
-    const unlockPro = (profile) => {
-      profileBlock.style.display = 'none';
-      radialShell.style.display = 'block';
-      radialStatus.style.display = 'block';
-      radialStatus.textContent = `Listo ${profile.type?.toUpperCase() || 'PRO'} · pacientes y comandos en un solo toque.`;
+    const closeModal = () => {
+      quickModal.classList.remove("active");
+      quickOverlay.classList.remove("active");
     };
 
-    if (savedProfile) {
-      unlockPro(JSON.parse(savedProfile));
-    }
+    quickAdd.addEventListener("click", openModal);
+    quickOverlay.addEventListener("click", closeModal);
 
-    proAvatar?.addEventListener('click', () => proPhoto?.click());
-    proPhoto?.addEventListener('change', (event) => {
-      const file = event.target.files?.[0];
-      if (!file) return;
-      const reader = new FileReader();
-      reader.onload = () => {
-        if (typeof reader.result === 'string') {
-          localStorage.setItem('starx_pro_avatar', reader.result);
-          setAvatar(reader.result);
-        }
-      };
-      reader.readAsDataURL(file);
-    });
-
-    profileForm?.addEventListener('submit', (event) => {
+    quickForm.addEventListener("submit", (event) => {
       event.preventDefault();
-      const profile = {
-        type: document.getElementById('pro-type').value,
-        specialty: document.getElementById('pro-specialty-form').value,
-        license: document.getElementById('pro-license-form').value
+      const payload = {
+        patient: event.target[0].value.trim(),
+        event: event.target[1].value.trim(),
+        plan: event.target[2].value.trim(),
+        next: event.target[3].value.trim(),
+        created_at: new Date().toISOString()
       };
-      localStorage.setItem('starx_pro_profile', JSON.stringify(profile));
-      unlockPro(profile);
-    });
-
-    quickAdd?.addEventListener('click', () => {
-      radialStatus.textContent = 'Registro rápido activo: guarda pacientes o notas clínicas al instante (en desarrollo).';
+      const saved = JSON.parse(localStorage.getItem("starx_quick_cases") || "[]");
+      saved.unshift(payload);
+      localStorage.setItem("starx_quick_cases", JSON.stringify(saved.slice(0,10)));
+      quickToast.textContent = "Registro guardado";
+      setTimeout(() => {
+        quickToast.textContent = "";
+        closeModal();
+        quickForm.reset();
+      }, 900);
     });
   </script>
-  <script src="/cta.js" defer></script>
 </body>
 </html>
