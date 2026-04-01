@@ -38,6 +38,23 @@
     label { display:block; margin:12px 0 6px; letter-spacing:0.15rem; text-transform:uppercase; font-size:11px; color:var(--muted); }
     input, textarea { width:100%; border:1px solid rgba(255,255,255,0.15); border-radius:12px; padding:12px; background:rgba(4,8,16,0.9); color:var(--text); }
     textarea { resize:none; }
+    .copilot-card { width:100%; border:1px solid rgba(61,213,255,0.25); border-radius:24px; padding:22px; background:rgba(4,10,22,0.9); box-shadow:0 25px 80px rgba(0,0,0,0.5); display:flex; flex-direction:column; gap:12px; }
+    .copilot-card h2 { margin:0; text-transform:uppercase; letter-spacing:0.3rem; font-size:15px; }
+    .copilot-card p { margin:0; color:rgba(245,247,255,0.7); letter-spacing:0.12rem; font-size:12px; }
+    .copilot-actions { display:flex; gap:10px; flex-wrap:wrap; }
+    .copilot-actions button { flex:1; min-width:140px; border:none; border-radius:999px; padding:12px 18px; text-transform:uppercase; letter-spacing:0.2rem; cursor:pointer; background:linear-gradient(120deg,#21f1a3,#0fa164); color:#01040b; box-shadow:0 20px 60px rgba(33,241,163,0.35); }
+    .copilot-flow { border:1px solid rgba(61,213,255,0.2); border-radius:18px; padding:16px; background:rgba(6,14,25,0.9); display:flex; flex-direction:column; gap:10px; }
+    .copilot-flow .status { text-transform:uppercase; letter-spacing:0.25rem; font-size:11px; color:rgba(245,247,255,0.8); }
+    .copilot-flow .summary { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; }
+    .copilot-flow .summary article { border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:10px; background:rgba(4,10,22,0.8); }
+    .copilot-flow .summary h3 { margin:0 0 6px; letter-spacing:0.25rem; font-size:11px; text-transform:uppercase; }
+    .copilot-flow .summary p { margin:0; font-size:12px; letter-spacing:0.08rem; color:rgba(245,247,255,0.7); }
+    .copilot-paywall .panel-card { text-align:center; }
+    .copilot-paywall h2 { margin-bottom:8px; }
+    .copilot-paywall p { margin:0 0 14px; letter-spacing:0.12rem; color:rgba(245,247,255,0.75); }
+    .copilot-paywall .pricing { font-size:13px; letter-spacing:0.2rem; color:rgba(245,247,255,0.8); }
+    .copilot-paywall .cta { margin-top:18px; display:flex; flex-direction:column; gap:8px; }
+    .copilot-paywall a.cta-btn { display:inline-flex; justify-content:center; padding:12px; border-radius:999px; background:linear-gradient(120deg,#21f1a3,#0fa164); color:#01040b; text-transform:uppercase; letter-spacing:0.2rem; text-decoration:none; box-shadow:0 20px 60px rgba(33,241,163,0.35); }
     .modal-card button[type="submit"] { width:100%; margin-top:20px; border:none; border-radius:999px; padding:12px; background:linear-gradient(120deg, rgba(61,213,255,0.95), rgba(123,60,255,0.95)); color:#01040b; text-transform:uppercase; letter-spacing:0.2rem; cursor:pointer; }
     .toast { margin-top:12px; text-align:center; font-size:12px; letter-spacing:0.15rem; color:var(--muted); min-height:16px; }
     @keyframes spin { 0% { transform:rotateX(0deg) rotateY(0deg); } 100% { transform:rotateX(360deg) rotateY(360deg); } }
@@ -60,9 +77,44 @@
       <button class="radial-node node-b" data-panel="database">Base de datos</button>
       <button class="radial-node node-c" data-panel="ai">IA</button>
     </section>
+    <section class="copilot-card">
+      <h2>StarX Clinical Copilot</h2>
+      <p>Tú atiendes. StarX escribe. Activa el modo premium para convertir cada consulta en una nota clínica lista.</p>
+      <div class="copilot-actions">
+        <button type="button" id="copilot-start">Iniciar consulta</button>
+        <button type="button" id="copilot-finish" style="display:none;">Finalizar consulta</button>
+      </div>
+      <div class="copilot-flow" id="copilot-flow">
+        <div class="status">Sin consulta activa</div>
+        <div class="summary" id="copilot-summary" style="display:none;">
+          <article><h3>Motivo</h3><p id="copilot-motive">—</p></article>
+          <article><h3>Síntomas</h3><p id="copilot-symptoms">—</p></article>
+          <article><h3>Resumen</h3><p id="copilot-summary-text">—</p></article>
+          <article><h3>Plan</h3><p id="copilot-plan">—</p></article>
+          <article><h3>Pendientes</h3><p id="copilot-pending">—</p></article>
+        </div>
+        <div class="copilot-actions" id="copilot-review" style="display:none;">
+          <button type="button" id="copilot-edit">Revisar</button>
+          <button type="button" id="copilot-approve">Aprobar y guardar</button>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <div class="overlay" id="quick-overlay"></div>
+  <div class="overlay" id="copilot-overlay"></div>
+  <div class="modal copilot-paywall" id="copilot-paywall">
+    <div class="panel-card">
+      <h2>Desbloquea StarX Clinical Copilot</h2>
+      <p>Mira al paciente. StarX escribe y organiza la consulta por ti.</p>
+      <div class="pricing">Incluido en StarX+ Pro · Lanzamiento US$9.99/mes (antes US$49.99)</div>
+      <div class="cta">
+        <a class="cta-btn" href="/tienda.html">Activar Clinical Copilot</a>
+        <button type="button" id="copilot-close">Cerrar</button>
+      </div>
+    </div>
+  </div>
   <div class="modal" id="quick-modal">
     <form class="modal-card" id="quick-form">
       <h2>Registro rápido</h2>
@@ -186,6 +238,76 @@
       panelOverlay.classList.add("active");
     };
 
+
+    const copilotStart = document.getElementById("copilot-start");
+    const copilotFinish = document.getElementById("copilot-finish");
+    const copilotFlow = document.getElementById("copilot-flow");
+    const copilotSummary = document.getElementById("copilot-summary");
+    const copilotReview = document.getElementById("copilot-review");
+    const copilotOverlay = document.getElementById("copilot-overlay");
+    const copilotPaywall = document.getElementById("copilot-paywall");
+    const copilotClose = document.getElementById("copilot-close");
+
+    const hasPremium = () => localStorage.getItem('starx_plus_active') === 'true';
+
+    const openCopilotPaywall = () => {
+      copilotPaywall.classList.add('active');
+      copilotOverlay.classList.add('active');
+    };
+
+    const closeCopilotPaywall = () => {
+      copilotPaywall.classList.remove('active');
+      copilotOverlay.classList.remove('active');
+    };
+
+    copilotOverlay.addEventListener('click', closeCopilotPaywall);
+    copilotClose.addEventListener('click', closeCopilotPaywall);
+
+    let copilotCapture = null;
+
+    copilotStart.addEventListener('click', () => {
+      if (!hasPremium()) {
+        openCopilotPaywall();
+        return;
+      }
+      copilotStart.style.display = 'none';
+      copilotFinish.style.display = 'inline-flex';
+      copilotFlow.querySelector('.status').textContent = 'Consulta en curso';
+      copilotSummary.style.display = 'none';
+      copilotReview.style.display = 'none';
+      copilotCapture = {
+        motive: 'Control general',
+        symptoms: 'Paciente refiere malestar leve y fatiga',
+        summary: 'Consulta guiada por Copilot, notas generadas automáticamente.',
+        plan: 'Actualizar tratamiento y seguimiento en 7 días.',
+        pending: 'Solicitar laboratorio básico'
+      };
+    });
+
+    copilotFinish.addEventListener('click', () => {
+      if (!copilotCapture) return;
+      copilotFinish.style.display = 'none';
+      copilotStart.style.display = 'inline-flex';
+      copilotFlow.querySelector('.status').textContent = 'Consulta lista para validar';
+      document.getElementById('copilot-motive').textContent = copilotCapture.motive;
+      document.getElementById('copilot-symptoms').textContent = copilotCapture.symptoms;
+      document.getElementById('copilot-summary-text').textContent = copilotCapture.summary;
+      document.getElementById('copilot-plan').textContent = copilotCapture.plan;
+      document.getElementById('copilot-pending').textContent = copilotCapture.pending;
+      copilotSummary.style.display = 'grid';
+      copilotReview.style.display = 'flex';
+    });
+
+    document.getElementById('copilot-edit')?.addEventListener('click', () => {
+      copilotSummary.style.display = 'none';
+      copilotReview.style.display = 'none';
+      copilotFlow.querySelector('.status').textContent = 'Consulta en edición';
+    });
+
+    document.getElementById('copilot-approve')?.addEventListener('click', () => {
+      copilotFlow.querySelector('.status').textContent = 'Nota clínica guardada';
+      copilotReview.style.display = 'none';
+    });
     document.querySelectorAll(".radial-node").forEach((node) => {
       node.addEventListener("click", () => {
         const type = node.dataset.panel;
