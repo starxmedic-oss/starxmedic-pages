@@ -1,0 +1,1195 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OPTIMAX | Oferta S/79.90</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+--blue:#6C78EA;
+--lav:#B6BCFF;
+--soft:#F4F5FF;
+--dark:#171B35;
+--gray:#74788A;
+--white:#FFFFFF;
+--green:#25D366;
+--sale:#FF4D63;
+}
+
+body{
+font-family:Arial,Helvetica,sans-serif;
+background:white;
+color:var(--dark);
+}
+
+a{text-decoration:none;color:inherit}
+
+.offerBar{
+background:var(--blue);
+color:white;
+text-align:center;
+padding:11px;
+font-size:13px;
+font-weight:800;
+}
+
+.offerBar s{
+opacity:.7;
+margin-right:6px;
+}
+
+nav{
+height:70px;
+padding:0 6%;
+display:flex;
+align-items:center;
+justify-content:space-between;
+background:white;
+border-bottom:1px solid #eee;
+position:sticky;
+top:0;
+z-index:20;
+}
+
+.logo{
+font-size:28px;
+font-weight:900;
+letter-spacing:3px;
+color:var(--blue);
+}
+
+.navButton{
+background:var(--blue);
+color:white;
+padding:11px 18px;
+border-radius:30px;
+font-size:13px;
+font-weight:800;
+}
+
+.hero{
+min-height:600px;
+padding:60px 7%;
+display:grid;
+grid-template-columns:1.05fr .95fr;
+gap:55px;
+align-items:center;
+background:linear-gradient(120deg,#FAFAFF,#E9ECFF);
+}
+
+.badge{
+display:inline-block;
+background:#FFE8EC;
+color:var(--sale);
+padding:9px 14px;
+border-radius:30px;
+font-size:12px;
+font-weight:900;
+margin-bottom:18px;
+}
+
+.hero h1{
+font-size:64px;
+line-height:.98;
+letter-spacing:-3px;
+}
+
+.hero h1 span{
+color:var(--blue);
+}
+
+.hero p{
+font-size:18px;
+line-height:1.6;
+color:var(--gray);
+margin:24px 0;
+max-width:540px;
+}
+
+.priceBox{
+margin:10px 0 25px;
+}
+
+.oldPrice{
+font-size:18px;
+color:#989CAD;
+text-decoration:line-through;
+margin-bottom:3px;
+}
+
+.newPrice{
+font-size:42px;
+font-weight:900;
+color:var(--blue);
+}
+
+.discount{
+display:inline-block;
+margin-top:7px;
+background:var(--sale);
+color:white;
+padding:7px 11px;
+border-radius:20px;
+font-size:12px;
+font-weight:900;
+}
+
+.deliveryNote{
+font-size:13px;
+color:var(--gray);
+margin-top:8px;
+}
+
+.btn{
+display:inline-block;
+border:0;
+background:var(--blue);
+color:white;
+padding:16px 25px;
+border-radius:30px;
+font-weight:900;
+cursor:pointer;
+margin-right:8px;
+}
+
+.btnLight{
+background:white;
+color:var(--blue);
+border:1px solid #D9DDFF;
+}
+
+.stepsCard{
+background:white;
+border-radius:28px;
+padding:35px;
+box-shadow:0 25px 60px rgba(74,82,170,.12);
+}
+
+.stepsCard h3{
+font-size:25px;
+margin-bottom:22px;
+}
+
+.step{
+display:flex;
+align-items:center;
+gap:15px;
+margin:18px 0;
+}
+
+.number{
+min-width:42px;
+height:42px;
+border-radius:50%;
+background:var(--soft);
+color:var(--blue);
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:900;
+}
+
+.step strong{
+display:block;
+margin-bottom:3px;
+}
+
+.step span{
+color:var(--gray);
+font-size:13px;
+}
+
+.benefits{
+padding:25px 6%;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+border-bottom:1px solid #eee;
+}
+
+.benefit{
+text-align:center;
+padding:15px;
+}
+
+.benefit strong{
+display:block;
+margin-bottom:5px;
+}
+
+.benefit span{
+font-size:13px;
+color:var(--gray);
+}
+
+.uploadSection{
+padding:80px 6%;
+}
+
+.uploadWrap{
+max-width:920px;
+margin:auto;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:50px;
+align-items:center;
+}
+
+.uploadText h2{
+font-size:46px;
+line-height:1.05;
+margin-bottom:18px;
+}
+
+.uploadText p{
+color:var(--gray);
+line-height:1.7;
+}
+
+.uploadBox{
+background:var(--soft);
+border:2px dashed #BBC2FF;
+border-radius:24px;
+padding:40px;
+text-align:center;
+cursor:pointer;
+transition:.2s;
+}
+
+.uploadBox:hover{
+background:#ECEEFF;
+border-color:var(--blue);
+}
+
+.uploadIcon{
+font-size:44px;
+margin-bottom:12px;
+}
+
+.uploadBox h3{
+margin-bottom:8px;
+}
+
+.uploadBox p{
+color:var(--gray);
+font-size:13px;
+line-height:1.5;
+}
+
+.fileStatus{
+display:none;
+margin-top:17px;
+padding:12px;
+border-radius:12px;
+background:white;
+color:var(--blue);
+font-weight:800;
+font-size:13px;
+}
+
+.section{
+padding:80px 6%;
+}
+
+.section h2{
+text-align:center;
+font-size:42px;
+margin-bottom:10px;
+}
+
+.subtitle{
+text-align:center;
+color:var(--gray);
+margin-bottom:45px;
+}
+
+.products{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:25px;
+max-width:950px;
+margin:auto;
+}
+
+.product{
+border:1px solid #EAEAF3;
+border-radius:22px;
+overflow:hidden;
+background:white;
+}
+
+.productImage{
+height:300px;
+background:var(--soft);
+display:flex;
+align-items:center;
+justify-content:center;
+position:relative;
+}
+
+.saleTag{
+position:absolute;
+top:16px;
+left:16px;
+background:var(--sale);
+color:white;
+padding:8px 11px;
+border-radius:20px;
+font-size:12px;
+font-weight:900;
+}
+
+.mini{
+width:230px;
+height:95px;
+position:relative;
+}
+
+.lens{
+position:absolute;
+width:95px;
+height:70px;
+border:8px solid var(--blue);
+border-radius:42%;
+top:8px;
+}
+
+.lens.left{left:0}
+.lens.right{right:0}
+
+.bridge{
+position:absolute;
+width:44px;
+height:7px;
+background:var(--blue);
+top:41px;
+left:93px;
+}
+
+.productInfo{
+padding:23px;
+}
+
+.productInfo h3{
+font-size:23px;
+margin-bottom:6px;
+}
+
+.productInfo p{
+color:var(--gray);
+margin-bottom:15px;
+}
+
+.oldProductPrice{
+color:#969AAD;
+text-decoration:line-through;
+font-size:15px;
+}
+
+.productPrice{
+font-size:30px;
+font-weight:900;
+color:var(--blue);
+margin-top:2px;
+}
+
+.productDiscount{
+display:inline-block;
+margin-top:7px;
+background:#FFE8EC;
+color:var(--sale);
+padding:7px 10px;
+border-radius:20px;
+font-size:12px;
+font-weight:900;
+}
+
+.colors{
+display:flex;
+gap:8px;
+margin:20px 0;
+flex-wrap:wrap;
+}
+
+.color{
+border:1px solid #DDD;
+background:white;
+padding:9px 13px;
+border-radius:20px;
+cursor:pointer;
+}
+
+.color.active{
+background:var(--blue);
+color:white;
+border-color:var(--blue);
+}
+
+.buy{
+width:100%;
+border:0;
+background:var(--blue);
+color:white;
+padding:15px;
+border-radius:30px;
+font-size:15px;
+font-weight:900;
+cursor:pointer;
+}
+
+.delivery{
+margin:20px 6% 80px;
+padding:60px;
+border-radius:28px;
+background:var(--blue);
+color:white;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:50px;
+align-items:center;
+}
+
+.delivery h2{
+font-size:43px;
+line-height:1.05;
+}
+
+.delivery p{
+color:#E3E5FF;
+line-height:1.7;
+margin-top:16px;
+}
+
+.deliveryCard{
+background:white;
+color:var(--dark);
+border-radius:20px;
+padding:30px;
+}
+
+.deliveryCard div{
+padding:14px 0;
+border-bottom:1px solid #eee;
+}
+
+.deliveryCard div:last-child{
+border-bottom:0;
+}
+
+.payment{
+background:var(--soft);
+padding:75px 6%;
+text-align:center;
+}
+
+.payment h2{
+font-size:40px;
+margin-bottom:12px;
+}
+
+.payment p{
+color:var(--gray);
+margin-bottom:28px;
+}
+
+.methods{
+display:flex;
+justify-content:center;
+gap:12px;
+flex-wrap:wrap;
+}
+
+.method{
+background:white;
+padding:15px 25px;
+border-radius:18px;
+border:1px solid #E2E4F2;
+font-weight:900;
+}
+
+.final{
+padding:90px 20px;
+text-align:center;
+}
+
+.final h2{
+font-size:46px;
+margin-bottom:12px;
+}
+
+.final p{
+color:var(--gray);
+margin-bottom:25px;
+}
+
+footer{
+background:#151931;
+color:#BFC3D6;
+padding:45px 6%;
+text-align:center;
+}
+
+footer .logo{
+color:white;
+margin-bottom:8px;
+}
+
+.modal{
+display:none;
+position:fixed;
+inset:0;
+background:rgba(10,14,35,.72);
+z-index:999;
+align-items:center;
+justify-content:center;
+padding:20px;
+}
+
+.modalCard{
+background:white;
+width:min(440px,100%);
+border-radius:25px;
+padding:30px;
+}
+
+.modalCard h2{
+margin-bottom:10px;
+}
+
+.modalCard>p{
+color:var(--gray);
+line-height:1.5;
+}
+
+.order{
+background:var(--soft);
+padding:17px;
+border-radius:15px;
+margin:20px 0;
+line-height:1.8;
+font-size:14px;
+}
+
+.warning{
+font-size:12px;
+background:#FFF7DC;
+padding:12px;
+border-radius:10px;
+line-height:1.5;
+margin-bottom:18px;
+}
+
+.whatsapp{
+display:block;
+background:var(--green);
+color:white;
+padding:16px;
+border-radius:30px;
+text-align:center;
+font-weight:900;
+}
+
+.close{
+width:100%;
+border:0;
+background:none;
+margin-top:15px;
+color:var(--gray);
+cursor:pointer;
+}
+
+@media(max-width:800px){
+
+.hero{
+grid-template-columns:1fr;
+padding:50px 6%;
+}
+
+.hero h1{
+font-size:46px;
+}
+
+.uploadWrap{
+grid-template-columns:1fr;
+}
+
+.products{
+grid-template-columns:1fr;
+}
+
+.delivery{
+grid-template-columns:1fr;
+padding:35px;
+}
+
+.benefits{
+grid-template-columns:1fr;
+}
+
+.uploadText h2,
+.section h2,
+.delivery h2,
+.payment h2{
+font-size:34px;
+}
+
+.final h2{
+font-size:37px;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<div class="offerBar">
+🔥 OFERTA OPTIMAX · <s>S/99.90</s> AHORA S/79.90
+</div>
+
+<nav>
+<div class="logo">OPTIMAX</div>
+<a href="#receta" class="navButton">Subir receta →</a>
+</nav>
+
+<section class="hero">
+
+<div>
+
+<div class="badge">
+🔥 OFERTA ESPECIAL
+</div>
+
+<h1>
+Tus lentes.<br>
+Sin salir de <span>casa.</span>
+</h1>
+
+<p>
+Sube tu receta, elige tu modelo y nosotros nos encargamos del resto.
+Tus lentes llegan directamente hasta la puerta de tu casa.
+</p>
+
+<div class="priceBox">
+
+<div class="oldPrice">
+Antes S/99.90
+</div>
+
+<div class="newPrice">
+Ahora S/79.90
+</div>
+
+<div class="discount">
+AHORRA S/20
+</div>
+
+<div class="deliveryNote">
+Delivery adicional según ubicación
+</div>
+
+</div>
+
+<a class="btn" href="#receta">
+Subir mi receta →
+</a>
+
+<a class="btn btnLight" href="#modelos">
+Ver modelos
+</a>
+
+</div>
+
+<div class="stepsCard">
+
+<h3>Compra en minutos.</h3>
+
+<div class="step">
+<div class="number">1</div>
+<div>
+<strong>Sube tu receta</strong>
+<span>Foto, captura o PDF.</span>
+</div>
+</div>
+
+<div class="step">
+<div class="number">2</div>
+<div>
+<strong>Elige modelo y color</strong>
+<span>Sin complicaciones.</span>
+</div>
+</div>
+
+<div class="step">
+<div class="number">3</div>
+<div>
+<strong>Confirma por WhatsApp</strong>
+<span>Yape, Plin o link de pago.</span>
+</div>
+</div>
+
+<div class="step">
+<div class="number">4</div>
+<div>
+<strong>Recíbelos en casa</strong>
+<span>Nosotros coordinamos el delivery.</span>
+</div>
+</div>
+
+</div>
+
+</section>
+
+<section class="benefits">
+
+<div class="benefit">
+<strong>⚡ Compra rápida</strong>
+<span>Todo desde tu celular</span>
+</div>
+
+<div class="benefit">
+<strong>🔥 Precio oferta</strong>
+<span>De S/99.90 a S/79.90</span>
+</div>
+
+<div class="benefit">
+<strong>🏠 Hasta tu puerta</strong>
+<span>Delivery adicional según ubicación</span>
+</div>
+
+</section>
+
+<section class="uploadSection" id="receta">
+
+<div class="uploadWrap">
+
+<div class="uploadText">
+
+<h2>
+¿Ya tienes tu receta?
+</h2>
+
+<p>
+Súbela desde tu celular y continúa directamente con tu compra.
+No necesitas salir de casa ni volver a una óptica solo para pedir tus lentes.
+<br><br>
+Cuando abras WhatsApp, adjunta la misma receta y terminamos de coordinar tu pedido.
+</p>
+
+</div>
+
+<label class="uploadBox">
+
+<input
+type="file"
+id="recipe"
+accept="image/*,.pdf"
+hidden
+onchange="recipeSelected(this)"
+>
+
+<div class="uploadIcon">📄</div>
+
+<h3>Sube tu receta</h3>
+
+<p>
+Toca aquí para seleccionar<br>
+una foto, captura o PDF.
+</p>
+
+<div class="fileStatus" id="fileStatus"></div>
+
+</label>
+
+</div>
+
+</section>
+
+<section class="section" id="modelos">
+
+<h2>Elige tus lentes</h2>
+
+<p class="subtitle">
+Precio regular S/99.90 · Hoy S/79.90.
+</p>
+
+<div class="products">
+
+<div class="product">
+
+<div class="productImage">
+
+<div class="saleTag">
+AHORRA S/20
+</div>
+
+<div class="mini">
+<div class="lens left"></div>
+<div class="lens right"></div>
+<div class="bridge"></div>
+</div>
+
+</div>
+
+<div class="productInfo">
+
+<h3>OPTIMAX 01</h3>
+
+<p>Clásico, limpio y fácil de combinar.</p>
+
+<div class="oldProductPrice">
+S/99.90
+</div>
+
+<div class="productPrice">
+S/79.90
+</div>
+
+<div class="productDiscount">
+🔥 PRECIO OFERTA
+</div>
+
+<div class="colors">
+
+<button class="color"
+onclick="chooseColor(this,'OPTIMAX 01','Negro')">
+Negro
+</button>
+
+<button class="color"
+onclick="chooseColor(this,'OPTIMAX 01','Azul marino')">
+Azul marino
+</button>
+
+<button class="color"
+onclick="chooseColor(this,'OPTIMAX 01','Transparente')">
+Transparente
+</button>
+
+</div>
+
+<button class="buy"
+onclick="buy('OPTIMAX 01')">
+Comprar por S/79.90 →
+</button>
+
+</div>
+
+</div>
+
+<div class="product">
+
+<div class="productImage" style="background:#EEF0FF">
+
+<div class="saleTag">
+AHORRA S/20
+</div>
+
+<div class="mini">
+
+<div class="lens left"
+style="border-radius:25%;border-color:#252A46"></div>
+
+<div class="lens right"
+style="border-radius:25%;border-color:#252A46"></div>
+
+<div class="bridge"
+style="background:#252A46"></div>
+
+</div>
+
+</div>
+
+<div class="productInfo">
+
+<h3>OPTIMAX 02</h3>
+
+<p>Recto, moderno y con mayor presencia.</p>
+
+<div class="oldProductPrice">
+S/99.90
+</div>
+
+<div class="productPrice">
+S/79.90
+</div>
+
+<div class="productDiscount">
+🔥 PRECIO OFERTA
+</div>
+
+<div class="colors">
+
+<button class="color"
+onclick="chooseColor(this,'OPTIMAX 02','Negro')">
+Negro
+</button>
+
+<button class="color"
+onclick="chooseColor(this,'OPTIMAX 02','Azul marino')">
+Azul marino
+</button>
+
+<button class="color"
+onclick="chooseColor(this,'OPTIMAX 02','Blanco')">
+Blanco
+</button>
+
+</div>
+
+<button class="buy"
+onclick="buy('OPTIMAX 02')">
+Comprar por S/79.90 →
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="delivery">
+
+<div>
+
+<h2>
+Tus lentes llegan<br>
+hasta tu puerta.
+</h2>
+
+<p>
+Tú eliges, nos mandas tu receta y nosotros coordinamos el resto.
+El costo de delivery se calcula según tu distrito o ubicación.
+</p>
+
+</div>
+
+<div class="deliveryCard">
+
+<div>
+<strong>🔥 Precio oferta</strong><br>
+Antes S/99.90 · Ahora S/79.90
+</div>
+
+<div>
+<strong>🛵 Delivery</strong><br>
+Costo adicional según ubicación
+</div>
+
+<div>
+<strong>💬 Coordinación</strong><br>
+Directamente por WhatsApp
+</div>
+
+</div>
+
+</section>
+
+<section class="payment">
+
+<h2>Paga como prefieras.</h2>
+
+<p>
+Confirma tu pedido y te enviamos el método de pago.
+</p>
+
+<div class="methods">
+
+<div class="method">💜 Yape</div>
+
+<div class="method">💙 Plin</div>
+
+<div class="method">💳 Link de pago</div>
+
+</div>
+
+</section>
+
+<section class="final">
+
+<h2>
+Antes S/99.90.<br>
+Hoy S/79.90.
+</h2>
+
+<p>
+Elige tus lentes, sube tu receta y recíbelos en casa.
+</p>
+
+<a href="#modelos" class="btn">
+Aprovechar oferta →
+</a>
+
+</section>
+
+<footer>
+
+<div class="logo">
+OPTIMAX
+</div>
+
+<p>
+Lentes que van contigo.
+</p>
+
+</footer>
+
+<div class="modal" id="modal">
+
+<div class="modalCard">
+
+<h2>
+Tu pedido está casi listo 👓
+</h2>
+
+<p>
+Confírmalo por WhatsApp y coordinamos el pago y delivery.
+</p>
+
+<div class="order" id="order"></div>
+
+<div class="warning" id="recipeWarning"></div>
+
+<a
+class="whatsapp"
+id="whatsapp"
+target="_blank">
+Continuar por WhatsApp →
+</a>
+
+<button
+class="close"
+onclick="closeModal()">
+Seguir viendo
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+let selectedColors={};
+let recipeName="";
+
+function recipeSelected(input){
+
+if(input.files && input.files[0]){
+
+recipeName=input.files[0].name;
+
+let status=document.getElementById("fileStatus");
+
+status.style.display="block";
+
+status.innerHTML=
+"✓ Receta seleccionada:<br>"+recipeName;
+
+}
+
+}
+
+function chooseColor(button,model,color){
+
+selectedColors[model]=color;
+
+let parent=button.parentElement;
+
+parent.querySelectorAll(".color").forEach(b=>{
+b.classList.remove("active");
+});
+
+button.classList.add("active");
+
+}
+
+function buy(model){
+
+let color=selectedColors[model];
+
+if(!color){
+
+alert("Primero elige el color de tus lentes.");
+
+return;
+
+}
+
+let recipeText=
+recipeName
+? "Receta seleccionada: "+recipeName
+: "Receta: pendiente";
+
+
+document.getElementById("order").innerHTML=
+
+"<b>"+model+"</b><br>"+
+"Color: "+color+"<br>"+
+"Precio regular: S/99.90<br>"+
+"<b>Precio oferta: S/79.90</b><br>"+
+"Delivery: adicional<br>"+
+recipeText;
+
+
+if(recipeName){
+
+document.getElementById("recipeWarning").innerHTML=
+"📎 Cuando se abra WhatsApp, adjunta también tu archivo <b>"+
+recipeName+
+"</b>.";
+
+}else{
+
+document.getElementById("recipeWarning").innerHTML=
+"📄 Puedes enviarnos tu receta directamente por WhatsApp para completar tu pedido.";
+
+}
+
+let message=
+
+"Hola OPTIMAX 👓%0A%0A"+
+"Quiero aprovechar la oferta:%0A%0A"+
+"Modelo: "+encodeURIComponent(model)+"%0A"+
+"Color: "+encodeURIComponent(color)+"%0A"+
+"Precio regular: S/99.90%0A"+
+"Precio oferta: S/79.90%0A"+
+"Delivery adicional.%0A%0A"+
+(recipeName
+ ? "Tengo mi receta y la adjuntaré aquí: "+encodeURIComponent(recipeName)
+ : "Quiero enviarles mi receta por aquí."
+)+"%0A%0A"+
+"Quiero pagar por Yape, Plin o link de pago.";
+
+
+/*
+CAMBIA ESTE NUMERO POR TU WHATSAPP REAL
+
+Ejemplo Perú:
+51987654321
+*/
+
+let phone="51999999999";
+
+
+document.getElementById("whatsapp").href=
+"https://wa.me/"+phone+"?text="+message;
+
+
+document.getElementById("modal").style.display="flex";
+
+}
+
+function closeModal(){
+
+document.getElementById("modal").style.display="none";
+
+}
+
+</script>
+
+</body>
+</html>
