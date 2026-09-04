@@ -1,0 +1,1 @@
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,59074,e=>{"use strict";var a=e.i(19578),t=e.i(80177),c=e.i(42245);e.s(["default",0,function(){return(0,a.jsx)(t.GameTablePage,{pack:c.durakTablePack})}])}]);

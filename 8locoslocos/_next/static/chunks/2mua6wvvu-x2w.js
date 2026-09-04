@@ -1,0 +1,1 @@
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,95462,e=>{"use strict";var t=e.i(19578),a=e.i(80177),c=e.i(15710);e.s(["default",0,function(){return(0,t.jsx)(a.GameTablePage,{pack:c.pinochleTablePack})}])}]);
