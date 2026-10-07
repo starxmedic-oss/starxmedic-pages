@@ -1,0 +1,42 @@
+name: Publish clean STARX MEDIC site
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Require a configured activation channel
+        run: |
+          node - <<'NODE'
+          const fs = require('fs');
+          const vm = require('vm');
+          const context = { window: {} };
+          vm.runInNewContext(fs.readFileSync('assets/config.js', 'utf8'), context);
+          if (!/^[1-9]\d{7,14}$/.test(context.window.STARX_CONFIG.whatsappNumber)) {
+            throw new Error('Verified commercial WhatsApp number is required before publication.');
+          }
+          NODE
+      - name: Package only the new public site
+        run: |
+          mkdir _site
+          cp index.html 404.html CNAME .nojekyll _site/
+          cp -r assets sana acceso registro app medico paciente premium _site/
+          cp acceso.html registro.html entrar.html app.html founders.html tienda.html vision.html premium.html _site/
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
