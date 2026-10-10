@@ -147,16 +147,18 @@ h3 { font-size: clamp(1.35rem, 2.5vw, 2rem); margin-bottom: 12px; }
 .hero-footnote { color: var(--muted); font-size: .92rem; font-weight: 650; }
 
 .continuity-hero { position: relative; min-height: 530px; display: flex; flex-direction: column; justify-content: center; gap: 40px; padding: clamp(36px, 4.4vw, 56px); border-radius: var(--radius-xl); background: #F3F5F7; border: 1px solid rgba(11,19,32,.06); }
-.continuity-track { --dot: 22px; --gap: 34px; list-style: none; margin: 0; padding: 0; display: grid; gap: var(--gap); }
-.continuity-step { position: relative; display: grid; grid-template-columns: var(--dot) 1fr; column-gap: 22px; align-items: center; }
-.continuity-step:not(:last-child)::before, .continuity-step:not(:last-child)::after { content: ""; position: absolute; left: calc(var(--dot) / 2 - 1.5px); top: 50%; width: 3px; height: calc(100% + var(--gap)); border-radius: 3px; }
+.continuity-track { --dot: 22px; --avatar: 48px; --col: var(--avatar); --gap: 34px; list-style: none; margin: 0; padding: 0; display: grid; gap: var(--gap); }
+.continuity-step { position: relative; display: grid; grid-template-columns: var(--col) 1fr; column-gap: 20px; align-items: center; }
+.continuity-step:not(:last-child)::before, .continuity-step:not(:last-child)::after { content: ""; position: absolute; left: calc(var(--col) / 2 - 1.5px); top: 50%; width: 3px; height: calc(100% + var(--gap)); border-radius: 3px; }
 .continuity-step:not(:last-child)::before { background: #CBD3DE; }
 .continuity-step:not(:last-child)::after { background: var(--blue); transform: scaleY(0); transform-origin: top; animation: track-fill .45s cubic-bezier(.65,0,.35,1) forwards; }
 .continuity-step:nth-child(2)::after { animation-delay: .45s; }
 .continuity-step:nth-child(3)::after { background: linear-gradient(var(--blue), var(--green)); animation-delay: .9s; }
-.continuity-dot { position: relative; z-index: 1; width: var(--dot); height: var(--dot); border-radius: 50%; box-sizing: border-box; }
+.continuity-dot { position: relative; z-index: 1; justify-self: center; width: var(--dot); height: var(--dot); border-radius: 50%; box-sizing: border-box; }
 .continuity-step.is-done .continuity-dot { background: var(--blue); border: 6px solid #DCE6FB; background-clip: padding-box; box-shadow: 0 0 0 1px rgba(37,99,235,.28); }
 .continuity-step.is-current .continuity-dot { background: var(--white); border: 4px solid var(--green); box-shadow: 0 0 0 7px rgba(22,163,74,.14); animation: node-halo 2.8s 1.4s ease-in-out infinite; }
+.continuity-avatar { position: relative; z-index: 1; justify-self: center; display: block; width: var(--avatar); height: var(--avatar); border-radius: 50%; overflow: hidden; border: 2px solid var(--white); background: var(--neutral); box-shadow: 0 0 0 1.5px rgba(37,99,235,.45), 0 8px 20px rgba(11,19,32,.14); }
+.continuity-avatar img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .continuity-label { display: grid; gap: 2px; min-width: 0; }
 .continuity-label span { color: var(--blue); font-size: .69rem; font-weight: 820; letter-spacing: .1em; }
 .continuity-label strong { font-family: "Inter Tight", Inter, sans-serif; font-size: 1.06rem; letter-spacing: -.02em; line-height: 1.25; }
@@ -164,8 +166,8 @@ h3 { font-size: clamp(1.35rem, 2.5vw, 2rem); margin-bottom: 12px; }
 .continuity-step.is-current .continuity-label span { color: var(--green); }
 .continuity-caption { margin: 0; padding-top: 22px; border-top: 1px solid rgba(11,19,32,.08); color: var(--muted); font-size: .78rem; }
 @media (min-width: 981px) {
-  .continuity-track { --dot: 26px; --gap: 40px; }
-  .continuity-step { column-gap: 26px; }
+  .continuity-track { --dot: 26px; --avatar: 56px; --gap: 40px; }
+  .continuity-step { column-gap: 24px; }
   .continuity-step.is-done .continuity-dot { border-width: 7px; }
   .continuity-label { gap: 3px; }
   .continuity-label span { font-size: .72rem; }
