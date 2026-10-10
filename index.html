@@ -72,21 +72,12 @@
         </div>
 
         <div class="continuity-hero" aria-label="Representación de la Línea de Continuidad: una necesidad avanza hasta una acción trazable">
-          <svg class="continuity-hero-svg" viewBox="0 0 560 520" aria-hidden="true">
-            <path class="continuity-path continuity-path-base" d="M78 162 C165 162 176 214 252 214 S345 284 431 284 C481 284 488 337 488 373" />
-            <path class="continuity-path continuity-path-active" d="M78 162 C165 162 176 214 252 214 S345 284 431 284 C481 284 488 337 488 373" />
-            <circle class="continuity-node continuity-node-human" cx="78" cy="162" r="10" />
-            <circle class="continuity-node" cx="252" cy="214" r="8" />
-            <circle class="continuity-node" cx="431" cy="284" r="8" />
-            <circle class="continuity-node continuity-node-success" cx="488" cy="373" r="10" />
-          </svg>
-          <div class="person-figure" aria-hidden="true">
-            <span class="person-head"></span><span class="person-body"></span>
-          </div>
-          <div class="continuity-label label-need"><span>01</span><strong>Necesidad</strong><small>aparece</small></div>
-          <div class="continuity-label label-register"><span>02</span><strong>Registro</strong><small>no se pierde</small></div>
-          <div class="continuity-label label-coordinate"><span>03</span><strong>Coordinación</strong><small>mantiene contexto</small></div>
-          <div class="continuity-label label-action"><span>04</span><strong>Acción</strong><small>queda trazable</small></div>
+          <ol class="continuity-track">
+            <li class="continuity-step is-done"><span class="continuity-dot" aria-hidden="true"></span><div class="continuity-label"><span>01</span><strong>Necesidad</strong><small>aparece</small></div></li>
+            <li class="continuity-step is-done"><span class="continuity-dot" aria-hidden="true"></span><div class="continuity-label"><span>02</span><strong>Registro</strong><small>no se pierde</small></div></li>
+            <li class="continuity-step is-done"><span class="continuity-dot" aria-hidden="true"></span><div class="continuity-label"><span>03</span><strong>Coordinación</strong><small>mantiene contexto</small></div></li>
+            <li class="continuity-step is-current" aria-current="step"><span class="continuity-dot" aria-hidden="true"></span><div class="continuity-label"><span>04</span><strong>Acción</strong><small>queda trazable</small></div></li>
+          </ol>
           <p class="continuity-caption">Una línea clara. Estados comprensibles. Control humano.</p>
         </div>
       </div>
