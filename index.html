@@ -1,289 +1,395 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>STARX MEDIC | Capacidad que no debería perderse</title>
-  <meta name="description" content="STARX MEDIC desarrolla herramientas para identificar pérdidas operativas medibles en salud y probar si pueden recuperarse. Conoce ChapaTuCita.">
-  <link rel="canonical" href="https://starxmedic.com/">
-  <meta property="og:type" content="website">
-  <meta property="og:locale" content="es_PE">
-  <meta property="og:title" content="STARX MEDIC | Capacidad que no debería perderse">
-  <meta property="og:description" content="Problema real, mecanismo visible, evidencia explícita y control humano. Conoce ChapaTuCita.">
-  <meta property="og:url" content="https://starxmedic.com/">
-  <meta property="og:site_name" content="STARX MEDIC">
-  <meta property="og:image" content="https://starxmedic.com/assets/og-starxmedic.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="theme-color" content="#f7faff">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="/assets/home-v5.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="STARX MEDIC conecta consulta, seguimiento, documentos y continuidad en una sola experiencia para médicos y pacientes." />
+  <meta name="theme-color" content="#f5faff" />
+  <title>STARX MEDIC — Medicina · Seguimiento · Continuidad</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preload" href="assets/starx-logo.svg" as="image" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <a class="skip-link" href="#main">Saltar al contenido</a>
 
-  <header class="site-header">
-    <div class="shell header-inner">
-      <a class="brand" href="/" aria-label="STARX MEDIC, inicio">
-        <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M7 20h8.5L20 10.5 24.5 20H33M7 26h10.5L20 31l2.5-5H33"/></svg>
-        <span><strong>STARX</strong> MEDIC</span>
+  <header class="site-header" data-header>
+    <div class="nav-shell">
+      <a href="#inicio" class="brand" aria-label="STARX MEDIC — Inicio">
+        <img src="assets/starx-logo.svg" alt="STARX MEDIC" />
       </a>
-      <nav class="nav-desktop" aria-label="Navegación principal">
-        <a href="/chapatucita/">ChapaTuCita</a>
-        <a href="#evidencia">Evidencia</a>
-        <a href="#investigacion">Investigación</a>
-        <a href="#starx-medic">STARX MEDIC</a>
-        <a class="button button-small" href="/chapatucita/">Activar ChapaTuCita <span aria-hidden="true">→</span></a>
+
+      <nav class="desktop-nav" aria-label="Navegación principal">
+        <a href="#inicio" class="active">Inicio</a>
+        <a href="#medicos">Para médicos</a>
+        <a href="#pacientes">Para pacientes</a>
+        <a href="#como-funciona">Cómo funciona</a>
+        <a href="#seguridad">Seguridad</a>
+        <a href="#recursos">Recursos</a>
       </nav>
-      <details class="mobile-menu">
-        <summary aria-label="Abrir navegación">Menú</summary>
-        <nav aria-label="Navegación móvil">
-          <a href="/chapatucita/">ChapaTuCita</a>
-          <a href="#evidencia">Evidencia</a>
-          <a href="#investigacion">Investigación</a>
-          <a href="#starx-medic">STARX MEDIC</a>
-          <a class="button" href="/chapatucita/">Activar ChapaTuCita</a>
-        </nav>
-      </details>
+
+      <div class="nav-actions">
+        <a class="btn btn-ghost compact" href="https://app.starxmedic.com" rel="noopener">Entrar</a>
+        <a class="btn btn-primary compact" href="https://app.starxmedic.com" rel="noopener">
+          Crear cuenta
+          <span aria-hidden="true">→</span>
+        </a>
+        <button class="menu-btn" type="button" data-menu aria-label="Abrir menú">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
+
+    <nav class="mobile-nav" data-mobile-nav aria-label="Navegación móvil">
+      <a href="#inicio">Inicio</a>
+      <a href="#medicos">Para médicos</a>
+      <a href="#pacientes">Para pacientes</a>
+      <a href="#como-funciona">Cómo funciona</a>
+      <a href="#seguridad">Seguridad</a>
+      <a href="#recursos">Recursos</a>
+      <div class="mobile-actions">
+        <a class="btn btn-ghost" href="https://app.starxmedic.com" rel="noopener">Entrar</a>
+        <a class="btn btn-primary" href="https://app.starxmedic.com" rel="noopener">Crear cuenta →</a>
+      </div>
+    </nav>
   </header>
 
-  <main id="contenido">
-    <section class="hero">
-      <div class="shell hero-grid">
-        <div class="hero-copy">
-          <p class="eyebrow">SALUD · OPERACIONES · EVIDENCIA</p>
-          <h1>¿Cuánta atención se pierde cuando una cita se libera y nadie logra volver a ocuparla?</h1>
-          <p class="lead">STARX MEDIC desarrolla herramientas para identificar pérdidas operativas medibles en salud y comprobar si una intervención pequeña puede recuperarlas. Empezamos por un problema concreto: los espacios que se liberan en agenda.</p>
-          <div class="actions">
-            <a class="button" href="/chapatucita/">Ver ChapaTuCita <span aria-hidden="true">→</span></a>
-            <a class="button button-ghost" href="#evidencia">Ver cómo medimos</a>
-          </div>
-          <div class="availability-line" aria-label="Producto disponible: ChapaTuCita">
-            <span class="status-dot"></span><strong>PRODUCTO DISPONIBLE</strong><span>ChapaTuCita</span>
-          </div>
-          <ol class="flow-strip" aria-label="Flujo de ChapaTuCita">
-            <li><span>1</span>Liberado</li><li aria-hidden="true">→</li>
-            <li><span>2</span>Ofrecido</li><li aria-hidden="true">→</li>
-            <li><span>3</span>Apartado</li><li aria-hidden="true">→</li>
-            <li><span>4</span>Confirmado</li>
-          </ol>
-        </div>
+  <main id="main">
+    <section class="hero" id="inicio">
+      <div class="ambient ambient-a"></div>
+      <div class="ambient ambient-b"></div>
+      <div class="hero-shell">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">UNA PLATAFORMA. UNA CONTINUIDAD REAL.</p>
+          <h1>
+            Tu atención médica
+            <span>no debería terminar</span>
+            cuando termina
+            <em>la consulta.</em>
+          </h1>
+          <p class="hero-lead">
+            STARX MEDIC conecta médicos y pacientes en un mismo lugar para cerrar mejor cada atención,
+            mantener claridad sobre lo que sigue y reducir pérdidas de continuidad.
+          </p>
 
-        <div class="hero-product" aria-label="Representación de una agenda con un espacio liberado">
-          <div class="product-window">
-            <div class="window-top"><span></span><strong>ChapaTuCita</strong><small>Agenda</small></div>
-            <div class="window-body">
-              <aside aria-hidden="true"><i></i><i></i><i></i><i></i></aside>
-              <div class="agenda">
-                <div class="agenda-head"><div><small>Agenda de hoy</small><strong>Disponibilidad</strong></div><span>En vivo</span></div>
-                <div class="appointment confirmed"><time>08:00</time><span>Confirmada</span></div>
-                <div class="appointment available"><time>09:00</time><span>Disponible</span></div>
-                <div class="appointment held"><time>10:30</time><span>Apartado</span></div>
-                <div class="appointment confirmed"><time>11:30</time><span>Confirmada</span></div>
-              </div>
+          <div class="hero-ctas">
+            <a class="btn btn-primary btn-icon" href="https://app.starxmedic.com?role=doctor" rel="noopener">
+              <span class="icon-bubble">✚</span>
+              Soy médico
+              <span aria-hidden="true">→</span>
+            </a>
+            <a class="btn btn-soft btn-icon" href="https://app.starxmedic.com?role=patient" rel="noopener">
+              <span class="icon-bubble">◉</span>
+              Soy paciente
+              <span aria-hidden="true">→</span>
+            </a>
+            <button class="btn btn-link" type="button" data-scroll="#como-funciona">
+              <span class="play">▶</span>
+              Ver cómo funciona
+            </button>
+          </div>
+
+          <div class="trust-row">
+            <div class="trust-item">
+              <span class="trust-icon">∞</span>
+              <span><strong>Atención continua</strong><small>Lo importante no se pierde.</small></span>
+            </div>
+            <div class="trust-item">
+              <span class="trust-icon">◇</span>
+              <span><strong>Información segura</strong><small>Permisos y trazabilidad.</small></span>
+            </div>
+            <div class="trust-item">
+              <span class="trust-icon">↗</span>
+              <span><strong>Próxima acción clara</strong><small>Qué hacer y qué sigue.</small></span>
             </div>
           </div>
-          <div class="release-card">
-            <span class="release-icon" aria-hidden="true">⌁</span>
-            <small>Cita liberada</small>
-            <strong>10:30</strong>
-            <p>Disponible para reserva</p>
-            <a class="fake-action" href="/chapatucita/#experiencia">Probar flujo</a>
+        </div>
+
+        <div class="hero-art reveal">
+          <div class="core-stage" aria-hidden="true">
+            <div class="orbit orbit-1"></div>
+            <div class="orbit orbit-2"></div>
+            <div class="orbit orbit-3"></div>
+            <div class="orb">
+              <div class="orb-ring ring-a"></div>
+              <div class="orb-ring ring-b"></div>
+              <div class="orb-ring ring-c"></div>
+              <div class="orb-core"></div>
+            </div>
+            <div class="node node-a"></div>
+            <div class="node node-b"></div>
+            <div class="node node-c"></div>
+            <div class="node node-d"></div>
           </div>
-        </div>
-      </div>
-    </section>
 
-    <section class="section section-loss" aria-labelledby="loss-title">
-      <div class="shell split">
-        <div class="section-copy">
-          <p class="eyebrow">PÉRDIDA REAL</p>
-          <h2 id="loss-title">Una hora libre no siempre vuelve a convertirse en atención.</h2>
-          <p>Una cita se cancela. El horario vuelve a estar disponible. Alguien debe detectarlo, comunicarlo, recibir una respuesta y confirmar según las reglas del establecimiento.</p>
-          <p class="emphasis">Si la cadena se rompe, existió capacidad disponible pero no terminó en una cita confirmada.</p>
-        </div>
-        <ol class="loss-chain" aria-label="Cadena de reasignación de una cita">
-          <li><span class="chain-icon">×</span><strong>Se cancela</strong><small>una cita</small></li>
-          <li class="chain-arrow" aria-hidden="true">→</li>
-          <li><span class="chain-icon">◷</span><strong>Queda libre</strong><small>el horario</small></li>
-          <li class="chain-arrow" aria-hidden="true">→</li>
-          <li><span class="chain-icon">◎</span><strong>Se comunica</strong><small>la oportunidad</small></li>
-          <li class="chain-arrow" aria-hidden="true">→</li>
-          <li><span class="chain-icon">✓</span><strong>Se confirma</strong><small>si corresponde</small></li>
-        </ol>
-      </div>
-    </section>
-
-    <section class="section method" aria-labelledby="method-title">
-      <div class="shell split method-grid">
-        <div class="section-copy">
-          <p class="eyebrow">QUÉ HACE STARX</p>
-          <h2 id="method-title">Buscamos pérdidas recuperables. Construimos una intervención pequeña. Medimos qué ocurre.</h2>
-          <p>Trabajamos sobre tiempo, acceso, continuidad, coordinación y trabajo repetido que pueden perderse dentro de procesos sanitarios.</p>
-          <p class="muted">No asumimos que hacer más significa producir más salud.</p>
-        </div>
-        <div class="method-cards">
-          <article><span>01</span><div class="method-icon">⌕</div><h3>Pérdida</h3><p>Identificamos una oportunidad que podría estar perdiéndose.</p></article>
-          <article><span>02</span><div class="method-icon">⚙</div><h3>Intervención</h3><p>Aplicamos una solución concreta y acotada.</p></article>
-          <article><span>03</span><div class="method-icon">▥</div><h3>Medición</h3><p>Evaluamos qué ocurrió y cuánta carga requirió.</p></article>
-          <article><span>04</span><div class="method-icon">□</div><h3>Decisión</h3><p>Escalamos, ajustamos o descartamos.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section measurement" aria-labelledby="measurement-title">
-      <div class="shell measurement-grid">
-        <div class="section-copy">
-          <p class="eyebrow">CÓMO TRABAJAMOS</p>
-          <h2 id="measurement-title">No llamamos “capacidad recuperada” a un botón que funciona.</h2>
-          <p>Para cada intervención distinguimos actividad de resultado y contamos la carga que podría haberse trasladado a otra persona.</p>
-          <ul class="measurement-tags" aria-label="Dimensiones de evaluación">
-            <li>Evento</li><li>Acción</li><li>Resultado</li><li>Carga</li><li>Daño</li><li>Sostenibilidad</li>
-          </ul>
-          <a class="text-link" href="#evidencia">Ver estado de evidencia <span aria-hidden="true">→</span></a>
-        </div>
-        <div class="measurement-card">
-          <p>En ChapaTuCita medimos, como mínimo:</p>
-          <ol class="metric-flow">
-            <li><span>1</span><strong>Espacio liberado</strong></li><li aria-hidden="true">→</li>
-            <li><span>2</span><strong>Ofrecido</strong></li><li aria-hidden="true">→</li>
-            <li><span>3</span><strong>Apartado</strong></li><li aria-hidden="true">→</li>
-            <li><span>4</span><strong>Confirmado</strong></li>
-          </ol>
-          <div class="metric-primary"><strong>+ carga operativa</strong><span>minutos operativos / reserva confirmada</span></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section product" aria-labelledby="product-title">
-      <div class="shell product-grid">
-        <div class="section-copy product-copy">
-          <p class="product-badge">PRODUCTO DISPONIBLE</p>
-          <h2 id="product-title">ChapaTuCita</h2>
-          <p>Cuando aparece un espacio disponible, ChapaTuCita organiza el camino desde la disponibilidad hasta una eventual confirmación, haciendo explícito el estado de la cita.</p>
-          <div class="actions">
-            <a class="button" href="/chapatucita/">Ver ChapaTuCita <span aria-hidden="true">→</span></a>
-            <a class="button button-ghost" href="/chapatucita/#experiencia">Probar la experiencia</a>
-          </div>
-        </div>
-        <div class="product-mini" aria-hidden="true">
-          <div class="mini-screen">
-            <div class="mini-top">Agenda <span>Hoy</span></div>
-            <div class="mini-row"><b>08:00</b><em class="ok">Confirmada</em></div>
-            <div class="mini-row"><b>09:00</b><em class="free">Disponible</em></div>
-            <div class="mini-row"><b>10:30</b><em class="hold">Apartado</em></div>
-            <div class="mini-row"><b>11:30</b><em class="ok">Confirmada</em></div>
-          </div>
-          <div class="phone"><span></span><strong>10:30</strong><small>Apartado</small><i>Esperando confirmación</i></div>
-        </div>
-        <div class="offer-card" aria-label="Oferta vigente de ChapaTuCita">
-          <div><small>Activación actual</small><strong>S/ 79.90</strong><span>por 30 días</span></div>
-          <ul><li>1 sede</li><li>Hasta 5 profesionales</li><li>Configuración incluida</li><li>Sin permanencia</li></ul>
-        </div>
-      </div>
-    </section>
-
-    <section id="evidencia" class="section evidence" aria-labelledby="evidence-title">
-      <div class="shell evidence-grid">
-        <div class="section-copy">
-          <p class="eyebrow">EVIDENCIA</p>
-          <h2 id="evidence-title">Lo que sabemos. Lo que todavía no.</h2>
-          <p>Publicaremos resultados con definición, periodo, denominador y estado de evidencia. Hoy no publicamos evidencia suficiente para atribuir a ChapaTuCita aumentos de capacidad, reducción de espera, mejora clínica o incremento de ingresos.</p>
-          <p class="evidence-note">Eso no es una debilidad escondida. Es el límite actual del claim.</p>
-        </div>
-        <div class="evidence-table-wrap">
-          <div class="evidence-meta"><span>Estado actual</span><time datetime="2026-10-11">11 oct 2026</time></div>
-          <table>
-            <thead><tr><th>Métrica</th><th>Resultado</th><th>Estado</th></tr></thead>
-            <tbody>
-              <tr><td>Espacios liberados</td><td>—</td><td><span class="state state-warn">Aún no publicado</span></td></tr>
-              <tr><td>Espacios apartados</td><td>—</td><td><span class="state state-warn">Aún no publicado</span></td></tr>
-              <tr><td>Confirmaciones</td><td>—</td><td><span class="state state-warn">Aún no publicado</span></td></tr>
-              <tr><td>Minutos operativos / reserva confirmada</td><td>—</td><td><span class="state state-info">En evaluación</span></td></tr>
-            </tbody>
-          </table>
-          <p class="table-foot">“—” significa que no mostramos un número que todavía no hemos establecido.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="investigacion" class="section research" aria-labelledby="research-title">
-      <div class="shell">
-        <div class="section-heading compact">
-          <p class="eyebrow">INVESTIGACIÓN ACTIVA</p>
-          <h2 id="research-title">Hay problemas que todavía estamos evaluando.</h2>
-          <p>No son productos disponibles. No tienen precio ni promesa comercial.</p>
-        </div>
-        <div class="research-grid">
-          <article>
-            <div class="research-top"><span class="research-icon">↗</span><span class="research-status">INVESTIGACIÓN</span></div>
-            <h3>STARX Seguimiento</h3>
-            <p>¿Qué intervención podría mejorar la continuidad después de una atención sin trasladar carga insegura al profesional o al paciente?</p>
-            <footer><strong>Estado:</strong> pregunta en evaluación</footer>
+          <article class="float-card fc-1">
+            <span class="float-icon">⌁</span>
+            <div><strong>ATENCIÓN QUE CONTINÚA</strong><small>Más cerca, siempre.</small></div>
           </article>
-          <article>
-            <div class="research-top"><span class="research-icon">⌁</span><span class="research-status">INVESTIGACIÓN</span></div>
-            <h3>STARX Continuidad</h3>
-            <p>¿Qué interrupciones de la atención pueden reducirse de forma medible sin confundir más actividad con mejor salud?</p>
-            <footer><strong>Estado:</strong> pregunta en evaluación</footer>
+          <article class="float-card fc-2">
+            <span class="float-icon">▤</span>
+            <div><strong>DOCUMENTOS DISPONIBLES</strong><small>Todo en un solo lugar.</small></div>
+          </article>
+          <article class="float-card fc-3">
+            <span class="float-icon">✓</span>
+            <div><strong>APROBACIÓN MÉDICA</strong><small>IA propone. El médico valida.</small></div>
+          </article>
+          <article class="float-card fc-4">
+            <span class="float-icon">▦</span>
+            <div><strong>SEGUIMIENTO</strong><small>Lo pendiente queda visible.</small></div>
+          </article>
+
+          <article class="doctor-card">
+            <div class="doctor-avatar">LT</div>
+            <div>
+              <strong>Dra. Lucía Torres</strong>
+              <small><span class="online"></span> Disponible para seguimiento</small>
+            </div>
+            <button aria-label="Abrir médico">›</button>
+          </article>
+
+          <article class="progress-card">
+            <div class="progress-head">
+              <div><strong>Tu salud en evolución</strong><small>Seguimiento continuo</small></div>
+              <span>+72%</span>
+            </div>
+            <svg viewBox="0 0 260 80" role="img" aria-label="Gráfico de progreso">
+              <defs>
+                <linearGradient id="chartFill" x1="0" x2="0" y1="0" y2="1">
+                  <stop offset="0" stop-color="#2d76ff" stop-opacity=".28"/>
+                  <stop offset="1" stop-color="#2d76ff" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <path d="M6 61 C28 60, 36 48, 54 53 S78 67, 97 49 S121 38, 137 46 S163 30, 182 34 S210 16, 252 18 L252 80 L6 80Z" fill="url(#chartFill)"/>
+              <path d="M6 61 C28 60, 36 48, 54 53 S78 67, 97 49 S121 38, 137 46 S163 30, 182 34 S210 16, 252 18" fill="none" stroke="#2d76ff" stroke-width="4" stroke-linecap="round"/>
+            </svg>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section audiences" aria-labelledby="audiences-title">
-      <div class="shell">
-        <div class="section-heading compact">
-          <p class="eyebrow">PARA QUIÉN</p>
-          <h2 id="audiences-title">Entra por el problema que tienes.</h2>
+    <section class="duo-section" id="como-funciona">
+      <div class="section-shell">
+        <div class="section-intro reveal">
+          <p class="eyebrow">MISMA INFORMACIÓN. DOS EXPERIENCIAS.</p>
+          <h2>Una plataforma para quien cuida <span>y quien vive su salud.</span></h2>
+          <p>
+            El médico trabaja sobre una vista orientada a decisiones y continuidad.
+            El paciente recibe una vista simple: qué pasó, qué hacer, qué falta y qué sigue.
+          </p>
         </div>
-        <div class="audience-grid">
-          <a href="/chapatucita/"><span>▦</span><strong>Clínica o centro</strong><small>Gestiono capacidad que puede quedar ociosa.</small><b>Ver ChapaTuCita →</b></a>
-          <a href="/chapatucita/"><span>○</span><strong>Profesional independiente</strong><small>Gestiono mi propia agenda.</small><b>Ver ChapaTuCita →</b></a>
-          <a href="/chapatucita/#experiencia"><span>◉</span><strong>Paciente</strong><small>Quiero entender un horario y su estado.</small><b>Ver experiencia →</b></a>
-          <a href="#investigacion"><span>⌬</span><strong>Investigación / colaboración</strong><small>Quiero revisar preguntas y evidencia.</small><b>Ver investigación →</b></a>
-          <a href="#starx-medic"><span>◇</span><strong>Institución</strong><small>Quiero entender el proyecto y su método.</small><b>Conocer STARX →</b></a>
+
+        <div class="role-bridge reveal">
+          <div class="role-chip doctor"><span>✚</span><strong>Médico</strong><small>Decide y valida</small></div>
+          <div class="bridge-line"><span>∞</span></div>
+          <div class="role-chip patient"><span>◉</span><strong>Paciente</strong><small>Entiende y participa</small></div>
+        </div>
+
+        <div class="dashboards">
+          <article class="dashboard doctor-dashboard reveal" id="medicos">
+            <div class="dash-side">
+              <img src="assets/starx-logo.svg" alt="STARX MEDIC" />
+              <nav>
+                <a>Inicio</a>
+                <a class="selected">Pacientes</a>
+                <a>Nueva atención</a>
+                <a>Seguimiento</a>
+                <a>Documentos</a>
+                <a>Calendario</a>
+                <a>Mensajes <span class="badge">3</span></a>
+                <a>Reportes</a>
+              </nav>
+            </div>
+            <div class="dash-main">
+              <div class="dash-top">
+                <div><p class="micro">CENTRO MÉDICO</p><h3>Mis pacientes</h3><small>Gestiona, revisa y cierra lo que requiere atención.</small></div>
+                <div class="mini-avatar">JF</div>
+              </div>
+
+              <div class="metric-row">
+                <div class="metric"><span>◉</span><div><strong>142</strong><small>Pacientes activos</small></div></div>
+                <div class="metric green"><span>↗</span><div><strong>24</strong><small>En seguimiento</small></div></div>
+                <div class="metric amber"><span>◷</span><div><strong>12</strong><small>Pendientes</small></div></div>
+                <a class="metric-action" href="https://app.starxmedic.com" rel="noopener">＋ Nueva atención</a>
+              </div>
+
+              <div class="table-head">
+                <strong>Pacientes de hoy</strong>
+                <span>Última atención</span>
+                <span>Estado</span>
+                <span>Próxima cita</span>
+              </div>
+              <div class="patient-row">
+                <div><span class="avatar pink">MG</span><span><strong>María González</strong><small>32 años · Control anual</small></span></div>
+                <span>15 abr 2025</span><span class="status success">En seguimiento</span><span>22 abr 2025</span>
+              </div>
+              <div class="patient-row">
+                <div><span class="avatar blue">CR</span><span><strong>Carlos Ramírez</strong><small>45 años · Hipertensión</small></span></div>
+                <span>10 abr 2025</span><span class="status info">Estable</span><span>24 abr 2025</span>
+              </div>
+              <div class="patient-row">
+                <div><span class="avatar violet">AM</span><span><strong>Ana Martínez</strong><small>28 años · Seguimiento</small></span></div>
+                <span>08 abr 2025</span><span class="status warn">Requiere revisión</span><span>—</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="dashboard patient-dashboard reveal" id="pacientes">
+            <div class="dash-side">
+              <img src="assets/starx-logo.svg" alt="STARX MEDIC" />
+              <nav>
+                <a class="selected">Inicio</a>
+                <a>Mi salud</a>
+                <a>Mis documentos</a>
+                <a>Mis citas</a>
+                <a>Seguimiento</a>
+                <a>Compartir</a>
+                <a>Aprobaciones</a>
+                <a>Mensajes</a>
+              </nav>
+            </div>
+            <div class="dash-main">
+              <div class="dash-top">
+                <div><p class="micro">PORTAL DEL PACIENTE</p><h3>Hola, María</h3><small>Tu salud, siempre en buenas manos.</small></div>
+                <div class="mini-avatar lavender">M</div>
+              </div>
+
+              <div class="patient-summary">
+                <article class="next-card">
+                  <small>PRÓXIMA CITA</small>
+                  <strong>Control de seguimiento</strong>
+                  <span>22 abr 2025 · 10:00</span>
+                  <button>Ver detalles →</button>
+                </article>
+                <article class="mini-progress">
+                  <div><small>Mi progreso</small><strong>+72%</strong></div>
+                  <svg viewBox="0 0 170 50"><path d="M5 42 C28 35,40 42,54 28 S82 36,99 22 S128 21,164 9" fill="none" stroke="#2d76ff" stroke-width="4" stroke-linecap="round"/></svg>
+                </article>
+              </div>
+
+              <div class="portal-tiles">
+                <div class="portal-tile blue-t"><span>▰</span><strong>Care Packet</strong><small>Tu plan completo</small></div>
+                <div class="portal-tile green-t"><span>▤</span><strong>Documentos</strong><small>Estudios y archivos</small></div>
+                <div class="portal-tile violet-t"><span>◉</span><strong>Seguimiento</strong><small>Registra tu progreso</small></div>
+                <div class="portal-tile amber-t"><span>✓</span><strong>Aprobaciones</strong><small>Pendientes de revisión</small></div>
+              </div>
+
+              <div class="share-box">
+                <div><span class="share-icon">⌯</span><span><strong>Comparte tu información</strong><small>Con quien tú decidas, por el tiempo que decidas.</small></span></div>
+                <a class="btn btn-primary compact" href="https://app.starxmedic.com" rel="noopener">Compartir ahora</a>
+              </div>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <section id="starx-medic" class="section principles" aria-labelledby="principles-title">
-      <div class="shell principles-grid">
-        <div class="section-copy">
-          <p class="eyebrow">PRINCIPIOS Y LÍMITES</p>
-          <h2 id="principles-title">Tecnología donde ayuda. Decisión humana donde importa.</h2>
-          <ol class="principle-list">
-            <li><span>01</span><p><strong>No confundimos actividad con resultado.</strong> Un flujo funcionando no demuestra un beneficio sanitario.</p></li>
-            <li><span>02</span><p><strong>No presentamos IA como autoridad clínica.</strong> Las decisiones que requieren criterio, consentimiento o responsabilidad conservan dueño humano.</p></li>
-            <li><span>03</span><p><strong>No escondemos incertidumbre.</strong> Lo demostrado y lo no establecido deben verse distinto.</p></li>
-            <li><span>04</span><p><strong>Mayor riesgo exige mayor evidencia y control.</strong> La interfaz nunca sustituye esa obligación.</p></li>
-          </ol>
+    <section class="feature-section" id="recursos">
+      <div class="section-shell">
+        <div class="feature-grid">
+          <article class="feature-card reveal">
+            <span class="feature-icon">✚</span>
+            <div><h3>Nueva atención</h3><p>La consulta se transforma en un borrador estructurado para revisión.</p></div>
+            <span class="feature-arrow">→</span>
+          </article>
+          <article class="feature-card reveal">
+            <span class="feature-icon">▰</span>
+            <div><h3>Care Packet</h3><p>Qué pasó, qué hacer, qué falta y qué sigue, en una vista simple.</p></div>
+            <span class="feature-arrow">→</span>
+          </article>
+          <article class="feature-card reveal">
+            <span class="feature-icon">↗</span>
+            <div><h3>Seguimiento</h3><p>Resultados, controles y pendientes continúan visibles después de la consulta.</p></div>
+            <span class="feature-arrow">→</span>
+          </article>
+          <article class="feature-card reveal">
+            <span class="feature-icon">▤</span>
+            <div><h3>Documentos</h3><p>Recetas, informes, estudios y archivos con acceso controlado.</p></div>
+            <span class="feature-arrow">→</span>
+          </article>
+          <article class="feature-card reveal">
+            <span class="feature-icon">⌯</span>
+            <div><h3>Compartir</h3><p>Acceso temporal y revocable para compartir información clínica.</p></div>
+            <span class="feature-arrow">→</span>
+          </article>
+          <article class="feature-card reveal">
+            <span class="feature-icon">✓</span>
+            <div><h3>Aprobación médica</h3><p>La IA propone. El médico confirma antes de convertirlo en registro.</p></div>
+            <span class="feature-arrow">→</span>
+          </article>
         </div>
-        <aside class="founder-card" aria-labelledby="founder-title">
-          <p class="founder-kicker">RESPONSABILIDAD DEL PROYECTO</p>
-          <div class="founder-mark" aria-hidden="true">JF</div>
-          <h3 id="founder-title">José Alberto Farfán Bazán</h3>
-          <p>Médico · Constructor de producto · Fundador de STARX MEDIC</p>
-          <p class="muted">STARX MEDIC es un proyecto tecnológico construido desde Perú. El fundador aparece como responsable del trabajo, no como sustituto de la evidencia.</p>
-          <div class="legal-links"><a href="/privacidad/">Privacidad</a><a href="/terminos/">Términos</a><a href="#evidencia">Evidencia</a></div>
-        </aside>
       </div>
     </section>
 
-    <section class="final-cta" aria-labelledby="cta-title">
-      <div class="shell final-grid">
-        <div><p class="eyebrow eyebrow-dark">PRODUCTO DISPONIBLE</p><h2 id="cta-title">Si pierdes espacios que podrían volver a utilizarse, empieza por ChapaTuCita.</h2><p>Organiza el flujo, deja visible cada estado y mide lo que realmente ocurre.</p></div>
-        <div class="final-actions"><a class="button button-light" href="/chapatucita/">Activar ChapaTuCita <span aria-hidden="true">→</span></a><a class="button button-dark-ghost" href="/chapatucita/#experiencia">Ver cómo funciona</a></div>
-        <ul class="final-facts"><li><strong>S/ 79.90</strong><span>30 días</span></li><li><strong>1 sede</strong><span>hasta 5 profesionales</span></li><li><strong>Configuración</strong><span>incluida</span></li><li><strong>Sin permanencia</strong><span>oferta actual</span></li></ul>
+    <section class="workflow-section">
+      <div class="section-shell workflow-shell">
+        <div class="workflow-copy reveal">
+          <p class="eyebrow">CONTINUIDAD, NO SOLO REGISTRO.</p>
+          <h2>De la conversación a una <span>próxima acción verificable.</span></h2>
+          <p>STARX MEDIC está diseñado para que cada atención produzca un cierre claro sin convertir al médico en digitador.</p>
+        </div>
+        <div class="workflow reveal">
+          <div class="flow-step"><span>01</span><strong>Conversación</strong><small>Voz, texto, documentos</small></div>
+          <i>→</i>
+          <div class="flow-step"><span>02</span><strong>Borrador</strong><small>IA estructura y marca incertidumbre</small></div>
+          <i>→</i>
+          <div class="flow-step"><span>03</span><strong>Aprobación</strong><small>El médico corrige o valida</small></div>
+          <i>→</i>
+          <div class="flow-step"><span>04</span><strong>Continuidad</strong><small>Paciente + pendientes + seguimiento</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="security-section" id="seguridad">
+      <div class="section-shell">
+        <div class="security-card reveal">
+          <div class="security-copy">
+            <p class="eyebrow">SEGURIDAD POR DISEÑO</p>
+            <h2>Lo clínico merece <span>controles clínicos.</span></h2>
+            <p>
+              Borradores separados de registros aprobados, permisos por rol, almacenamiento privado,
+              auditoría y acceso revocable.
+            </p>
+          </div>
+          <div class="security-points">
+            <div><span>01</span><strong>Unknown stays unknown</strong><small>Lo no confirmado no se inventa.</small></div>
+            <div><span>02</span><strong>Human approval gate</strong><small>Nada clínico se canoniza sin revisión.</small></div>
+            <div><span>03</span><strong>Permissioned access</strong><small>Cada persona ve solo lo autorizado.</small></div>
+            <div><span>04</span><strong>Audit trail</strong><small>Acciones sensibles quedan trazables.</small></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <div class="section-shell">
+        <div class="cta-card reveal">
+          <div>
+            <p class="eyebrow">STARX MEDIC</p>
+            <h2>Más continuidad. Menos fricción. <span>Más claridad.</span></h2>
+            <p>Empieza como médico o paciente. La plataforma adapta la experiencia a tu rol.</p>
+          </div>
+          <div class="cta-buttons">
+            <a class="btn btn-primary" href="https://app.starxmedic.com" rel="noopener">Crear cuenta →</a>
+            <a class="btn btn-ghost" href="https://app.starxmedic.com" rel="noopener">Entrar</a>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="shell footer-grid">
-      <div><strong>STARX MEDIC</strong><p>Proyecto tecnológico liderado por José Alberto Farfán Bazán. Construido desde Perú.</p></div>
-      <div><p>Este sitio presenta tecnología para salud; no ofrece atención médica ni gestiona emergencias.</p><nav aria-label="Enlaces legales"><a href="/chapatucita/">ChapaTuCita</a><a href="/privacidad/">Privacidad</a><a href="/terminos/">Términos</a></nav></div>
+    <div class="footer-shell">
+      <img src="assets/starx-logo.svg" alt="STARX MEDIC" />
+      <p>Medicina · Seguimiento · Continuidad</p>
+      <div class="footer-links">
+        <a href="#seguridad">Seguridad</a>
+        <a href="#como-funciona">Cómo funciona</a>
+        <a href="mailto:contacto@starxmedic.com">Contacto</a>
+      </div>
     </div>
   </footer>
+
+  <script src="app.js"></script>
 </body>
 </html>
