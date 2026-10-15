@@ -362,3 +362,19 @@ img{max-width:100%;display:block}
   .feature-grid{grid-template-columns:1fr}.workflow{grid-template-columns:1fr}.security-card{padding:28px}.security-points{grid-template-columns:1fr}
   .cta-card{padding:28px;align-items:flex-start;flex-direction:column}.footer-shell{align-items:flex-start;flex-direction:column;padding:28px 0}.footer-links{margin-left:0;flex-wrap:wrap}
 }
+
+/* v2 responsive fix (CSS-only): mobile hero clipping + logo */
+.brand{flex-shrink:0;display:inline-flex}
+.brand img{width:192px;max-width:100%;height:auto}
+.hero-shell>*{min-width:0}
+@media (max-width:1180px){.hero-shell{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:680px){
+  .hero-shell{width:100%;max-width:100%}
+  .hero-copy{width:100%;max-width:100%}
+  .hero h1{font-size:clamp(2.35rem,11.5vw,3.2rem);overflow-wrap:break-word}
+  .hero-lead{max-width:100%}
+  .hero-ctas>*{min-width:0}
+  .trust-item{min-width:0}
+  .hero-art{width:100%;max-width:100%}
+  .brand img{width:158px}
+}
