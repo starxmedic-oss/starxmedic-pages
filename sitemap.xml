@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://starxmedic.com/</loc></url>
-  <url><loc>https://starxmedic.com/chapatucita/</loc></url>
-  <url><loc>https://starxmedic.com/privacidad/</loc></url>
-  <url><loc>https://starxmedic.com/terminos/</loc></url>
+  <url><loc>https://starxmedic.com/</loc><lastmod>2026-10-17</lastmod></url>
+  <url><loc>https://starxmedic.com/productos/</loc><lastmod>2026-10-17</lastmod></url>
+  <url><loc>https://starxmedic.com/medicos/</loc><lastmod>2026-10-17</lastmod></url>
+  <url><loc>https://starxmedic.com/pacientes/</loc><lastmod>2026-10-17</lastmod></url>
+  <url><loc>https://starxmedic.com/sistemas/</loc><lastmod>2026-10-17</lastmod></url>
+  <url><loc>https://starxmedic.com/evidencia/</loc><lastmod>2026-10-17</lastmod></url>
+  <url><loc>https://starxmedic.com/sobre/</loc><lastmod>2026-10-17</lastmod></url>
+  <url><loc>https://starxmedic.com/contacto/</loc><lastmod>2026-10-17</lastmod></url>
+  <url><loc>https://starxmedic.com/privacidad/</loc><lastmod>2026-10-17</lastmod></url>
+  <url><loc>https://starxmedic.com/terminos/</loc><lastmod>2026-10-17</lastmod></url>
 </urlset>
