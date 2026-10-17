@@ -63,4 +63,9 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .hero.bleed .hero-vis{margin-right:calc(-1*(max(0px,(100vw - 1240px)/2) + 24px));margin-left:-120px}
 .hero.bleed .hero-img,.hero.bleed .hero-img img{height:100%}.hero.bleed .hero-img img{aspect-ratio:auto;min-height:560px;border-radius:0;box-shadow:none;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 22%);mask-image:linear-gradient(90deg,transparent 0,#000 22%)}}
 
-.pthumb{position:relative;flex:none;width:62px;height:62px}.pthumb img{display:block;width:62px;height:62px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 3px #fff,0 0 0 4px var(--line)}.pthumb .pbadge{position:absolute;right:-4px;bottom:-4px;width:24px;height:24px;border-radius:50%;box-shadow:0 0 0 2px #fff}.pthumb .pbadge svg{width:13px;height:13px}
+
+.prod .pphoto{float:right;width:44%;max-width:150px;aspect-ratio:5/4;height:auto;object-fit:cover;border-radius:18px;margin:-6px -8px 8px 12px;box-shadow:0 6px 18px rgba(20,40,80,.10);border:3px solid #fff}
+.prod .pq+p{margin-bottom:0}.prod>div{padding-bottom:0}
+.prod{min-height:278.7px}
+@media (max-width:600px){.prod:nth-child(1){min-height:258.9px}.prod:nth-child(2){min-height:257.4px}.prod:nth-child(3){min-height:278.4px}}
+@media (max-width:374px){.prod:nth-child(2){min-height:278.4px}}
