@@ -75,3 +75,6 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 @media (max-width:600px){.steps.flow6{grid-template-columns:1fr;gap:22px}.steps.flow6 li:nth-child(3)::after{content:"↓"}.steps.flow6 li:not(:last-child)::after{content:"↓";right:auto;left:50%;top:auto;bottom:-21px;transform:translateX(-50%)}}
 .prod.v .pq{font-size:14px;letter-spacing:-.01em}.prod.v .pq+p{font-size:14px;line-height:1.35}
 @media (max-width:374px){.prod.v .pq,.prod.v .pq+p{font-size:13px;line-height:1.3}}
+.hero.bridge .hero-in{align-items:center;gap:48px}.hero.bridge .hero-vis{margin:0}.hero.bridge .hero-img img{min-height:0;height:auto;aspect-ratio:4/3;object-fit:cover;object-position:62% 50%;border-radius:28px;-webkit-mask-image:none;mask-image:none;box-shadow:0 24px 60px -24px rgba(16,40,90,.35)}
+.steps.flow6 li{min-height:84px;justify-content:center}#flujo .h2,.hero.bridge~.band .h2{margin-bottom:22px}.hero.bridge~.band .grid4 .card{height:100%}
+@media (max-width:900px){.hero.bridge .hero-vis{order:2}}
