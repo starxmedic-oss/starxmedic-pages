@@ -78,3 +78,5 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .hero.bridge .hero-in{align-items:center;gap:48px}.hero.bridge .hero-vis{margin:0}.hero.bridge .hero-img img{min-height:0;height:auto;aspect-ratio:4/3;object-fit:cover;object-position:62% 50%;border-radius:28px;-webkit-mask-image:none;mask-image:none;box-shadow:0 24px 60px -24px rgba(16,40,90,.35)}
 .steps.flow6 li{min-height:84px;justify-content:center}#flujo .h2,.hero.bridge~.band .h2{margin-bottom:22px}.hero.bridge~.band .grid4 .card{height:100%}
 @media (max-width:900px){.hero.bridge .hero-vis{order:2}}
+
+.brig-q{margin-top:22px;max-width:760px;border-left:4px solid var(--v)}.brig-q h3{font-size:20px;margin:0 0 8px}.brig-q p{margin:0;color:var(--mut)}
